@@ -1,0 +1,285 @@
+@charset "utf-8";
+
+.treeview,
+.treeview ul {
+  height: calc(100% - 39px);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background-color: white;
+  font-size: 13px;
+}
+#Group > ul {
+  padding-right: 16px;
+}
+
+.treeview .hitarea {
+  background-color: white !important;
+  background: url(../assets-svg/tree-minus-square-regular.svg) no-repeat;
+  background-size: 14px;
+  background-position: left 1px;
+  height: 18px;
+  width: 18px;
+  margin-left: -23px;
+  margin-top: 1px;
+  float: left;
+  cursor: pointer;
+}
+/* fix for IE6 */
+* html .hitarea {
+  display: inline;
+  float: none;
+}
+
+.treeview li {
+  margin: 0;
+  padding: 1px 0 1px 24px;
+  background: url(../assets/treeview-default-line.gif) -1px 0 no-repeat;
+}
+
+#Tree_Control {
+  display: none;
+  margin: 0 16px 12px 0;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #ddd;
+  font-size: 12px;
+  text-align: right;
+}
+#Tree_Control p.title {
+  float: left;
+  font-size: var(--font-md);
+  color: var(--label);
+}
+#Tree_Control a {
+  color: var(--label);
+  margin-right: 8px;
+  transition: all 0.3s ease;
+}
+#Tree_Control a:hover {
+  color: var(--primary);
+}
+
+.treeview .hover {
+  color: red;
+  cursor: pointer;
+}
+
+.treeview li.collapsable,
+.treeview li.expandable {
+  padding: 4px 0 0 24px;
+}
+
+.treeview li.collapsable:first-of-type,
+.treeview li.expandable:first-of-type {
+  padding: 0 0 0 24px;
+}
+
+.treeview .expandable-hitarea {
+  background: white url(../assets-svg/tree-plus-square-regular.svg) no-repeat;
+  background-size: 14px;
+  background-position: left 1px;
+}
+
+.treeview li.last {
+  background-position: -1px -1762px;
+}
+.treeview li.lastCollapsable,
+.treeview li.lastExpandable {
+  background-image: url(../assets/treeview-default.gif);
+}
+
+.treeview li.lastCollapsable {
+  background-position: 0 -111px;
+}
+.treeview li.lastExpandable {
+  background-position: -32px -67px;
+}
+
+.treeview div.lastCollapsable-hitarea,
+.treeview div.lastExpandable-hitarea {
+  background-position: 0;
+}
+
+.treeview .placeholder {
+  display: block;
+  height: 16px;
+  width: 16px;
+  background: url(../img/ajax-loader.gif) 0 0 no-repeat;
+}
+
+.filetree li {
+  padding: 3px 0 2px 16px;
+}
+.filetree span.folder,
+.filetree span.file {
+  padding: 1px 0 1px 16px;
+  display: block;
+}
+.filetree span.folder {
+  background: url(../img/folder.gif) 0 0 no-repeat;
+}
+.filetree li.expandable span.folder {
+  background: url(../img/folder-closed.gif) 0 0 no-repeat;
+}
+.filetree span.file {
+  background: url(../img/file.gif) 0 0 no-repeat;
+}
+
+/**********************************************************************************************************
+	Custom
+**********************************************************************************************************/
+
+/* 트리의 수준 표시 뱃지 아이콘(마우스 오버시 해당 라벨이 몇 수준인지 보여줌) */
+.treeview ul > li > ul > li > span.group:hover::before {
+  display: block;
+  content: '2수준';
+  float: left;
+  margin-top: 3px;
+  margin-left: -58px;
+  padding: 2px 3px;
+  min-width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  font-size: 7px;
+  line-height: 9px;
+  font-weight: 300;
+  background-color: var(--label);
+  text-align: center;
+  color: white;
+}
+.treeview ul > li > ul > li > ul > li > span.group:hover::before {
+  content: '3수준';
+}
+.treeview ul > li > ul > li > ul > li > ul > li > span.group:hover::before {
+  content: '4수준';
+}
+.treeview
+  ul
+  > li
+  > ul
+  > li
+  > ul
+  > li
+  > ul
+  > li
+  > ul
+  > li
+  > span.group:hover::before {
+  content: '5수준';
+}
+
+/* 각 표시 라벨의 위치 조정 : 디스플레이 블록 설정 할 경우 좌측 수준 라벨이 사라진다 */
+.treeview ul > li > span {
+  padding-left: 16px;
+  font-weight: normal;
+  color: var(--label);
+  background-repeat: no-repeat;
+  background-position: left 3px;
+  cursor: default;
+}
+.treeview span.group {
+  padding-left: 0;
+  /* background-image: url(../assets-svg/tree-users-solid.svg); */
+}
+.treeview span.user {
+  margin-left: 0;
+  background-image: url(../assets-svg/tree-user-solid-gray.svg);
+  background-size: 11px;
+  background-position: 1px center;
+  cursor: default;
+  transition: color 0.3s ease;
+}
+
+.treeview span.agent {
+  margin-left: 0;
+  background-image: url(../assets-svg/headset_mic-label-24dp.svg);
+  background-size: 15px;
+  background-position: -1px center;
+  cursor: default;
+  transition: color 0.3s ease;
+}
+
+/* 선택된 그룹 라벨 */
+.treeview span.group.active {
+  color: #1164ff;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: default;
+}
+
+.treeview li > span.myself::before {
+  content: '나 - ';
+}
+.treeview li > span em {
+  display: none;
+  position: relative;
+  padding-left: 26px;
+  cursor: pointer;
+}
+
+/* 온라인 상태 */
+.treeview li > span.user.ag_st_01 {
+  color: var(--dark);
+  background-image: url(../assets-svg/tree-user-solid-dark.svg);
+  cursor: pointer;
+}
+.treeview li > span.agent.ag_st_01 {
+  color: var(--dark);
+  background-image: url(../assets-svg/headset_mic-dark-24dp.svg);
+  cursor: pointer;
+}
+/* 온라인 및 상담원 대기중 상태에서만 마우스 호버시 내선 통화 버튼 디스플레이 */
+.treeview li > span.user.ag_st_01:hover em,
+.treeview li > span.agent.ag_st_01:hover em,
+.treeview li > span.agent.ag_st_10:hover em {
+  display: inline-block;
+  color: var(--label);
+  background-image: url(../assets-svg/tree-phone-square-alt-solid-gray.svg);
+  background-size: 14px;
+  background-position: 8px center;
+  background-repeat: no-repeat;
+  transition: all 0.3s ease;
+}
+.treeview li > span.user.ag_st_01 em:hover,
+.treeview li > span.agent.ag_st_01 em:hover,
+.treeview li > span.agent.ag_st_10 em:hover {
+  color: var(--green);
+  background-image: url(../assets-svg/tree-phone-square-alt-solid.svg);
+}
+
+/* 대기(Ready) 상태 - Agent에 한함 */
+.treeview li > span.agent.ag_st_10 {
+  color: var(--primary);
+  background-image: url(../assets-svg/headset_mic-primary-24dp.svg);
+}
+
+/* 통화중 상태 */
+.treeview li > span.user.ag_st_21,
+.treeview li > span.agent.ag_st_21 {
+  color: var(--red);
+  background-image: url(../assets-svg/tree-phone_in_talk-red-24dp.svg);
+  background-size: 16px;
+  background-position: -2px center;
+}
+
+/* 채팅 상담중 상태 */
+.treeview li > span.user.ag_st_22,
+.treeview li > span.agent.ag_st_22 {
+  color: var(--red);
+  background-image: url(../assets-svg/comment-dots-solid-red.svg);
+  background-size: 14px;
+  background-position: left center;
+}
+
+/* 자리비움 상태 */
+.treeview li > span.user.ag_st_32,
+.treeview li > span.agent.ag_st_32 {
+  color: var(--dark);
+  background-image: url(../assets-svg/tree-location_off-dark-24dp.svg);
+  background-size: 15px;
+  background-position: -1px center;
+}
+
+.tree_top a {
+  text-decoration: none;
+}

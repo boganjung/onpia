@@ -1,0 +1,308 @@
+@charset "utf-8";
+
+/**********************************************************************************************************
+	TIC-100 : 티켓
+**********************************************************************************************************/
+.ticket_title {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.ticket_title p.ticket-status {
+  float: left;
+  margin-top: 1px;
+  line-height: 14px;
+}
+.pj_label_container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  margin-top: 6px;
+}
+.pj_label_container > div {
+  margin: 0 3px 3px 0;
+  padding: 2px 8px;
+  font-size: 13px;
+  color: white;
+  border-radius: 4px;
+  cursor: default;
+}
+.pj_label_container > div.pj_label {
+  background-color: var(--gray);
+}
+.pj_label_container > div.pj_tag {
+  padding-left: 23px;
+  background-color: #bcc7d1;
+  background: #bcc7d1 url(../assets-svg/tag-solid-white.svg) no-repeat;
+  background-size: 10px;
+  background-position: 8px center;
+}
+#Detect_Ticket_Modified.section_footer {
+  display: none;
+}
+#Detect_Ticket_Modified.section_footer.on {
+  display: flex;
+  width: 100%;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: var(--font-xs);
+  color: var(--red);
+  line-height: 28px;
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+#Detect_Ticket_Modified.section_footer.on + section.ticket_regit {
+  height: calc(100% - 102px);
+}
+
+/**********************************************************************************************************
+	CUS-100 : 고객정보
+**********************************************************************************************************/
+header.cust_info_search {
+  padding-right: 0;
+}
+.search_input_wrap {
+  position: relative;
+  width: 100%;
+}
+.search_input_wrap input[type='text'] {
+  position: relative;
+  height: 30px;
+  padding-left: 60px;
+  font-size: var(--font-md);
+  background-color: #e0e9ee;
+  border: 1px solid #e0e9ee;
+}
+.search_input_wrap input[type='text']:hover {
+  border: 1px solid rgb(203, 212, 222);
+}
+.search_input_wrap input[type='text']:focus {
+  border-color: #80bdff;
+}
+.search_input_wrap > button {
+  position: absolute;
+  top: 1px;
+  width: 45px;
+  height: 28px;
+  margin: 0;
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: #aab5c5;
+}
+.search_input_wrap > button.execute {
+  left: 1px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.search_input_wrap > button.delete {
+  right: 1px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.search_input_wrap > button.execute:hover,
+.search_input_wrap > button.delete:hover {
+  background-color: #c9d3d8;
+  color: var(--label);
+}
+.search_input_wrap > button.execute:focus,
+.search_input_wrap > button.delete:focus {
+  background-color: #c9d3d8;
+  color: var(--label);
+  box-shadow: none;
+}
+
+.cust_info_search .sel_cat_t_btn {
+  position: relative;
+  width: 50px;
+}
+.cust_info_search .sel_cat_t_btn > p {
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  color: var(--label);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.cust_info_search .sel_cat_t_btn > p:hover {
+  color: black;
+}
+.cust_info_search .sel_cat_t_btn:hover .sub_content_wrap {
+  display: block;
+}
+
+section.table_grid_wrap {
+  height: calc(100% - 50px);
+  padding-left: 16px;
+  background-color: white;
+}
+.table_container {
+  height: 100%;
+  padding: 0 16px 10px 0;
+}
+
+aside .more_info {
+  margin-top: 6px;
+  padding-top: 16px;
+  border-top: 1px dotted var(--border);
+}
+aside .more_info .title {
+  font-size: var(--font-lg);
+  padding-bottom: 12px;
+}
+aside .more_info span {
+  padding-left: 4px;
+  font-size: var(--font-sm);
+  font-weight: normal;
+}
+
+/**********************************************************************************************************
+	ARC-100 : 티켓 아카이브
+**********************************************************************************************************/
+.ticket_view {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: /* -870px */ 0;
+  height: calc(100% - 50px);
+  width: 840px;
+  background-color: rgb(243, 247, 249);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.75);
+}
+
+.ticket_view > article {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 490px;
+  height: 100%;
+}
+.ticket_view > .link_client {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: calc(100% - 490px);
+  height: 100%;
+}
+.ticket_view > .link_client > header {
+  width: 100%;
+  height: 50px;
+  padding: 0 16px;
+  font-size: var(--font-lg);
+  border-bottom: 1px solid var(--border);
+  background-color: white;
+}
+.ticket_view .ticket_title {
+  padding-left: 44px;
+}
+
+/**********************************************************************************************************
+	SET-100 : 설정
+**********************************************************************************************************/
+section.setup {
+  height: calc(100% - 50px);
+  background-image: url(../assets-svg/cog-solid-light.svg);
+  background-repeat: no-repeat;
+  background-size: 400px;
+  background-position: right -80px bottom 20px;
+}
+section.setup_wrap {
+  height: calc(100% - 50px);
+  padding: 0 25px;
+}
+section.setup_wrap > header {
+  height: 50px;
+  margin-bottom: 14px;
+  padding: 15px 0;
+  font-size: var(--font-lg);
+  font-weight: 500;
+  border-bottom: 1px solid var(--border);
+  color: var(--label);
+}
+.sentence_wrap {
+  height: 100%;
+  padding-top: 20px;
+  background-image: url(../assets-svg/cog-solid-light.svg);
+  background-repeat: no-repeat;
+  background-size: 200px;
+  background-position: right 300px bottom -30px;
+}
+
+.contents {
+  width: 100%;
+}
+.short_width {
+  width: 530px;
+}
+
+.channel_record {
+  position: relative;
+  margin-bottom: 12px;
+  padding: 0 50px 0 0;
+  background-color: rgba(243, 247, 249, 0.75);
+  transition: all 0.3s ease-out;
+  cursor: default;
+}
+.channel_record:hover {
+  background-color: rgba(203, 212, 222, 0.5);
+}
+.channel_record.selected {
+  background-color: rgba(203, 212, 222, 0.5);
+}
+.channel_record > div {
+  margin-right: 12px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.channel_record > div.bi {
+  width: 62px;
+  height: 48px;
+}
+.channel_record > div.unfold_btn,
+.channel_record > div.fold_btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 48px;
+  margin-right: 0;
+  background-size: 14px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.channel_record:hover > div.unfold_btn {
+  background-image: url(../assets-svg/chevron-down-solid-gray.svg);
+}
+.channel_record:hover > div.unfold_btn:hover {
+  background-color: rgba(203, 212, 222, 0.75);
+  background-image: url(../assets-svg/chevron-down-solid.svg);
+  transition: background 0.3s ease-out;
+  cursor: pointer;
+}
+.channel_record > div.fold_btn {
+  display: none;
+}
+.channel_record > div.fold_btn {
+  background-image: url(../assets-svg/chevron-up-solid-gray.svg);
+}
+.channel_record:hover > div.fold_btn:hover {
+  background-color: rgba(203, 212, 222, 0.75);
+  background-image: url(../assets-svg/chevron-up-solid.svg);
+  transition: background 0.3s ease-out;
+  cursor: pointer;
+}
+.view {
+  height: 0;
+  margin-bottom: 14px;
+  border-bottom: 1px dotted var(--border);
+  overflow: hidden;
+}
+.channel_record.flex-row-align-left.selected > .unfold_btn {
+  display: none;
+}
+.channel_record_wrap:last-of-type .view {
+  border-bottom: none;
+}

@@ -1,0 +1,20 @@
+/*!
+ * jQuery UI Tooltip 1.10.3
+ * http://jqueryui.com
+ *
+ * Copyright 2013 jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ */
+.ui-tooltip {
+	padding: 2px 6px !important;
+	position: fixed;
+	z-index: 100 !important;
+	max-width: 240px;
+	font-size: 11px !important; color: #fff !important;
+	line-height: 16px;
+	/* box-shadow: 0 0 3px #aaa; */
+	border-color: /* rgba(119, 119, 119, 0.9) */#58606c !important;
+	background: /* rgba(119, 119, 119, 0.9) */#58606c !important;
+	border-radius: 4px !important;
+}

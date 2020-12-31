@@ -1,0 +1,1484 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+form {
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+}
+
+input,
+label {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* IE를 지원하진 않지만 혹시 몰라 텍스트 필드 삭제 아이콘 감추기 Hack 반영 */
+input[type='text']::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+input[type='text']::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Placeholder 위치 조정 Hack..!! */
+::-webkit-input-placeholder {
+  padding-top: 1px;
+  color: #999 !important;
+  font-weight: 300 !important;
+}
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #999;
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #999;
+}
+:-ms-input-placeholder {
+  color: #999 !important;
+}
+
+/**********************************************************************************************************
+	button
+**********************************************************************************************************/
+button {
+  position: relative;
+  display: block;
+  float: left;
+  margin-left: 8px;
+  height: 30px;
+  padding: 6px 7px;
+  font-family: 'Noto Sans KR', sans-serif;
+  background: /* #9da5af */ var(--gray-dark);
+  border: 1px solid var(--gray-dark);
+  line-height: 1em;
+  font-weight: normal;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  transition: all 0.1s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #5f7286;
+  border: 1px solid #5f7286;
+}
+button:active {
+  background: #5f7286;
+  border: 1px solid #5f7286;
+  transform: scale(0.95);
+}
+button:focus,
+button.focus {
+  background: #5f7286;
+  border: 1px solid #58606c;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+.modal button:focus {
+  background: #9da5af;
+  border: 1px solid #9da5af;
+}
+
+button.green,
+.h-green:hover,
+.h-green:focus {
+  background: #28a745;
+  border: 1px solid #28a745;
+}
+button.green:hover {
+  background: #1e8a37;
+  border: 1px solid #1e8a37;
+}
+button.green:active {
+  background: #1e8a37;
+  border: 1px solid #1e8a37;
+}
+button.green:focus,
+button.green.focus {
+  background: #1e8a37;
+  border: 1px solid #1e8a37;
+}
+.modal button.green:focus {
+  background: #1e8a37;
+  border: 1px solid #1e8a37;
+}
+
+button.cyan {
+  background: #47bac1;
+  border: 1px solid #47bac1;
+}
+button.cyan:hover {
+  background: #3aa6ac;
+  border: 1px solid #3aa6ac;
+}
+button.cyan:active {
+  background: #318d93;
+  border: 1px solid #318d93;
+}
+button.cyan:focus,
+button.cyan.focus {
+  background: #318d93;
+  border: 1px solid #318d93;
+}
+.modal button.cyan:focus {
+  background: #47bac1;
+  border: 1px solid #47bac1;
+}
+
+button.blue,
+.h-blue:hover,
+.h-blue:focus {
+  background: var(--primary);
+  border: 1px solid var(--primary);
+}
+button.blue:hover {
+  background: #1164ff;
+  border: 1px solid #1164ff;
+}
+button.blue:active {
+  background: #1164ff;
+  border: 1px solid #1164ff;
+}
+button.blue:focus,
+button.blue.focus,
+.modal button.blue:focus {
+  background: #1164ff;
+  border: 1px solid #1164ff;
+}
+
+button.red {
+  background: #f44;
+  border: 1px solid #f44;
+}
+button.red:hover {
+  background: #e00;
+  border: 1px solid #e00;
+}
+button.red:active {
+  background: #c00;
+  border: 1px solid #c00;
+}
+button.red:focus,
+button.red.focus {
+  background: #c00;
+  border: 1px solid #c00;
+}
+.modal button.red:focus {
+  background: #f44;
+  border: 1px solid #f44;
+}
+
+button.orange {
+  background: #ea9f15;
+  border: 1px solid #ea9f15;
+}
+button.orange:hover {
+  background: #c37f00;
+  border: 1px solid #c37f00;
+}
+button.orange:active {
+  background: #b47600;
+  border: 1px solid #b47600;
+}
+button.orange:focus,
+button.orange.focus {
+  background: #b47600;
+  border: 1px solid #b47600;
+}
+.modal button.orange:focus {
+  background: #ea9f15;
+  border: 1px solid #ea9f15;
+}
+
+button.black {
+  background: #555;
+  border: 1px solid #555;
+}
+button.black:hover {
+  background: #333;
+  border: 1px solid #333;
+}
+button.black:active {
+  background: #222;
+  border: 1px solid #222;
+}
+button.black:focus,
+button.black.focus {
+  background: #222;
+  border: 1px solid #222;
+}
+.modal button.black:focus {
+  background: #555;
+  border: 1px solid #555;
+}
+
+button.dark,
+.h-dark:hover,
+.h-dark:focus {
+  background: var(--dark);
+  border: 1px solid var(--dark);
+}
+button.dark:hover {
+  background: #0f1f34;
+  border: 1px solid #0f1f34;
+}
+button.dark:active {
+  background: #0f1f34;
+  border: 1px solid #0f1f34;
+}
+button.dark:focus,
+button.dark.focus {
+  background: #0f1f34;
+  border: 1px solid #0f1f34;
+}
+.modal button.dark:focus {
+  background: #0f1f34;
+  border: 1px solid #0f1f34;
+}
+
+button.border {
+  background: transparent;
+  border: 1px solid #ccd0d5;
+  color: #9da5af;
+}
+button.border:hover {
+  background: #ccd0d5 !important;
+  border-color: #ccd0d5;
+  color: /* #667180 */ #fff;
+}
+button.border:active {
+  background: #9da5af !important;
+  border-color: #9da5af;
+  color: /* #465160 */ #fff;
+}
+button.border:focus,
+button.border.focus {
+  background: #9da5af !important;
+  border-color: #9da5af;
+  color: /* #465160 */ #fff;
+}
+
+/* -------------------------------------------------------------------
+	아이콘만 표시되는 버튼
+-------------------------------------------------------------------- */
+
+/* 검색과 같이 텍스트필드와 아이콘 버튼이 연결된 형식의 스타일 */
+.form_merge {
+  position: relative;
+}
+.form_merge > input[type='text'] {
+  background-color: #e0e9ee;
+  border-color: #e0e9ee;
+}
+.form_merge > button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+}
+.form_merge > button:last-of-type {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form_merge > button[disabled] {
+  opacity: 0.3;
+}
+.form_merge > button[disabled]:hover {
+  background-color: var(--primary);
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* 리로드(Reload) 아이콘 버튼 호버시 아이콘 360도 회전 */
+button.icon.hover_rotate:hover i {
+}
+button.icon.hover_rotate:active i {
+  transition: all 0.3s ease;
+  transform: rotate(360deg);
+}
+
+/**********************************************************************************************************
+	Label
+**********************************************************************************************************/
+/*********** 폼 오브젝트 좌측 상단에 위치한 라벨 ***********/
+label.top,
+label.left {
+  position: relative;
+  display: block;
+  margin-bottom: 2px;
+  max-width: inherit;
+  height: 18px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: normal;
+  color: #647287;
+  overflow: hidden;
+}
+label.top span {
+  font-size: 0.9em;
+  font-weight: 300;
+}
+label.top span.sub {
+  padding-left: 4px;
+}
+
+/* 텍스트가 없는 빈 라벨 */
+label.top_nbsp {
+  display: block;
+  height: 18px;
+  margin-bottom: 2px;
+  overflow: hidden;
+}
+
+/* 라벨에 구글 아이콘 폰트가 있는 경우 */
+label.top i.fas,
+label.top i.far {
+  margin-right: 4px;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+label.left {
+  display: inline-block;
+  margin: 0;
+  width: 160px;
+  max-width: 160px;
+  height: 30px;
+  font-size: 13px;
+  color: var(--dark);
+  line-height: 30px;
+}
+
+.auto_input_today:hover {
+  text-decoration: underline;
+  color: #354052;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+/**********************************************************************************************************
+	Input text...
+**********************************************************************************************************/
+input[type='text'],
+input[type='password'],
+input[type='button'],
+input[type='reset'],
+input[type='submit'] {
+  width: 100%;
+  color: #000;
+  font-family: 'Noto Sans KR', sans-serif;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-appearance: none;
+  border-radius: 4px;
+}
+
+/* 기본 텍스트 필드 레이아웃 */
+input[type='text'],
+input[type='password'] {
+  height: 30px;
+  padding: 3px 6px 4px 6px;
+  border: 1px solid #f3f7f9;
+  background-color: #f3f7f9;
+  transition: all 0.1s ease;
+}
+
+input[type='text']::placeholder,
+input[type='password']::placeholder {
+  color: black;
+  font-weight: 700;
+}
+
+/* 기본 텍스트 필드 색상 변화 */
+input[type='text'],
+input[type='password'] {
+  width: 100%;
+}
+input[type='text']:hover,
+input[type='password']:hover {
+  border: 1px solid rgb(203, 212, 222);
+}
+input[type='text']:focus,
+input[type='password']:focus,
+textarea:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* 텍스트 박스가 리드온리 일때 */
+input[readonly='true'] {
+  border: 1px dashed rgb(203, 212, 222);
+  background-color: #fff;
+}
+input[readonly='true']:hover {
+  border: 1px dashed rgb(203, 212, 222);
+  background-color: #fff;
+}
+input[readonly='true']:focus {
+  border: 1px dashed rgb(203, 212, 222);
+  box-shadow: none;
+}
+.select_user > input[type='text'] {
+  height: 26px;
+}
+
+/**********************************************************************************************************
+	textarea
+**********************************************************************************************************/
+textarea {
+  appearance: none;
+  display: block;
+  margin: 0;
+  padding: 6px 8px;
+  width: 100%;
+  max-width: 100%;
+  min-height: 10em;
+  font-size: 12px;
+  line-height: 1.6em;
+  border: 1px solid #f3f7f9;
+  font-weight: normal;
+  border-radius: 4px;
+  font-family: 'Noto Sans KR', sans-serif;
+  resize: vertical;
+  overflow-y: auto;
+  background-color: #f3f7f9;
+  transition: all 0.1s ease;
+}
+textarea.sm {
+  height: 5em;
+}
+textarea.lg {
+  height: 18em;
+}
+textarea:hover {
+  border: 1px solid rgb(203, 212, 222);
+}
+textarea:focus {
+  border-color: #80bdff;
+}
+textarea.resize_none {
+  resize: none;
+}
+
+/* 유효성 검사 : 성공(Good) */
+textarea.good {
+  border-color: #28a745;
+  background-color: rgba(40, 167, 69, 0.1);
+}
+textarea.good:focus {
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+textarea[readonly='true'],
+textarea[readonly='readonly'] {
+  border: 1px dashed #d5d8dd;
+  background-color: #fff;
+}
+textarea[readonly='true']:hover,
+textarea[readonly='readonly']:hover {
+  border: 1px dashed #d5d8dd;
+  background-color: #fff;
+}
+textarea[readonly='true']:focus,
+textarea[readonly='readonly']:focus {
+  border: 1px dashed #d5d8dd;
+  box-shadow: none;
+}
+
+/* 상담노트에서의 읽기전용 스타일은 보더가 다르다 */
+.editable textarea[readonly='true'],
+.editable textarea[readonly='readonly'] {
+  border-style: solid;
+}
+.editable textarea[readonly='true']:hover,
+.editable textarea[readonly='readonly']:hover {
+  border-style: solid;
+}
+.editable textarea[readonly='true']:focus,
+.editable textarea[readonly='readonly']:focus {
+  border-style: solid;
+}
+
+textarea.h80 {
+  min-height: 80px;
+}
+textarea.h120 {
+  min-height: 120px;
+}
+textarea.mh384px {
+  height: 140px;
+  max-height: 400px !important;
+  overflow-y: auto !important;
+  resize: vertical;
+}
+textarea.mh200px {
+  min-height: 42px !important;
+  max-height: 184px !important;
+  overflow-y: auto !important;
+}
+
+textarea.mh200px::-webkit-scrollbar,
+textarea.mh384px::-webkit-scrollbar {
+  width: 8px;
+}
+textarea.mh200px::-webkit-scrollbar-track,
+textarea.mh384px::-webkit-scrollbar-track {
+  background: #ddd;
+  border-radius: 4px;
+}
+textarea.mh200px::-webkit-scrollbar-thumb,
+textarea.mh384px::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+/**********************************************************************************************************
+	Select
+**********************************************************************************************************/
+select::-ms-expand {
+  display: none;
+}
+select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 30px;
+  margin: 0;
+  padding: 3px 20px 4px 6px;
+  border: 1px solid #f3f7f9;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #f3f7f9 url(../assets/drop_down_arrow_gray_24dp.gif) right center
+    no-repeat;
+  background-size: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  transition: all 0.1s ease;
+}
+select:hover {
+  border: 1px solid rgb(203, 212, 222);
+  background: #f3f7f9 url(../assets/drop_down_arrow_black_24dp.gif) right center
+    no-repeat;
+  background-size: 20px;
+}
+select:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+select.editable {
+  background-color: #fff;
+  border-color: #d5d8dd;
+}
+select.editable:hover {
+  border: 1px solid #cccfd3;
+}
+select.editable:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* 유효성 검사 : 성공(Good) */
+select.good {
+  border-color: #28a745;
+  background-color: rgba(40, 167, 69, 0.1);
+}
+select.good:focus {
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+/* 유효성 검사 : 실패(Bad) */
+select.bad {
+  border-color: #dc3545;
+  background-color: rgba(220, 53, 69, 0.1);
+}
+select.bad:focus {
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* 검색 조건 설정에 관한 드롭다운 메뉴 */
+.search_condition {
+  float: left;
+  min-width: 110px;
+  padding-right: 8px;
+}
+
+select.h26 {
+  width: 140px;
+  height: 26px;
+  line-height: 14px;
+  font-size: 12px;
+  background-color: #ecedf2;
+  border-radius: 3px;
+  border-color: #c2c7ce;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/**********************************************************************************************************
+	Checkbox & Radio
+**********************************************************************************************************/
+/* 스타일 리셋 */
+.checkbox_wrap input[type='checkbox'],
+.radio_wrap input[type='radio'] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  padding: 0;
+  margin: 0;
+}
+.checkbox_wrap {
+  position: relative;
+  margin-bottom: 10px;
+  line-height: 20px;
+}
+.radio_wrap {
+  position: relative;
+  height: 20px;
+  margin-bottom: 10px;
+  line-height: 20px;
+}
+.radio_wrap.inline {
+  margin-top: 4px;
+}
+.radio_wrap:after {
+  clear: both;
+  display: block;
+  visibility: hidden;
+  font-size: 0;
+  content: '';
+  height: 0;
+}
+.checkbox_wrap input[type='checkbox'],
+.radio_wrap input[type='radio'] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+/* 체크박스 및 라디오 라벨의 기본 스타일 */
+label.radio_label {
+  float: left;
+  margin: 0 10px 0 0;
+  padding-left: 19px;
+  cursor: pointer;
+}
+label.checkbox_label {
+  float: left;
+  margin: 0;
+  padding-left: 23px;
+  cursor: pointer;
+}
+
+/* 체크박스 기본 상태 */
+label.checkbox_label::before {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  display: block;
+  width: 16px;
+  height: 16px;
+  content: '';
+  background-color: #dee2e6;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  transition: background 0.3s ease;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+label.checkbox_label:hover::before {
+  background-color: var(--border);
+  border-color: rgb(170, 180, 190);
+}
+
+/* 체크박스 "Checked" 상태 배경 */
+input[type='checkbox']:checked + label.checkbox_label::before {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  display: block;
+  width: 16px;
+  height: 16px;
+  content: '';
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  transition: background 0.3s ease;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+/* 체크박스 "Checked" 상태 이미지 */
+input[type='checkbox']:checked + label.checkbox_label::after {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  display: block;
+  width: 16px;
+  height: 16px;
+  content: '';
+  background-image: url(../assets-svg/check-circle-solid.svg);
+  background-size: 16px;
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+input[type='checkbox']:focus + label.checkbox_label::before {
+  border: 1px solid transparent;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+input[type='checkbox']:checked:focus + label.checkbox_label::before {
+  border: 1px solid transparent;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.15);
+}
+
+/* 유효성 검사 : 성공(Good) */
+input[type='checkbox'].good + label {
+  color: #20943b;
+}
+input[type='checkbox'].good + label.checkbox_label::before {
+  position: absolute;
+  top: 7px;
+  left: 0;
+  display: block;
+  width: 16px;
+  height: 16px;
+  content: '';
+  background-color: rgba(40, 167, 69, 0.25);
+  border: 1px solid rgba(40, 167, 69, 0.25);
+  border-radius: 3px;
+  transition: background 0.3s ease;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+/* 유효성 검사 : 성공(Good) : "Checked" 상태 배경 */
+input[type='checkbox'].good:checked + label.checkbox_label::before {
+  position: absolute;
+  top: 7px;
+  left: 0;
+  display: block;
+  width: 16px;
+  height: 16px;
+  content: '';
+  background-color: #28a745;
+  border: 1px solid #28a745;
+  border-radius: 3px;
+  transition: background 0.3s ease;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+input[type='checkbox'].good:focus + label.checkbox_label::before {
+  border: 1px solid #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+input[type='checkbox'].good:checked:focus + label.checkbox_label::before {
+  border: 1px solid #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+/* 유효성 검사 : 실패(Bad) */
+input[type='checkbox'].bad + label {
+  color: #dc3545;
+}
+input[type='checkbox'].bad + label.checkbox_label::before {
+  position: absolute;
+  top: 7px;
+  left: 0;
+  display: block;
+  width: 16px;
+  height: 16px;
+  content: '';
+  background-color: rgba(220, 53, 69, 0.25);
+  border: 1px solid rgba(220, 53, 69, 0.25);
+  border-radius: 3px;
+  transition: background 0.3s ease;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+/* 유효성 검사 : 실패(Bad) : "Checked" 상태 배경 */
+input[type='checkbox'].bad:checked + label.checkbox_label::before {
+  position: absolute;
+  top: 7px;
+  left: 0;
+  display: block;
+  width: 16px;
+  height: 16px;
+  content: '';
+  background-color: #dc3545;
+  border: 1px solid #dc3545;
+  border-radius: 3px;
+  transition: background 0.3s ease;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+input[type='checkbox'].bad:focus + label.checkbox_label::before {
+  border: 1px solid #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+input[type='checkbox'].bad:checked:focus + label.checkbox_label::before {
+  border: 1px solid #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* 라디오 기본 상태 */
+label.radio_label::before {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  display: block;
+  width: 14px;
+  height: 14px;
+  content: '';
+  background-color: #dee2e6;
+  border: 1px solid #dee2e6;
+  border-radius: 50%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+label.radio_label:hover::before {
+  border: 1px solid rgb(203, 212, 222);
+}
+label.radio_label:hover::after {
+  position: absolute;
+  top: 8px;
+  left: 4px;
+  display: block;
+  width: 4px;
+  height: 4px;
+  content: '';
+  background-color: rgb(184, 191, 198);
+  border: 1px solid rgb(184, 191, 198);
+  border-radius: 50%;
+}
+
+/* 라디오 "Checked" 상태 배경 */
+input[type='radio']:checked + label.radio_label::before {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  display: block;
+  width: 14px;
+  height: 14px;
+  content: '';
+  background-color: #3a8ee2;
+  border: 1px solid #3a8ee2;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+/* 라디오 "Checked" 상태 이미지 */
+input[type='radio']:checked + label.radio_label::after {
+  position: absolute;
+  top: 8px;
+  left: 4px;
+  display: block;
+  width: 4px;
+  height: 4px;
+  content: '';
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 50%;
+}
+input[type='radio']:focus + label.radio_label::before {
+  border: 1px solid #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+input[type='radio']:checked:focus + label.radio_label::before {
+  border: 1px solid #3a8ee2;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* 유효성 검사 : 성공(Good) */
+input[type='radio'].good + label {
+  color: #20943b;
+}
+input[type='radio'].good + label.radio_label::before {
+  position: absolute;
+  top: 7px;
+  left: 0;
+  display: block;
+  width: 16px;
+  height: 16px;
+  content: '';
+  background-color: rgba(40, 167, 69, 0.25);
+  border: 1px solid rgba(40, 167, 69, 0.25);
+  border-radius: 50%;
+  transition: background 0.3s ease;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+/* 유효성 검사 : 성공(Good) : 라디오 "Checked" 상태 배경 */
+input[type='radio'].good:checked + label.radio_label::before {
+  position: absolute;
+  top: 7px;
+  left: 0;
+  display: block;
+  width: 16px;
+  height: 16px;
+  content: '';
+  background-color: #28a745;
+  border: 1px solid #28a745;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+input[type='radio'].good:focus + label.radio_label::before {
+  border: 1px solid #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+input[type='radio'].good:checked:focus + label.radio_label::before {
+  border: 1px solid #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+/* 유효성 검사 : 실패(bad) : 라디오 "Checked" 상태 배경 */
+input[type='radio'].bad + label {
+  color: #dc3545;
+}
+input[type='radio'].bad + label.radio_label::before {
+  position: absolute;
+  top: 7px;
+  left: 0;
+  display: block;
+  width: 16px;
+  height: 16px;
+  content: '';
+  background-color: rgba(220, 53, 69, 0.25);
+  border: 1px solid rgba(220, 53, 69, 0.25);
+  border-radius: 50%;
+  transition: background 0.3s ease;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+input[type='radio'].bad + label.radio_label::before {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  display: block;
+  width: 16px;
+  height: 16px;
+  content: '';
+  background-color: rgba(220, 53, 69, 0.25);
+  border: 1px solid #dc3545;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+input[type='radio'].bad:focus + label.radio_label::before {
+  border: 1px solid #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/**********************************************************************************************************
+	상담원 상태 관련, agent_status_ctrl_wrap
+**********************************************************************************************************/
+.agent_status_ctrl_wrap {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: center;
+  line-height: 28px;
+  padding: 2px 0 2px 16px;
+  border-left: 1px solid rgb(221, 226, 230);
+}
+
+p.agt_status_indicator {
+  width: 160px;
+  height: 30px;
+  padding: 0 12px 0 34px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: var(--font-md);
+  text-align: left;
+  color: white;
+  background-color: rgb(243, 247, 249);
+  border-right: 1px solid white;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  background-repeat: no-repeat;
+  background-size: 18px;
+  background-position: 10px center;
+}
+p.agt_status_indicator span {
+  float: right;
+  font-size: var(--font-sm);
+}
+p.agt_status_indicator::before,
+li.ag_st_30::before {
+  font-family: inherit;
+  padding-right: 6px;
+}
+
+ul.agt_status_list li {
+  width: 130px;
+  padding-right: 0 !important;
+  font-size: 13px;
+  text-align: left;
+  background-repeat: no-repeat;
+  background-size: 18px;
+  background-position: 16px center;
+  border-top: 1px dotted var(--border);
+}
+ul.agt_status_list li::before {
+  padding-left: 26px;
+}
+ul.agt_status_list li:first-of-type {
+  border-top: none;
+}
+
+/* 온라인 */
+p.agt_status_indicator[class~='ag_st_01'] {
+  color: black;
+  background-image: url(../assets-svg/online_prediction-black-24dp.svg);
+}
+p.agt_status_indicator[class~='ag_st_01']::before {
+  content: '온라인';
+}
+
+/* 상담 대기중 */
+p.agt_status_indicator[class~='ag_st_10'] {
+  background-color: var(--primary);
+  background-image: url(../assets-svg/support_agent-white-24dp.svg);
+}
+p.agt_status_indicator[class~='ag_st_10']::before {
+  content: '상담 대기중';
+}
+
+/* PDS 캠페인 연결 대기중 */
+p.agt_status_indicator[class~='ag_st_11'] {
+  background-color: var(--cyan);
+  background-image: url(../assets-svg/tty-white-24dp.svg);
+}
+p.agt_status_indicator[class~='ag_st_11']::before {
+  content: 'PDS 대기중';
+}
+
+/* 통화중 */
+p.agt_status_indicator[class~='ag_st_21'] {
+  width: 290px;
+  background-color: var(--red);
+  background-image: url(../assets-svg/phone_in_talk-white-24dp.svg);
+  border-radius: 4px;
+}
+p.agt_status_indicator[class~='ag_st_21']::before {
+  content: '통화중';
+}
+p.agt_status_indicator[class~='ag_st_21'] + button,
+p.agt_status_indicator[class~='ag_st_21'] ~ .agt_status_menu {
+  display: none;
+}
+
+/* 채팅 상담중 */
+p.agt_status_indicator[class~='ag_st_22'] {
+  background-color: var(--red);
+  background-image: url(../assets-svg/textsms-white-24dp.svg);
+}
+p.agt_status_indicator[class~='ag_st_22']::before {
+  content: '채팅 상담중';
+}
+
+/* 후처리중 (After work) */
+p.agt_status_indicator[class~='ag_st_30'] {
+  background-color: var(--orange);
+  background-image: url(../assets-svg/keyboard-white-24dp.svg);
+}
+p.agt_status_indicator[class~='ag_st_30']::before {
+  content: '후처리중';
+}
+li.ag_st_30 {
+  background-image: url(../assets-svg/keyboard-black-24dp.svg);
+}
+li.ag_st_30::before {
+  content: '후처리중';
+}
+
+/* 다른업무중 (On other business) */
+p.agt_status_indicator[class~='ag_st_31'] {
+  background-color: var(--black);
+  background-image: url(../assets-svg/work-white-24dp.svg);
+}
+p.agt_status_indicator[class~='ag_st_31']::before {
+  content: '다른업무중';
+}
+li.ag_st_31 {
+  background-image: url(../assets-svg/work-black-24dp.svg);
+}
+li.ag_st_31::before {
+  content: '다른업무중';
+}
+
+/* 자리비움 (AFS, Away from seat) */
+p.agt_status_indicator[class~='ag_st_32'] {
+  background-color: var(--black);
+  background-image: url(../assets-svg/location_off-white-24dp.svg);
+}
+p.agt_status_indicator[class~='ag_st_32']::before {
+  content: '자리비움';
+}
+li.ag_st_32 {
+  background-image: url(../assets-svg/location_off-black-24dp.svg);
+}
+li.ag_st_32::before {
+  content: '자리비움';
+}
+
+/* 회의중 또는 미팅중 (Meeting) */
+p.agt_status_indicator[class~='ag_st_33'] {
+  background-color: var(--black);
+  background-image: url(../assets-svg/group_work-white-24dp.svg);
+}
+p.agt_status_indicator[class~='ag_st_33']::before {
+  content: '회의(미팅)중';
+}
+li.ag_st_33 {
+  background-image: url(../assets-svg/group_work-black-24dp.svg);
+}
+li.ag_st_33::before {
+  content: '회의(미팅)중';
+}
+
+/* 교육중 (In training) */
+p.agt_status_indicator[class~='ag_st_34'] {
+  background-color: var(--black);
+  background-image: url(../assets-svg/school-white-24dp.svg);
+}
+p.agt_status_indicator[class~='ag_st_34']::before {
+  content: '교육중';
+}
+li.ag_st_34 {
+  background-image: url(../assets-svg/school-black-24dp.svg);
+}
+li.ag_st_34::before {
+  content: '교육중';
+}
+
+/* 식사중 (At table) */
+p.agt_status_indicator[class~='ag_st_35'] {
+  background-color: var(--black);
+  background-image: url(../assets-svg/restaurant_menu-white-24dp.svg);
+}
+p.agt_status_indicator[class~='ag_st_35']::before {
+  content: '식사중';
+}
+li.ag_st_35 {
+  background-image: url(../assets-svg/restaurant_menu-black-24dp.svg);
+}
+li.ag_st_35::before {
+  content: '식사중';
+}
+
+/* 휴식중 (Resting) */
+p.agt_status_indicator[class~='ag_st_36'] {
+  background-color: var(--black);
+  background-image: url(../assets-svg/emoji_food_beverage-white-24dp.svg);
+}
+p.agt_status_indicator[class~='ag_st_36']::before {
+  content: '휴식중';
+}
+li.ag_st_36 {
+  background-image: url(../assets-svg/emoji_food_beverage-black-24dp.svg);
+}
+li.ag_st_36::before {
+  content: '휴식중';
+}
+
+/* 기타 1 (ETC 1) */
+p.agt_status_indicator[class~='ag_st_37'] {
+  background-color: var(--black);
+  background-image: url(../assets-svg/flight_takeoff-white-24dp.svg);
+}
+p.agt_status_indicator[class~='ag_st_37']::before {
+  content: '휴가중';
+}
+li.ag_st_37 {
+  background-image: url(../assets-svg/flight_takeoff-black-24dp.svg);
+}
+li.ag_st_37::before {
+  content: '휴가중';
+}
+
+/* 기타 2 (ETC 2) */
+p.agt_status_indicator[class~='ag_st_38'] {
+  background-color: var(--black);
+  background-image: url(../assets-svg/health_and_safety-white-24dp.svg);
+}
+p.agt_status_indicator[class~='ag_st_38']::before {
+  content: '병가중';
+}
+li.ag_st_38 {
+  background-image: url(../assets-svg/health_and_safety-black-24dp.svg);
+}
+li.ag_st_38::before {
+  content: '병가중';
+}
+
+/* 기타 3 (ETC 3) */
+p.agt_status_indicator[class~='ag_st_39'] {
+  background-color: var(--black);
+  background-image: url(../assets-svg/coronavirus-white-24dp.svg);
+}
+p.agt_status_indicator[class~='ag_st_39']::before {
+  content: '격리중';
+}
+li.ag_st_39 {
+  background-image: url(../assets-svg/coronavirus-black-24dp.svg);
+}
+li.ag_st_39::before {
+  content: '격리중';
+}
+
+#Set_Ready {
+  width: 100px;
+  margin: 0;
+  padding-top: 4px;
+  font-size: var(--font-md);
+  text-align: center;
+  border-radius: 0;
+}
+#Set_Ready:focus {
+  background-color: var(--gray-dark);
+  border-color: var(--gray-dark);
+  box-shadow: none;
+}
+#Set_Ready.on {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+#Set_Ready.on:focus {
+  border-color: var(--primary);
+}
+.agt_status_menu {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  color: white;
+  background-color: var(--gray-dark);
+  border-left: 1px solid white;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  transition: all 0.2s ease;
+}
+.agt_status_menu:hover {
+  background-color: #5f7286;
+  cursor: pointer;
+}
+.agt_status_menu .sub_content_wrap {
+  display: none;
+  right: -10px;
+}
+.agt_status_menu:hover .sub_content_wrap {
+  display: block;
+}
+
+/**********************************************************************************************************
+	Pagination
+**********************************************************************************************************/
+.pagination_wrap {
+  position: relative;
+}
+.pagination_wrap a {
+  display: block;
+  float: left;
+  min-width: 22px;
+  max-width: 48px;
+  height: 30px;
+  margin-right: 4px;
+  padding: 4px 3px;
+  font-size: var(--font-sm);
+  text-align: center;
+  color: #71869d;
+  border: 1px solid rgb(203, 212, 222);
+  border-radius: 4px;
+  text-decoration: none;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+.pagination_wrap a:visited {
+}
+.pagination_wrap a:hover {
+  background-color: rgb(203, 212, 222);
+}
+.pagination_wrap a:active {
+  transform: scale(0.9);
+}
+.pagination_wrap a.active {
+  color: white;
+  background-color: #71869d;
+  border-color: #71869d;
+  cursor: default;
+}
+.pagination_wrap a.active:active {
+  transform: none;
+}
+.pagination_wrap:hover .pagination_data_count {
+  display: block;
+}
+.pagination_data_count {
+  display: block;
+  position: absolute;
+  top: 36px;
+  left: 0;
+  font-size: var(--font-xs);
+  color: var(--label);
+}
+.pagination_data_count .total {
+  color: black;
+  font-weight: 500;
+}
+.pagination_data_count .total::before {
+  padding-right: 0.3em;
+  color: var(--label);
+  content: '총';
+}
+.pagination_data_count .current {
+  color: red;
+  font-weight: 500;
+}
+.pagination_data_count .current::before {
+  color: var(--label);
+  content: '건 (Page ';
+  font-weight: normal;
+}
+.pagination_data_count .current::after {
+  color: var(--label);
+  content: ' / ';
+  font-weight: normal;
+}
+.pagination_data_count .total_page {
+  color: black;
+}
+.pagination_data_count .total_page::after {
+  content: ')';
+  color: var(--label);
+}
+
+/**********************************************************************************************************
+	Form wrap width
+**********************************************************************************************************/
+.f-block {
+  width: calc(100% + 12px);
+  display: flex;
+  flex-flow: row wrap;
+}
+.f-row {
+  display: flex !important;
+  flex-flow: row nowrap;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 0 0 0 10px;
+  border-left: 4px solid var(--border);
+  transition: all 0.3s ease-out;
+}
+.f-row > div {
+  width: calc(100% - 160px);
+}
+.f-row > div > .f-obj {
+  padding-bottom: 0;
+}
+.f-obj {
+  float: left;
+  padding: 0 12px 10px 0;
+}
+.f-w5 {
+  width: 5%;
+}
+.f-w10 {
+  width: 10%;
+}
+.f-w15 {
+  width: 15%;
+}
+.f-w20 {
+  width: 20%;
+}
+.f-w25 {
+  width: 25%;
+}
+.f-w30 {
+  width: 30%;
+}
+.f-w33 {
+  width: 33.3333333%;
+}
+.f-w35 {
+  width: 35%;
+}
+.f-w40 {
+  width: 40%;
+}
+.f-w45 {
+  width: 45%;
+}
+.f-w50 {
+  width: 50%;
+}
+.f-w55 {
+  width: 55%;
+}
+.f-w60 {
+  width: 60%;
+}
+.f-w65 {
+  width: 65%;
+}
+.f-w70 {
+  width: 70%;
+}
+.f-w75 {
+  width: 75%;
+}
+.f-w80 {
+  width: 80%;
+}
+.f-w85 {
+  width: 85%;
+}
+.f-w90 {
+  width: 90%;
+}
+.f-w95 {
+  width: 95%;
+}
+.f-w100 {
+  clear: both !important;
+  width: 100%;
+}
+
+.f-w70px {
+  width: 70px;
+}

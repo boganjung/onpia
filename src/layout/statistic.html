@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 검색엔진 트래킹 차단 -->
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="copyright"
+      content="2021 copyright &amp; copy; ONPIA, all right reserved."
+    />
+
+    <title>(1) CONNECTO&trade; Agents</title>
+
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../assets/favicon_onpia.png"
+    />
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script
+      src="https://kit.fontawesome.com/a26d2b8a4d.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- jQuery link -->
+    <script
+      src="https://code.jquery.com/jquery-1.12.4.min.js"
+      integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+      integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="../js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../js/jquery.treeview.js"></script>
+    <script type="text/javascript" src="../js/jquery.stickytableheaders.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.tablesorter.js"></script>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="vid"><!-- 이 페이지 뷰의 ID -->STA-100</div>
+      <div id="Min_Width_Message">
+        <span
+          ><i class="fas fa-exclamation-triangle pa-r-xs"></i>디스플레이의 가로
+          해상도가 너무 낮습니다.&nbsp;<span
+            >(가로 1280, 세로 600 픽셀 이상의 스크린 해상도를 권장합니다)</span
+          ></span
+        >
+        <p class="btn_alert_close"></p>
+      </div>
+
+      <!-- 네비게이션(Navigation) -->
+      <nav class="root">
+        <!-- 상단 메뉴 -->
+        <div>
+          <ul class="nav">
+            <li class="my_account">
+              <span><i class="fas fa-user-circle"></i></span>
+              <div class="sub_content_wrap">
+                <div class="sub_content_container">
+                  <p><i class="fas fa-user-circle"></i>정진욱</p>
+                  <p>jw.jung@onpia.co.kr</p>
+                  <ul>
+                    <li class="">
+                      <i class="fas fa-user-cog"></i>내 계정 설정
+                    </li>
+                    <li class="t-c-red">
+                      <i class="fas fa-sign-out-alt"></i>로그 아웃
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <!-- 구분선 -->
+          <div class="dividing_line"></div>
+
+          <!-- 메인 메뉴 -->
+          <ul class="nav">
+            <li class="">
+              <a href="chat.html" class=""
+                ><i class="fas fa-comments"></i><span class="badge">7</span></a
+              >
+              <span class="title">채팅</span>
+            </li>
+            <li>
+              <a href="ticket.html" class=""
+                ><i class="fas fa-ticket-alt"></i
+                ><span class="badge">99</span></a
+              >
+              <span class="title">티켓</span>
+            </li>
+            <li>
+              <a href="customer.html" class=""
+                ><i class="fas fa-address-book"></i
+              ></a>
+              <span class="title">고객정보</span>
+            </li>
+            <li class="">
+              <a href="archive.html" class=""><i class="fas fa-archive"></i></a>
+              <span class="title">아카이브</span>
+            </li>
+            <li>
+              <a href="statistic.html" class="active"
+                ><i class="fas fa-chart-bar"></i
+              ></a>
+              <span class="title">통계</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 하단 메뉴 -->
+        <ul class="nav last">
+          <li>
+            <a href="#" class="btn_noti_open"
+              ><i class="fas fa-bell"></i><span class="badge">1</span></a
+            >
+            <span class="title">알림</span>
+          </li>
+          <li>
+            <a href="setup.html" class=""><i class="fas fa-cog"></i></a>
+            <span class="title">설정</span>
+          </li>
+          <li>
+            <a href="#" class=""><i class="fas fa-question-circle"></i></a>
+            <span class="title">도움이 필요하십니까?</span>
+          </li>
+        </ul>
+      </nav>
+
+      <script>
+        $(function () {
+          $('.btn_noti_open').click(function () {
+            $('.noti.sub_content_wrap').toggleClass('unfold');
+            $('.notice_wrap>.content.scrollable-y').animate({scrollTop : 0}, 0);
+            return false;
+          });
+          $('.btn_fold').click(function () {
+            $(this).parents('.noti.sub_content_wrap').removeClass('unfold');
+            $('.notice_wrap>.content.scrollable-y').animate({scrollTop : 0}, 0);
+            return false;
+          });
+
+          /* 테이블 소터 */
+          $(".table_notice").tablesorter({
+            widgets: ['zebra'], sortList: [[0,1]], headers: { 1: {sorter: false}, 2: {sorter: false} }
+          });
+
+          /* 테이블소터 헤더를 클릭하면 리셋 버튼이 표시됩니다 */
+          $(".table_notice>thead>tr>th.sortable").on("click", function(){
+            $("#Table_Notice_Sorted").fadeIn("slow");
+          });
+
+          /* 소트 리셋 버튼 */
+          $("#Table_Notice_Sorted").click(function() {
+            $(".table_notice").trigger("sortReset");
+            $("#Table_Notice_Sorted").css("display","none");
+            return false;
+          });
+
+          /* 테이블 헤더 Sticky : 항상 테이블 소터 뒤에서 실행 할 것..!! (졸라 중요) */
+          $('.table_notice').stickyTableHeaders({scrollableArea: $('.notice_wrap>.content.scrollable-y')});
+          $('.table_notice').stickyTableHeaders({fixedOffset: 178});
+        });
+      </script>
+      <div class="noti sub_content_wrap">
+        <div class="sub_content_container">
+          <header class="top flex-row-align-between">
+            <div class="container flex-row-align-between">
+              <div class="title">알림</div>
+              <div class="flex-row-align-right">
+                <p class="t-btn-blue">공지</p>
+                <p class="t-btn-blue">나와 연관된 이벤트</p>
+                <p class="t-btn-blue">모든 이벤트</p>
+              </div>
+            </div>
+            <div class="btn_fold">
+              <i class="fas fa-angle-double-left"></i>
+            </div>
+          </header>
+
+          <!-- 공지 -->
+          <section class="notice_wrap">
+            <header>
+              <span>알림&nbsp;<i class="fas fa-angle-right"></i>&nbsp;</span
+              >공지
+            </header>
+            <div class="condition_wrap clearfix">
+              <div class="f-obj f-w20">
+                <label class="top">A. 공지 유형</label>
+                <select>
+                  <option value="0" selected>전체공지</option>
+                  <option value="1">업무공지</option>
+                  <option value="2">일정공지</option>
+                </select>
+              </div>
+              <div class="f-obj f-w30 pa-l-md pa-r-0">
+                <label class="top_nbsp"></label>
+                <div class="radio_wrap inline f-obj pa-0 ma-b-0">
+                  <input
+                    type="radio"
+                    name="Read_State"
+                    id="Readed"
+                    checked="true"
+                  />
+                  <label for="Readed" class="radio_label">미열람</label>
+                </div>
+                <div class="radio_wrap inline f-obj pa-0 ma-b-0">
+                  <input type="radio" name="Read_State" id="Not_Read" />
+                  <label for="Not_Read" class="radio_label">모두</label>
+                </div>
+              </div>
+              <div class="f-obj f-w50 pa-r-0">
+                <label class="top">B. 검색</label>
+                <div class="f-obj f-w25 pa-b-0 pa-r-xs">
+                  <select class="">
+                    <option value="0" selected>전체</option>
+                    <option value="1">제목</option>
+                    <option value="2">내용</option>
+                  </select>
+                </div>
+                <div class="f-obj f-w75 form_merge pa-0">
+                  <input
+                    type="text"
+                    class="f-w65"
+                    placeholder="검색 키워드를 입력하세요"
+                    maxlength="40"
+                    value=""
+                  />
+                  <button class="blue">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="content scrollable-y">
+              <div class="head flex-row-align-between">
+                <div>
+                  <span id="Table_Notice_Sorted" class="sorted t-btn-blue t-s-sm"
+                    ><i class="fas fa-sort-alpha-down pa-r-xs"></i
+                    >목록정렬해제</span
+                  >
+                </div>
+                <div class="f-obj f-w70px pa-0">
+                  <select>
+                    <!-- 기본 선택 "전체" : 전체 결과 레코드 수가 200건을 초과할 경우 클라이언트 시스템 부하 방지를 위해 "전체" 선택은 자동으로 표시하지 않음 -->
+                    <option value="0" selected="">전체</option>
+                    <option value="1">10줄</option>
+                    <option value="2">25줄</option>
+                    <option value="3">50줄</option>
+                    <option value="4">100줄</option>
+                    <!-- 두번째 기본 선택 "100줄" : "전체" 선택이 가려진 경우 자동으로 선택되도록 표시 -->
+                  </select>
+                </div>
+              </div>
+              <div class="body scrollable-x">
+                <table class="table_notice">
+                  <colgroup>
+                    <col width="8%" />
+                    <col width="12%" />
+                    <col width="40%" />
+                    <col width="15%" />
+                    <col width="15%" />
+                    <col width="10%" />
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th class="sortable">No</th>
+                      <th>유형</th>
+                      <th>제목</th>
+                      <th class="sortable">마지막 수정일</th>
+                      <th class="sortable">생성일</th>
+                      <th class="sortable">작성</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="link">
+                      <td class="ellipsis">4</td>
+                      <td class="ellipsis">업무공지</td>
+                      <td class="t-s-nm">채팅 상담 카테고리에 관한 업무 지침, 졸라 제목이 긴 경우 어떻게 될까요?</td>
+                      <td>
+                        <p class="timestamp">2020년 12월 22일, 오전 9:12</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 12월 21일, 오후 6:33</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">정진욱</p>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">3</td>
+                      <td class="ellipsis">일정공지</td>
+                      <td class="t-s-nm">2020년, 4분기 리더워크샵</td>
+                      <td>
+                        <p class="timestamp">2020년 10월 12일, 오후 10:08</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 10월 12일, 오전 9:09</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">김창모</p>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">2</td>
+                      <td class="ellipsis">업무공지</td>
+                      <td class="t-s-nm">
+                        재택근무 IP-전화기 설정 안내문 배포
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 7월 6일, 오후 10:58</p>
+                      </td>
+                      <td>
+                        <p class="date">2020년 7월 2일, 오후 12:51</span>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">김창모</span>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">1</td>
+                      <td class="ellipsis">일정공지</td>
+                      <td class="t-s-nm">하계 휴가일정에 관한 안내</td>
+                      <td>
+                        <p class="timestamp">2020년 6월 12일, 오후 9:04</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 6월 12일, 오후 9:04</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">김종순</p>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">0</td>
+                      <td class="ellipsis">업무공지</td>
+                      <td class="t-s-nm">공지의 제목 (예제용 더미데이터)</td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">박새로이</p>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">0</td>
+                      <td class="ellipsis">업무공지</td>
+                      <td class="t-s-nm">공지의 제목 (예제용 더미데이터)</td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">박새로이</p>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">0</td>
+                      <td class="ellipsis">업무공지</td>
+                      <td class="t-s-nm">공지의 제목 (예제용 더미데이터)</td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">박새로이</p>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">0</td>
+                      <td class="ellipsis">업무공지</td>
+                      <td class="t-s-nm">공지의 제목 (예제용 더미데이터)</td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">박새로이</p>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">0</td>
+                      <td class="ellipsis">업무공지</td>
+                      <td class="t-s-nm">공지의 제목 (예제용 더미데이터)</td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">박새로이</p>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">0</td>
+                      <td class="ellipsis">업무공지</td>
+                      <td class="t-s-nm">공지의 제목 (예제용 더미데이터)</td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">박새로이</p>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">0</td>
+                      <td class="ellipsis">업무공지</td>
+                      <td class="t-s-nm">공지의 제목 (예제용 더미데이터)</td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">박새로이</p>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">0</td>
+                      <td class="ellipsis">업무공지</td>
+                      <td class="t-s-nm">공지의 제목 (예제용 더미데이터)</td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">박새로이</p>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">0</td>
+                      <td class="ellipsis">업무공지</td>
+                      <td class="t-s-nm">공지의 제목 (예제용 더미데이터)</td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">박새로이</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="foot flex-row-align-between">
+                <div class="pagination_wrap pa-r-sm">
+                  <a href="#"><i class="fas fa-angle-double-left"></i></a>
+                  <a href="#"><i class="fas fa-angle-left"></i></a>
+                  <a href="#" class="active">1</a>
+                  <a href="#">2</a>
+                  <a href="#">3333</a>
+                  <a href="#">44444</a>
+                  <a href="#">555555</a>
+                  <a href="#"><i class="fas fa-angle-right"></i></a>
+                  <a href="#"><i class="fas fa-angle-double-right"></i></a>
+                  <div class="pagination_data_count">
+                    <span class="total">1,687</span>
+                    <span class="current">1</span>
+                    <span class="total_page">289</span>
+                  </div>
+                </div>
+                <div><!-- 중간에 위치할 요소 --></div>
+                <div>
+                  <button class="cyan" accesskey="">
+                    <i class="fas fa-cog pa-r-xs"></i>공지 설정
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 내가 연관된 이벤트 알림 -->
+          <section class="event_wrap off">
+            <header>
+              <span>알림&nbsp;<i class="fas fa-angle-right"></i>&nbsp;</span
+              >내가 연관된 이벤트
+            </header>
+          </section>
+
+          <!-- 모든 이벤트 알림 -->
+          <section class="all_event_wrap off">
+            <header>
+              <span>알림&nbsp;<i class="fas fa-angle-right"></i>&nbsp;</span
+              >모든 이벤트
+            </header>
+          </section>
+        </div>
+      </div>
+
+      <!-- 루트 헤더, Header root -->
+      <header class="root">
+        <div class="container">
+          <div class="ci" alt="회사 로고">
+            CONNECTO&trade;, 조올라 새롭고 알흠다운 고객 경험을 위한 언택트 지원 센터 솔루션, 커넥토 라챗!<span class="sub_text"></span>
+          </div>
+          <div class="ctrl_wrap">
+            <div class="phone_ctrl_wrap">
+              <p>{SIP 또는 WebRTC 소프트폰 제어부}</p>
+            </div>
+            <div class="agent_status_ctrl_wrap">
+              <script>
+                $(function () {
+                  $('#Set_Ready').click(function () {
+                    $(this).toggleClass('on', 500);
+                  });
+                });
+              </script>
+              <p class="agt_status_indicator ag_st_10"><span>22:07</span></p>
+
+              <button id="Set_Ready" class="">상담대기</button>
+              <div class="agt_status_menu">
+                <i class="fas fa-angle-down"></i>
+                <div class="sub_content_wrap">
+                  <div class="sub_content_container">
+                    <ul class="agt_status_list">
+                      <li class="ag_st_30"><!-- 후처리중 --></li>
+                      <li class="ag_st_31"><!-- 다른업무중 --></li>
+                      <li class="ag_st_32"><!-- 자리비움 --></li>
+                      <li class="ag_st_33"><!-- 회의(미팅)중 --></li>
+                      <li class="ag_st_34"><!-- 교육중 --></li>
+                      <li class="ag_st_35"><!-- 식사중 --></li>
+                      <li class="ag_st_36"><!-- 휴식중 --></li>
+                      <li class="ag_st_37 off"><!-- 휴가중 --></li>
+                      <li class="ag_st_38 off"><!-- 병가중 --></li>
+                      <li class="ag_st_39 off"><!-- 격리중 --></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="main">
+        <div class="avenue">
+          <script>
+            $(function () {
+              /* Aside wrap 펼치기 */
+              $('.btn_aside_unfold').click(function () {
+                $(this).addClass('off'),
+                $('.extended_wrap').addClass('wrap_unfold');
+              });
+              /* Aside wrap 접기 */
+              $('.btn_fold').click(function () {
+                $('.extended_wrap').removeClass('wrap_unfold'),
+                $('.btn_aside_unfold').delay('500').removeClass('off');
+              });
+
+              /* Date Picker */
+              var currentDate = new Date();
+
+              // 최초 로딩시 오늘 날짜로...
+              var setToday =
+                currentDate.getFullYear() +
+                '-' +
+                ('0' + (currentDate.getMonth() + 1)).slice(-2) +
+                '-' +
+                ('0' + currentDate.getDate()).slice(-2);
+              $('.task_date').val(setToday);
+
+              $(function () {
+                $('.task_date').datepicker({
+                  minDate: 0,
+                  changeMonth: true,
+                  dateFormat: 'yy-mm-dd',
+                  changeYear: true,
+                  numberOfMonths: 2,
+                  showMonthAfterYear: true,
+                });
+              });
+
+              $('.add_new_todo').click(function () {
+                $(this)
+                  .parents('div.todo_list_header')
+                  .children('.sub_content_wrap')
+                  .toggleClass('on');
+              });
+              $('.this_close_btn').click(function () {
+                $(this).parents('div.sub_content_wrap').removeClass('on');
+              });
+
+
+              $('.btn_todo_edit').click(function () {
+                $('#Todo_Edit').show('drop','fast');
+              });
+              $('.this_close_btn').click(function () {
+                $(this).parents('div.edit_mode_todo').hide('drop','fast');
+              });
+
+              $('#Group_Open').click(function () {
+                $(this).addClass('active');
+                $('#Group').addClass('on');
+                $('#Todo').removeClass('on');
+                $('#Todo_Open').removeClass('active');
+              });
+              $('#Todo_Open').click(function () {
+                $(this).addClass('active');
+                $('#Todo').addClass('on');
+                $('#Group').removeClass('on');
+                $('#Group_Open').removeClass('active');
+              });
+            });
+          </script>
+          <div class="btn_aside_unfold">
+            <i class="fas fa-angle-double-right pa-r-xs pa-b-md"></i>MY GROUP
+            & TASK
+          </div>
+
+          <!-- Extended_wrap -->
+          <div class="extended_wrap">
+            <header class="pa-0">
+              <div class="tab_btn_wrap">
+                <div id="Group_Open" class="tab_btn active">
+                  <i class="fas fa-users pa-r-md"></i>Groups
+                </div>
+                <div id="Todo_Open" class="tab_btn">
+                  <i class="fas fa-tasks pa-r-md"></i>To do
+                </div>
+              </div>
+              <div class="btn_fold">
+                <i class="fas fa-angle-double-left"></i>
+              </div>
+            </header>
+
+            <!-- Group.extended_container -->
+            <div id="Group" class="extended_container on">
+              <script>
+                $(function () {
+                  $('#Group_Tree').treeview({
+                    collapsed: true,
+                    animated: 'fast',
+                    unique: false,
+                    control: '#Tree_Control',
+                    prerendered: false,
+                    persist: 'cookie',
+                    cookieId: 'connecto-treeview',
+                  });
+                });
+              </script>
+              <div id="Tree_Control" class="tree_top">
+                <p class="title">내 그룹</p>
+                <a href="" class="fold"
+                  ><i class="fas fa-minus-circle pa-r-xs"></i>모두 접기</a
+                >
+                <a href="" class="unfold"
+                  ><i class="fas fa-plus-circle pa-r-xs"></i>모두 펼치기</a
+                >
+              </div>
+              <ul id="Group_Tree" class="scrollable-y pa-b-24">
+                <li>
+                  <span class="tenant_name">ONPIA</span>
+                  <ul>
+                    <li>
+                      <span class="group">본사</span>
+                      <ul>
+                        <li>
+                          <span class="user"
+                            >김연 CEO<em>4720<i></i></em
+                          ></span>
+                        </li>
+                        <li>
+                          <span class="user ag_st_32"
+                            >서공진 CTO<em>2850<i></i></em
+                          ></span>
+                        </li>
+                        <li>
+                          <span class="group">경영지원</span>
+                          <ul>
+                            <li>
+                              <span class="user ag_st_01"
+                                >김종순 이사<em>2830<i></i></em
+                              ></span>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <span class="group">법인사업본부</span>
+                          <ul>
+                            <li>
+                              <span class="user ag_st_01"
+                                >김창모 본부장<em>2836<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user"
+                                >송성진 부장<em><i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user"
+                                >김관우 과장<em>2835<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user ag_st_01 myself"
+                                >정진욱 차장 "만약 이름이 정말 길다면 어떻게
+                                보일까?"<em>2839<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="group">CS팀</span>
+                              <ul>
+                                <li>
+                                  <span class="agent ag_st_10"
+                                    >한지연 주임<em>2863<i></i></em
+                                  ></span>
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <span class="group">연구소(코어개발팀)</span>
+                          <ul>
+                            <li>
+                              <span class="user ag_st_01"
+                                >김종귀 팀장<em>2854<i></i></em
+                              ></span>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <span class="group">기술지원팀</span>
+                          <ul>
+                            <li>
+                              <span class="user ag_st_01"
+                                >김태규 팀장<em>2842<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="agent"
+                                >윤준영 선임<em>2843<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="agent ag_st_22"
+                                >지준형 선임<em>2841<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="agent ag_st_01"
+                                >고승렬 주임<em>2946<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="agent ag_st_10"
+                                >이정현 주임<em>2840<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="agent ag_st_21"
+                                >홍영근 주임<em>2844<i></i></em
+                              ></span>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <span class="group">웹팀</span>
+                          <ul>
+                            <li>
+                              <span class="user ag_st_01"
+                                >송용진 팀장<em>2851<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user ag_st_21"
+                                >이진영 팀장<em>2855<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user ag_st_01"
+                                >장진한 책임<em>2861<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user ag_st_32"
+                                >조세종 선임<em>2857<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user ag_st_01"
+                                >김병진 선임<em>2856<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user"
+                                >백인혁 주임<em>2831<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user"
+                                >서준혁 주임<em><i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user"
+                                >최진석 주임<em>2867<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user"
+                                >권경희 주임<em>2837<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user ag_st_01"
+                                >김은아 주임<em>2866<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="group">디자인팀</span>
+                              <ul>
+                                <li>
+                                  <span class="user"
+                                    >이혜영 팀장<em>2853<i></i></em
+                                  ></span>
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <span class="group">인프라 지원팀</span>
+                          <ul>
+                            <li>
+                              <span class="user"
+                                >차용선 부장<em><i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user"
+                                >정상영 팀장<em><i></i></em
+                              ></span>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <span class="group">부산지사</span>
+                      <ul>
+                        <li>
+                          <span class="user"
+                            >이병학 지사장<em><i></i></em
+                          ></span>
+                        </li>
+                      </ul>
+                    </li>
+                    <!-- 그룹 라벨 정보가 없는 사용자가 있는 경우 아래 "라벨 미분류 사용자"로 자동 분류하여 시스템 관리자가 이를 보고 그룹 라벨을 지정할 수 있도록 해야 합니다. -->
+                    <li>
+                      <span class="group">미분류</span>
+                      <ul>
+                        <li>
+                          <span class="user"
+                            >John Doe Manager<em><i></i></em
+                          ></span>
+                        </li>
+                        <li>
+                          <span class="user"
+                            >Unknown<em><i></i></em
+                          ></span>
+                        </li>
+                        <li>
+                          <span class="user"
+                            >이명박 수감중<em><i></i></em
+                          ></span>
+                        </li>
+                        <li>
+                          <span class="user"
+                            >박그네 닭<em><i></i></em
+                          ></span>
+                        </li>
+                        <li>
+                          <span class="user"
+                            >오세후니<em><i></i></em
+                          ></span>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Todo.extended_container -->
+            <div id="Todo" class="extended_container pa-0 pa-b-24">
+              <div class="todo_list_header">
+                내 할 일 목록<span class="t-btn-blue add_new_todo"
+                  >새 할 일 추가</span
+                >
+                <div class="sub_content_wrap todo">
+                  <div class="sub_content_container">
+                    <div class="f-obj f-w100">
+                      <label class="top"
+                        ><i class="far fa-calendar-check"></i>제목</label
+                      >
+                      <input
+                        type="text"
+                        maxlength="40"
+                        autocomplete="off"
+                        placeholder="할 일의 제목을 입력해주세요"
+                        value=""
+                      />
+                    </div>
+                    <div class="f-obj f-w45">
+                      <label class="top"
+                        ><i class="fas fa-calendar-day"></i>처리일</label
+                      >
+                      <input type="text" name="" class="task_date" value="" />
+                    </div>
+                    <div class="f-obj f-w55">
+                      <label class="top"
+                        ><i class="far fa-clock"></i>시간</label
+                      >
+                      <select name="" class="">
+                        <option value="" selected>-</option>
+                        <!-- <option value="00:00">오전 12시</option>
+                        <option value="00:30">오전 12시 30분</option>
+                        <option value="01:00">오전 1시</option>
+                        <option value="01:30">오전 1시 30분</option>
+                        <option value="02:00">오전 2시</option>
+                        <option value="02:30">오전 2시 30분</option>
+                        <option value="03:00">오전 3시</option>
+                        <option value="03:30">오전 3시 30분</option>
+                        <option value="04:00">오전 4시</option>
+                        <option value="04:30">오전 4시 30분</option>
+                        <option value="05:00">오전 5시</option>
+                        <option value="05:30">오전 5시 30분</option>
+                        <option value="06:00">오전 6시</option>
+                        <option value="06:30">오전 6시 30분</option>
+                        <option value="07:00">오전 7시</option>
+                        <option value="07:30">오전 7시 30분</option> -->
+                        <option value="08:00">오전 8시</option>
+                        <option value="08:30">오전 8시 30분</option>
+                        <option value="09:00">오전 9시</option>
+                        <option value="09:30">오전 9시 30분</option>
+                        <option value="10:00">오전 10시</option>
+                        <option value="10:30">오전 10시 30분</option>
+                        <option value="11:00">오전 11시</option>
+                        <option value="11:30">오전 11시 30분</option>
+                        <option value="12:00">오후 12시</option>
+                        <option value="12:30">오후 12시 30분</option>
+                        <option value="13:00">오후 1시</option>
+                        <option value="13:30">오후 1시 30분</option>
+                        <option value="14:00">오후 2시</option>
+                        <option value="14:30">오후 2시 30분</option>
+                        <option value="15:00">오후 3시</option>
+                        <option value="15:30">오후 3시 30분</option>
+                        <option value="16:00">오후 4시</option>
+                        <option value="16:30">오후 4시 30분</option>
+                        <option value="17:00">오후 5시</option>
+                        <option value="17:30">오후 5시 30분</option>
+                        <option value="18:00">오후 6시</option>
+                        <option value="18:30">오후 6시 30분</option>
+                        <option value="19:00">오후 7시</option>
+                        <option value="19:30">오후 7시 30분</option>
+                        <option value="20:00">오후 8시</option>
+                        <option value="20:30">오후 8시 30분</option>
+                        <option value="21:00">오후 9시</option>
+                        <option value="21:30">오후 9시 30분</option>
+                        <option value="22:00">오후 10시</option>
+                        <option value="22:30">오후 10시 30분</option>
+                        <option value="23:00">오후 11시</option>
+                        <option value="23:30">오후 11시 30분</option>
+                      </select>
+                    </div>
+                    <div class="f-obj footer">
+                      <button class="this_close_btn" accesskey="">
+                        <i class="far fa-times-circle pa-r-xs"></i>취소
+                      </button>
+                      <button class="blue" accesskey="">
+                        <i class="fas fa-save pa-r-xs"></i>저장
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <dl class="todo_list scrollable-y">
+                <dt>예정된 기한을 넘긴 항목</dt>
+                <dd class="past_event">
+                  <div class="flex-column">
+                    <div class="flex-row-align-between flex-align-item-start">
+                      <div class="complete_btn title checkbox_wrap">
+                        <input type="checkbox" id="sample-100">
+                        <label for="sample-100" class="checkbox_label"></label>
+                        <p>2020 하반기 재고조사</p>
+                      </div>
+                      <p class="timestamp"><span>2020-11-07</span>오후 02:00</p>
+                    </div>
+                    <div>
+                      <p class="unlink_ticket">연결된 티켓 없음</p>
+                      <p class="btn_todo_edit">
+                        <i class="fas fa-pen"></i>
+                      </p>
+                    </div>
+                  </div>           
+                </dd>
+                <dt>오늘</dt>
+                <dd class="flex-column">
+                  <div class="flex-row-align-between flex-align-item-start">
+                    <div class="complete_btn title checkbox_wrap">
+                      <input type="checkbox" id="sample-10">
+                      <label for="sample-10" class="checkbox_label"></label>
+                      <p>한국코퍼레이션 콜센터Lite 견적서 작성 및 발송</p>
+                    </div>
+                    <p class="timestamp"><span>YYYY-MM-DD</span>오후 02:00</p>
+                  </div>
+                  <div>
+                    <p class="linked_ticket">
+                      콜센터Lite 5석 견적 요청, 보다 긴 길이의 제목인 경우
+                    </p>
+                    <p class="btn_todo_edit">
+                      <i class="fas fa-pen"></i>
+                    </p>
+                  </div>
+                </dd>
+                <dd class="flex-column">
+                  <div class="flex-row-align-between flex-align-item-start">
+                    <div class="complete_btn title checkbox_wrap">
+                      <input type="checkbox" id="sample-9">
+                      <label for="sample-9" class="checkbox_label"></label>
+                      <p>대한민국주식회사 콜센터Lite 견적서 작성 및 발송</p>
+                    </div>
+                    <p class="timestamp"><span>YYYY-MM-DD</span>오후 02:30</p>
+                  </div>
+                  <div>
+                    <p class="linked_ticket">콜센터Lite 10석 견적 요청</p>
+                    <p class="btn_todo_edit">
+                      <i class="fas fa-pen"></i>
+                    </p>
+                  </div>
+                </dd>
+                <dd class="flex-column">
+                  <div class="flex-row-align-between flex-align-item-start">
+                    <div class="complete_btn title checkbox_wrap">
+                      <input type="checkbox" id="sample-91">
+                      <label for="sample-91" class="checkbox_label"></label>
+                      <p>고객정보 중복 케이스 조회 : 중복건 병합</p>
+                    </div>
+                    <p class="timestamp"><span>YYYY-MM-DD</span>오후 06:00</p>
+                  </div>
+                  <div>
+                    <p class="unlink_ticket">연결된 티켓 없음</p>
+                    <p class="btn_todo_edit">
+                      <i class="fas fa-pen"></i>
+                    </p>
+                  </div>
+                </dd>
+                <dt>내일</dt>
+                <dd class="flex-column">
+                  <div class="flex-row-align-between flex-align-item-start">
+                    <div class="complete_btn title checkbox_wrap">
+                      <input type="checkbox" id="sample-11">
+                      <label for="sample-11" class="checkbox_label"></label>
+                      <p>사회적기업협회 장애보고서 회신</p>
+                    </div>
+                    <p class="timestamp"><span>YYYY-MM-DD</span>오후 12:00</p>
+                  </div>
+                  <div>
+                    <p class="linked_ticket">
+                      상담원 세션 끊김 현상에 관한 점검 조치 및 장애보고서
+                      요청의 건
+                    </p>
+                    <p class="btn_todo_edit">
+                      <i class="fas fa-pen"></i>
+                    </p>
+                  </div>
+                </dd>
+                <dt>2020년 12월 23일(수)</dt>
+                <dd class="flex-column">
+                  <div class="flex-row-align-between flex-align-item-start">
+                    <div class="complete_btn title checkbox_wrap">
+                      <input type="checkbox" id="sample-912">
+                      <label for="sample-912" class="checkbox_label"></label>
+                      <p>한국기업 헤드셋 배송</p>
+                    </div>
+                    <p class="timestamp"><span>YYYY-MM-DD</span>오후 01:00</p>
+                  </div>
+                  <div>
+                    <p class="linked_ticket">상담사헤드셋 구매의 건</p>
+                    <p class="btn_todo_edit">
+                      <i class="fas fa-pen"></i>
+                    </p>
+                  </div>
+                </dd>
+                <dt>완료된 항목<span class="t-btn-red f-right"><i class="fas fa-trash pa-r-xs"></i>완료된 항목 모두 삭제</span></dt>
+                <dd class="complete_event flex-column">
+                  <div class="flex-row-align-between flex-align-item-start">
+                    <div class="complete_btn title checkbox_wrap">
+                      <input type="checkbox" id="sample-16" checked>
+                      <label for="sample-16" class="checkbox_label"></label>
+                      <p>2021년 1월 상담사 근무 계획서 작성</p>
+                    </div>
+                    <p class="timestamp"><span>2020-12-18</span>오후 02:00</p>
+                  </div>
+                  <div>
+                    <p class="unlink_ticket">연결된 티켓 없음</p>
+                    <p class="btn_todo_del">
+                      <i class="fas fa-trash"></i>
+                    </p>
+                  </div>
+                </dd>
+                <dd class="complete_event flex-column">
+                  <div class="flex-row-align-between flex-align-item-start">
+                    <div class="complete_btn title checkbox_wrap">
+                      <input type="checkbox" id="sample-3" checked>
+                      <label for="sample-3" class="checkbox_label"></label>
+                      <p>전월 티켓 처리 보고서 제출</p>
+                    </div>
+                    <p class="timestamp"><span>2020-12-11</span>오후 01:00</p>
+                  </div>
+                  <div>
+                    <p class="unlink_ticket">연결된 티켓 없음</p>
+                    <p class="btn_todo_del">
+                      <i class="fas fa-trash"></i>
+                    </p>
+                  </div>
+                </dd>
+                <dd class="complete_event flex-column">
+                  <div class="flex-row-align-between flex-align-item-start">
+                    <div class="complete_btn title checkbox_wrap">
+                      <input type="checkbox" id="sample-31" checked>
+                      <label for="sample-31" class="checkbox_label"></label>
+                      <p>작업의 제목</p>
+                    </div>
+                    <p class="timestamp"><span>2020-11-30</span>오후 02:00</p>
+                  </div>
+                  <div>
+                    <p class="linked_ticket">연결된 티켓의 제목</p>
+                    <p class="btn_todo_del">
+                      <i class="fas fa-trash"></i>
+                    </p>
+                  </div>
+                </dd>
+                <dd class="complete_event flex-column">
+                  <div class="flex-row-align-between flex-align-item-start">
+                    <div class="complete_btn title checkbox_wrap">
+                      <input type="checkbox" id="sample-32" checked>
+                      <label for="sample-32" class="checkbox_label"></label>
+                      <p>작업의 제목</p>
+                    </div>
+                    <p class="timestamp"><span>2020-11-30</span>오후 02:00</p>
+                  </div>
+                  <div>
+                    <p class="linked_ticket">연결된 티켓의 제목</p>
+                    <p class="btn_todo_del">
+                      <i class="fas fa-trash"></i>
+                    </p>
+                  </div>
+                </dd>
+                <dd class="complete_event flex-column">
+                  <div class="flex-row-align-between flex-align-item-start">
+                    <div class="complete_btn title checkbox_wrap">
+                      <input type="checkbox" id="sample-33" checked>
+                      <label for="sample-33" class="checkbox_label"></label>
+                      <p>작업의 제목</p>
+                    </div>
+                    <p class="timestamp"><span>2020-11-30</span>오후 02:00</p>
+                  </div>
+                  <div>
+                    <p class="linked_ticket">연결된 티켓의 제목</p>
+                    <p class="btn_todo_del">
+                      <i class="fas fa-trash"></i>
+                    </p>
+                  </div>
+                </dd>
+              </dl>
+
+              <!-- Todo_Edit.edit_mode_todo -->
+              <div id="Todo_Edit" class="edit_mode_todo">
+                <div class="f-obj f-w100">
+                  <label class="top"
+                    ><i class="far fa-calendar-check"></i>제목</label
+                  >
+                  <input
+                    type="text"
+                    maxlength="40"
+                    autocomplete="off"
+                    placeholder="할 일의 제목을 입력해주세요"
+                    value="한국코퍼레이션 콜센터Lite 견적서 작성 및 발송"
+                  />
+                </div>
+                <div class="f-obj f-w45">
+                  <label class="top"
+                    ><i class="fas fa-calendar-day"></i>처리일</label
+                  >
+                  <input type="text" name="" class="task_date" value="" />
+                </div>
+                <div class="f-obj f-w55">
+                  <label class="top"
+                    ><i class="far fa-clock"></i>시간</label
+                  >
+                  <select name="" class="">
+                    <option value="">-</option>
+                    <!-- <option value="00:00">오전 12시</option>
+                    <option value="00:30">오전 12시 30분</option>
+                    <option value="01:00">오전 1시</option>
+                    <option value="01:30">오전 1시 30분</option>
+                    <option value="02:00">오전 2시</option>
+                    <option value="02:30">오전 2시 30분</option>
+                    <option value="03:00">오전 3시</option>
+                    <option value="03:30">오전 3시 30분</option>
+                    <option value="04:00">오전 4시</option>
+                    <option value="04:30">오전 4시 30분</option>
+                    <option value="05:00">오전 5시</option>
+                    <option value="05:30">오전 5시 30분</option>
+                    <option value="06:00">오전 6시</option>
+                    <option value="06:30">오전 6시 30분</option>
+                    <option value="07:00">오전 7시</option>
+                    <option value="07:30">오전 7시 30분</option> -->
+                    <option value="08:00">오전 8시</option>
+                    <option value="08:30">오전 8시 30분</option>
+                    <option value="09:00">오전 9시</option>
+                    <option value="09:30">오전 9시 30분</option>
+                    <option value="10:00">오전 10시</option>
+                    <option value="10:30">오전 10시 30분</option>
+                    <option value="11:00">오전 11시</option>
+                    <option value="11:30">오전 11시 30분</option>
+                    <option value="12:00">오후 12시</option>
+                    <option value="12:30">오후 12시 30분</option>
+                    <option value="13:00">오후 1시</option>
+                    <option value="13:30">오후 1시 30분</option>
+                    <option value="14:00" selected>오후 2시</option>
+                    <option value="14:30">오후 2시 30분</option>
+                    <option value="15:00">오후 3시</option>
+                    <option value="15:30">오후 3시 30분</option>
+                    <option value="16:00">오후 4시</option>
+                    <option value="16:30">오후 4시 30분</option>
+                    <option value="17:00">오후 5시</option>
+                    <option value="17:30">오후 5시 30분</option>
+                    <option value="18:00">오후 6시</option>
+                    <option value="18:30">오후 6시 30분</option>
+                    <option value="19:00">오후 7시</option>
+                    <option value="19:30">오후 7시 30분</option>
+                    <option value="20:00">오후 8시</option>
+                    <option value="20:30">오후 8시 30분</option>
+                    <option value="21:00">오후 9시</option>
+                    <option value="21:30">오후 9시 30분</option>
+                    <option value="22:00">오후 10시</option>
+                    <option value="22:30">오후 10시 30분</option>
+                    <option value="23:00">오후 11시</option>
+                    <option value="23:30">오후 11시 30분</option>
+                  </select>
+                </div>
+                <div class="f-obj footer">
+                  <button class="this_close_btn" accesskey="">
+                    <i class="far fa-times-circle pa-r-xs"></i>취소
+                  </button>
+                  <button class="blue" accesskey="">
+                    <i class="fas fa-save pa-r-xs"></i>저장
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- extended_wrap end -->
+
+          <!-- Left aside : 티켓 아카이브 목록 -->
+          <aside class="l_xs">
+            <header class="">
+              <div class="title">통계</div>
+            </header>
+
+<script>
+  function OpenWindow(url, windowname, toolbar, scrollbars, resizable, location, titlebar, menubar, status, top, left, width, height) {
+    window.open(
+      url, windowname,
+      'toolbar='+toolbar+', scrollbars='+scrollbars+', location='+location+', titlebar='+titlebar+', menubar='+menubar+', status='+status+', top='+top+', left='+left+', width='+width+', height='+height
+    ); 
+    return false;
+  };
+  $(function () {
+    $(".window_open").click(function(){
+      var href = $(this).attr("href");
+      var popup = $(this).attr("data");
+      OpenWindow(href, popup, 'yes', 'no', 'yes', 'yes', 'yes', 'yes', 'yes', '100', '100', '1240', '840');
+      return false;
+    });
+  });
+</script>
+            <!-- 통게 서브 메뉴 섹션 -->
+            <section class="sub_menu">
+              <!-- 메뉴 리스트 -->
+              <div class="sub_menu_wrap scrollable-y">
+                <dl>
+                  <!-- Divide -->
+                  <dt>티켓</dt>
+                  <dd class="active"><a href="" class="window_open" data="connecto"></a><a href="" class="menu_title"><span><i class="fas fa-chart-pie"></i></span>티켓 처리 현황</a></dd>
+                  <dd><a href="" class="window_open" data="connecto"></a><a href="" class="menu_title"><span><i class="fas fa-chart-bar"></i></span>상담 유형 별 집계</a></dd>
+                  <dd><a href="" class="window_open" data="connecto"></a><a href="" class="menu_title"><span><i class="fas fa-filter"></i></span>저장된 사용자화 필터 1</a></dd>
+                  <dd><a href="" class="window_open" data="connecto"></a><a href="" class="menu_title"><span><i class="fas fa-filter"></i></span>저장된 사용자화 필터 2</a></dd>
+                  <!-- Divide -->
+                  <dt>그룹 및 사용자 별 실적</dt>
+                  <dd><a href="" class="window_open" data="connecto"></a><a href="" class="menu_title"><span><i class="fas fa-chart-bar"></i></span>티켓 처리 실적</a></dd>
+                  <dd><a href="" class="window_open" data="connecto"></a><a href="" class="menu_title"><span><i class="fas fa-chart-bar"></i></span>채팅 응답 실적</a></dd>
+                  <dd><a href="" class="window_open" data="connecto"></a><a href="" class="menu_title"><span><i class="fas fa-filter"></i></span>저장된 사용자화 필터 1</a></dd>
+                  <dd><a href="" class="window_open" data="connecto"></a><a href="" class="menu_title"><span><i class="fas fa-filter"></i></span>홍길동의 주간 실적</a></dd>
+                </dl>
+              </div>
+            </section>
+          </aside>
+
+          <!-- Article_wrap -->
+          <article>
+            <header>
+              <div>좌측 메뉴에서 선택된 항목의 제목 표시</div>
+            </header>
+
+            <section class="scrollable-y">
+              
+            </section>
+          </article>
+
+
+        </div>
+        <!-- avenue end -->
+      </div>
+
+      <!-- Footer -->
+      <footer class="my_monitoring">
+        <div class="footer_wrap">
+          <p>개인전광판</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

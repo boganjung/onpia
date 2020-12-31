@@ -1,0 +1,3448 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 검색엔진 트래킹 차단 -->
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="copyright"
+      content="2021 copyright &amp; copy; ONPIA, all right reserved."
+    />
+
+    <title>(1) CONNECTO&trade; Agents</title>
+
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../assets/favicon_onpia.png"
+    />
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script
+      src="https://kit.fontawesome.com/a26d2b8a4d.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- jQuery link -->
+    <script
+      src="https://code.jquery.com/jquery-1.12.4.min.js"
+      integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+      integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="../js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../js/jquery.treeview.js"></script>
+    <script
+      type="text/javascript"
+      src="../js/jquery.stickytableheaders.min.js"
+    ></script>
+    <script type="text/javascript" src="../js/jquery.tablesorter.js"></script>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="vid"><!-- 이 페이지 뷰의 ID -->CHA-100</div>
+      <div id="Min_Width_Message">
+        <span
+          ><i class="fas fa-exclamation-triangle pa-r-xs"></i>디스플레이의 가로
+          해상도가 너무 낮습니다.&nbsp;<span
+            >(가로 1280, 세로 600 픽셀 이상의 스크린 해상도를 권장합니다)</span
+          ></span
+        >
+        <p class="btn_alert_close"></p>
+      </div>
+
+      <!-- 네비게이션(Navigation) -->
+      <nav class="root">
+        <!-- 상단 메뉴 -->
+        <div>
+          <ul class="nav">
+            <li class="my_account">
+              <span>
+                <i class="fas fa-user-circle"></i>
+              </span>
+              <div class="sub_content_wrap">
+                <div class="sub_content_container">
+                  <p><i class="fas fa-user-circle"></i>장진한</p>
+                  <p>jhjang@onpia.co.kr</p>
+                  <ul>
+                    <li class="">
+                      <i class="fas fa-user-cog"></i>내 계정 설정
+                    </li>
+                    <li class="t-c-red">
+                      <i class="fas fa-sign-out-alt"></i>로그 아웃
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <!-- 구분선 -->
+          <div class="dividing_line"></div>
+
+          <!-- 메인 메뉴 -->
+          <ul class="nav">
+            <li class="">
+              <a href="chat.html" class="active">
+                <i class="fas fa-comments"></i>
+                <span class="badge">7</span>
+              </a>
+              <span class="title">채팅</span>
+            </li>
+            <li>
+              <a href="ticket.html" class="">
+                <i class="fas fa-ticket-alt"></i>
+                <span class="badge">99</span>
+              </a>
+              <span class="title">티켓</span>
+            </li>
+            <li>
+              <a href="customer.html" class="">
+                <i class="fas fa-address-book"></i>
+              </a>
+              <span class="title">고객정보</span>
+            </li>
+            <li class="">
+              <a href="archive.html" class="">
+                <i class="fas fa-archive"></i>
+              </a>
+              <span class="title">아카이브</span>
+            </li>
+            <li>
+              <a href="static.html" class="">
+                <i class="fas fa-chart-bar"></i>
+              </a>
+              <span class="title">통계</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 하단 메뉴 -->
+        <ul class="nav last">
+          <li>
+            <a href="#" class="btn_noti_open">
+              <i class="fas fa-bell"></i>
+              <span class="badge">1</span>
+            </a>
+            <span class="title">알림</span>
+          </li>
+          <li>
+            <a href="setup.html" class="">
+              <i class="fas fa-cog"></i>
+            </a>
+            <span class="title">설정</span>
+          </li>
+          <li>
+            <a href="#" class="">
+              <i class="fas fa-question-circle"></i>
+            </a>
+            <span class="title">도움이 필요하십니까?</span>
+          </li>
+        </ul>
+        <!-- nav end -->
+      </nav>
+
+      <script>
+        $(function () {
+          $('.btn_noti_open').click(function () {
+            $('.noti.sub_content_wrap').toggleClass('unfold');
+            $('.notice_wrap>.content.scrollable-y').animate({scrollTop : 0}, 0);
+            return false;
+          });
+          $('.btn_fold').click(function () {
+            $(this).parents('.noti.sub_content_wrap').removeClass('unfold');
+            $('.notice_wrap>.content.scrollable-y').animate({scrollTop : 0}, 0);
+            return false;
+          });
+
+          /* 테이블 소터 */
+          $(".table_notice").tablesorter({
+            widgets: ['zebra'], sortList: [[0,1]], headers: { 1: {sorter: false}, 2: {sorter: false} }
+          });
+
+          /* 테이블소터 헤더를 클릭하면 리셋 버튼이 표시됩니다 */
+          $(".table_notice>thead>tr>th.sortable").on("click", function(){
+            $("#Table_Notice_Sorted").fadeIn("slow");
+          });
+
+          /* 소트 리셋 버튼 */
+          $("#Table_Notice_Sorted").click(function() {
+            $(".table_notice").trigger("sortReset");
+            $("#Table_Notice_Sorted").css("display","none");
+            return false;
+          });
+
+          /* 테이블 헤더 Sticky : 항상 테이블 소터 뒤에서 실행 할 것..!! (졸라 중요) */
+          $('.table_notice').stickyTableHeaders({scrollableArea: $('.notice_wrap>.content.scrollable-y')});
+          $('.table_notice').stickyTableHeaders({fixedOffset: 178});
+        });
+      </script>
+      <div class="noti sub_content_wrap">
+        <div class="sub_content_container">
+          <header class="top flex-row-align-between">
+            <div class="container flex-row-align-between">
+              <div class="title">알림</div>
+              <div class="flex-row-align-right">
+                <p class="t-btn-blue">공지</p>
+                <p class="t-btn-blue">나와 연관된 이벤트</p>
+                <p class="t-btn-blue">모든 이벤트</p>
+              </div>
+            </div>
+            <div class="btn_fold">
+              <i class="fas fa-angle-double-left"></i>
+            </div>
+          </header>
+
+          <!-- 공지 -->
+          <section class="notice_wrap">
+            <header>
+              <span>알림&nbsp;<i class="fas fa-angle-right"></i>&nbsp;</span
+              >공지
+            </header>
+            <div class="condition_wrap clearfix">
+              <div class="f-obj f-w20">
+                <label class="top">A. 공지 유형</label>
+                <select>
+                  <option value="0" selected>전체공지</option>
+                  <option value="1">업무공지</option>
+                  <option value="2">일정공지</option>
+                </select>
+              </div>
+              <div class="f-obj f-w30 pa-l-md pa-r-0">
+                <label class="top_nbsp"></label>
+                <div class="radio_wrap inline f-obj pa-0 ma-b-0">
+                  <input
+                    type="radio"
+                    name="Read_State"
+                    id="Readed"
+                    checked="true"
+                  />
+                  <label for="Readed" class="radio_label">미열람</label>
+                </div>
+                <div class="radio_wrap inline f-obj pa-0 ma-b-0">
+                  <input type="radio" name="Read_State" id="Not_Read" />
+                  <label for="Not_Read" class="radio_label">모두</label>
+                </div>
+              </div>
+              <div class="f-obj f-w50 pa-r-0">
+                <label class="top">B. 검색</label>
+                <div class="f-obj f-w25 pa-b-0 pa-r-xs">
+                  <select class="">
+                    <option value="0" selected>전체</option>
+                    <option value="1">제목</option>
+                    <option value="2">내용</option>
+                  </select>
+                </div>
+                <div class="f-obj f-w75 form_merge pa-0">
+                  <input
+                    type="text"
+                    class="f-w65"
+                    placeholder="검색 키워드를 입력하세요"
+                    maxlength="40"
+                    value=""
+                  />
+                  <button class="blue">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="content scrollable-y">
+              <div class="head flex-row-align-between">
+                <div>
+                  <span id="Table_Notice_Sorted" class="sorted t-btn-blue t-s-sm"
+                    ><i class="fas fa-sort-alpha-down pa-r-xs"></i
+                    >목록정렬해제</span
+                  >
+                </div>
+                <div class="f-obj f-w70px pa-0">
+                  <select>
+                    <!-- 기본 선택 "전체" : 전체 결과 레코드 수가 200건을 초과할 경우 클라이언트 시스템 부하 방지를 위해 "전체" 선택은 자동으로 표시하지 않음 -->
+                    <option value="0" selected="">전체</option>
+                    <option value="1">10줄</option>
+                    <option value="2">25줄</option>
+                    <option value="3">50줄</option>
+                    <option value="4">100줄</option>
+                    <!-- 두번째 기본 선택 "100줄" : "전체" 선택이 가려진 경우 자동으로 선택되도록 표시 -->
+                  </select>
+                </div>
+              </div>
+              <div class="body scrollable-x">
+                <table class="table_notice">
+                  <colgroup>
+                    <col width="8%" />
+                    <col width="12%" />
+                    <col width="40%" />
+                    <col width="15%" />
+                    <col width="15%" />
+                    <col width="10%" />
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th class="sortable">No</th>
+                      <th>유형</th>
+                      <th>제목</th>
+                      <th class="sortable">마지막 수정일</th>
+                      <th class="sortable">생성일</th>
+                      <th class="sortable">작성</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="link">
+                      <td class="ellipsis">4</td>
+                      <td class="ellipsis">업무공지</td>
+                      <td class="t-s-nm">채팅 상담 카테고리에 관한 업무 지침, 졸라 제목이 긴 경우 어떻게 될까요?</td>
+                      <td>
+                        <p class="timestamp">2020년 12월 22일, 오전 9:12</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 12월 21일, 오후 6:33</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">정진욱</p>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">3</td>
+                      <td class="ellipsis">일정공지</td>
+                      <td class="t-s-nm">2020년, 4분기 리더워크샵</td>
+                      <td>
+                        <p class="timestamp">2020년 10월 12일, 오후 10:08</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 10월 12일, 오전 9:09</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">김창모</p>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">2</td>
+                      <td class="ellipsis">업무공지</td>
+                      <td class="t-s-nm">
+                        재택근무 IP-전화기 설정 안내문 배포
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 7월 6일, 오후 10:58</p>
+                      </td>
+                      <td>
+                        <p class="date">2020년 7월 2일, 오후 12:51</span>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">김창모</span>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">1</td>
+                      <td class="ellipsis">일정공지</td>
+                      <td class="t-s-nm">하계 휴가일정에 관한 안내</td>
+                      <td>
+                        <p class="timestamp">2020년 6월 12일, 오후 9:04</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 6월 12일, 오후 9:04</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">김종순</p>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">0</td>
+                      <td class="ellipsis">업무공지</td>
+                      <td class="t-s-nm">공지의 제목 (예제용 더미데이터)</td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">박새로이</p>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">0</td>
+                      <td class="ellipsis">업무공지</td>
+                      <td class="t-s-nm">공지의 제목 (예제용 더미데이터)</td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">박새로이</p>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">0</td>
+                      <td class="ellipsis">업무공지</td>
+                      <td class="t-s-nm">공지의 제목 (예제용 더미데이터)</td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">박새로이</p>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">0</td>
+                      <td class="ellipsis">업무공지</td>
+                      <td class="t-s-nm">공지의 제목 (예제용 더미데이터)</td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">박새로이</p>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">0</td>
+                      <td class="ellipsis">업무공지</td>
+                      <td class="t-s-nm">공지의 제목 (예제용 더미데이터)</td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">박새로이</p>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">0</td>
+                      <td class="ellipsis">업무공지</td>
+                      <td class="t-s-nm">공지의 제목 (예제용 더미데이터)</td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">박새로이</p>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">0</td>
+                      <td class="ellipsis">업무공지</td>
+                      <td class="t-s-nm">공지의 제목 (예제용 더미데이터)</td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">박새로이</p>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">0</td>
+                      <td class="ellipsis">업무공지</td>
+                      <td class="t-s-nm">공지의 제목 (예제용 더미데이터)</td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">박새로이</p>
+                      </td>
+                    </tr>
+                    <tr class="link">
+                      <td class="ellipsis">0</td>
+                      <td class="ellipsis">업무공지</td>
+                      <td class="t-s-nm">공지의 제목 (예제용 더미데이터)</td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td>
+                        <p class="timestamp">2020년 6월 1일, 오전 9:00</p>
+                      </td>
+                      <td class="ellipsis">
+                        <p class="writer">박새로이</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="foot flex-row-align-between">
+                <div class="pagination_wrap pa-r-sm">
+                  <a href="#"><i class="fas fa-angle-double-left"></i></a>
+                  <a href="#"><i class="fas fa-angle-left"></i></a>
+                  <a href="#" class="active">1</a>
+                  <a href="#">2</a>
+                  <a href="#">3333</a>
+                  <a href="#">44444</a>
+                  <a href="#">555555</a>
+                  <a href="#"><i class="fas fa-angle-right"></i></a>
+                  <a href="#"><i class="fas fa-angle-double-right"></i></a>
+                  <div class="pagination_data_count">
+                    <span class="total">1,687</span>
+                    <span class="current">1</span>
+                    <span class="total_page">289</span>
+                  </div>
+                </div>
+                <div><!-- 중간에 위치할 요소 --></div>
+                <div>
+                  <button class="cyan" accesskey="">
+                    <i class="fas fa-cog pa-r-xs"></i>공지 설정
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 내가 연관된 이벤트 알림 -->
+          <section class="event_wrap off">
+            <header>
+              <span>알림&nbsp;<i class="fas fa-angle-right"></i>&nbsp;</span
+              >내가 연관된 이벤트
+            </header>
+          </section>
+
+          <!-- 모든 이벤트 알림 -->
+          <section class="all_event_wrap off">
+            <header>
+              <span>알림&nbsp;<i class="fas fa-angle-right"></i>&nbsp;</span
+              >모든 이벤트
+            </header>
+          </section>
+        </div>
+      </div>
+
+      <!-- 루트 헤더, Header root -->
+      <header class="root">
+        <div class="container">
+          <div class="ci" alt="회사 로고">
+            CONNECTO&trade;, 조올라 새롭고 알흠다운 고객 경험을 위한 언택트 지원 센터 솔루션, 커넥토 라챗!<span class="sub_text"></span>
+          </div>
+          <div class="ctrl_wrap">
+            <div class="phone_ctrl_wrap">
+              <p>{SIP 또는 WebRTC 소프트폰 제어부}</p>
+            </div>
+            <div class="agent_status_ctrl_wrap">
+              <script>
+                $(function () {
+                  $('#Set_Ready').click(function () {
+                    $(this).toggleClass('on', 500);
+                  });
+                });
+              </script>
+              <p class="agt_status_indicator ag_st_10"><span>22:07</span></p>
+
+              <button id="Set_Ready" class="">상담대기</button>
+              <div class="agt_status_menu">
+                <i class="fas fa-angle-down"></i>
+                <div class="sub_content_wrap">
+                  <div class="sub_content_container">
+                    <ul class="agt_status_list">
+                      <li class="ag_st_30"><!-- 후처리중 --></li>
+                      <li class="ag_st_31"><!-- 다른업무중 --></li>
+                      <li class="ag_st_32"><!-- 자리비움 --></li>
+                      <li class="ag_st_33"><!-- 회의(미팅)중 --></li>
+                      <li class="ag_st_34"><!-- 교육중 --></li>
+                      <li class="ag_st_35"><!-- 식사중 --></li>
+                      <li class="ag_st_36"><!-- 휴식중 --></li>
+                      <li class="ag_st_37 off"><!-- 휴가중 --></li>
+                      <li class="ag_st_38 off"><!-- 병가중 --></li>
+                      <li class="ag_st_39 off"><!-- 격리중 --></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- div.ctrl_wrap end -->
+          </div>
+          <!-- div.container end -->
+        </div>
+        <!-- header.root end -->
+      </header>
+
+      <div class="main">
+        <div class="avenue">
+          <script>
+            $(function () {
+              /* Aside wrap 펼치기 */
+              $('.btn_aside_unfold').click(function () {
+                $(this).addClass('off'),
+                $('.extended_wrap').addClass('wrap_unfold');
+              });
+              /* Aside wrap 접기 */
+              $('.btn_fold').click(function () {
+                $('.extended_wrap').removeClass('wrap_unfold'),
+                $('.btn_aside_unfold').delay('500').removeClass('off');
+              });
+
+              /* Date Picker */
+              var currentDate = new Date();
+
+              // 최초 로딩시 오늘 날짜로...
+              var setToday =
+                currentDate.getFullYear() +
+                '-' +
+                ('0' + (currentDate.getMonth() + 1)).slice(-2) +
+                '-' +
+                ('0' + currentDate.getDate()).slice(-2);
+              $('.task_date').val(setToday);
+
+              $(function () {
+                $('.task_date').datepicker({
+                  minDate: 0,
+                  changeMonth: true,
+                  dateFormat: 'yy-mm-dd',
+                  changeYear: true,
+                  numberOfMonths: 2,
+                  showMonthAfterYear: true,
+                });
+              });
+
+              $('.add_new_todo').click(function () {
+                $(this)
+                  .parents('div.todo_list_header')
+                  .children('.sub_content_wrap')
+                  .toggleClass('on');
+              });
+              $('.this_close_btn').click(function () {
+                $(this).parents('div.sub_content_wrap').removeClass('on');
+              });
+
+
+              $('.btn_todo_edit').click(function () {
+                $('#Todo_Edit').show('drop','fast');
+              });
+              $('.this_close_btn').click(function () {
+                $(this).parents('div.edit_mode_todo').hide('drop','fast');
+              });
+
+              $('#Group_Open').click(function () {
+                $(this).addClass('active');
+                $('#Group').addClass('on');
+                $('#Todo').removeClass('on');
+                $('#Todo_Open').removeClass('active');
+              });
+              $('#Todo_Open').click(function () {
+                $(this).addClass('active');
+                $('#Todo').addClass('on');
+                $('#Group').removeClass('on');
+                $('#Group_Open').removeClass('active');
+              });
+            });
+          </script>
+          <div class="btn_aside_unfold">
+            <i class="fas fa-angle-double-right pa-r-xs pa-b-md"></i>MY GROUP
+            & TASK
+          </div>
+          <!-- Extended_wrap -->
+          <div class="extended_wrap">
+            <header class="pa-0">
+              <div class="tab_btn_wrap">
+                <div id="Group_Open" class="tab_btn active">
+                  <i class="fas fa-users pa-r-md"></i>Groups
+                </div>
+                <div id="Todo_Open" class="tab_btn">
+                  <i class="fas fa-tasks pa-r-md"></i>To do
+                </div>
+              </div>
+              <div class="btn_fold">
+                <i class="fas fa-angle-double-left"></i>
+              </div>
+            </header>
+
+            <!-- Group.extended_container -->
+            <div id="Group" class="extended_container on">
+              <script>
+                $(function () {
+                  $('#Group_Tree').treeview({
+                    collapsed: true,
+                    animated: 'fast',
+                    unique: false,
+                    control: '#Tree_Control',
+                    prerendered: false,
+                    persist: 'cookie',
+                    cookieId: 'connecto-treeview',
+                  });
+                });
+              </script>
+              <div id="Tree_Control" class="tree_top">
+                <p class="title">내 그룹</p>
+                <a href="" class="fold"
+                  ><i class="fas fa-minus-circle pa-r-xs"></i>모두 접기</a
+                >
+                <a href="" class="unfold"
+                  ><i class="fas fa-plus-circle pa-r-xs"></i>모두 펼치기</a
+                >
+              </div>
+              <ul id="Group_Tree" class="scrollable-y pa-b-24">
+                <li>
+                  <span class="tenant_name">ONPIA</span>
+                  <ul>
+                    <li>
+                      <span class="group">본사</span>
+                      <ul>
+                        <li>
+                          <span class="user"
+                            >김연 CEO<em>4720<i></i></em
+                          ></span>
+                        </li>
+                        <li>
+                          <span class="user ag_st_32"
+                            >서공진 CTO<em>2850<i></i></em
+                          ></span>
+                        </li>
+                        <li>
+                          <span class="group">경영지원</span>
+                          <ul>
+                            <li>
+                              <span class="user ag_st_01"
+                                >김종순 이사<em>2830<i></i></em
+                              ></span>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <span class="group">법인사업본부</span>
+                          <ul>
+                            <li>
+                              <span class="user ag_st_01"
+                                >김창모 본부장<em>2836<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user"
+                                >송성진 부장<em><i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user"
+                                >김관우 과장<em>2835<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user ag_st_01 myself"
+                                >정진욱 차장 "만약 이름이 정말 길다면 어떻게
+                                보일까?"<em>2839<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="group">CS팀</span>
+                              <ul>
+                                <li>
+                                  <span class="agent ag_st_10"
+                                    >한지연 주임<em>2863<i></i></em
+                                  ></span>
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <span class="group">연구소(코어개발팀)</span>
+                          <ul>
+                            <li>
+                              <span class="user ag_st_01"
+                                >김종귀 팀장<em>2854<i></i></em
+                              ></span>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <span class="group">기술지원팀</span>
+                          <ul>
+                            <li>
+                              <span class="user ag_st_01"
+                                >김태규 팀장<em>2842<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="agent"
+                                >윤준영 선임<em>2843<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="agent ag_st_22"
+                                >지준형 선임<em>2841<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="agent ag_st_01"
+                                >고승렬 주임<em>2946<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="agent ag_st_10"
+                                >이정현 주임<em>2840<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="agent ag_st_21"
+                                >홍영근 주임<em>2844<i></i></em
+                              ></span>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <span class="group">웹팀</span>
+                          <ul>
+                            <li>
+                              <span class="user ag_st_01"
+                                >송용진 팀장<em>2851<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user ag_st_21"
+                                >이진영 팀장<em>2855<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user ag_st_01"
+                                >장진한 책임<em>2861<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user ag_st_32"
+                                >조세종 선임<em>2857<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user ag_st_01"
+                                >김병진 선임<em>2856<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user"
+                                >백인혁 주임<em>2831<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user"
+                                >서준혁 주임<em><i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user"
+                                >최진석 주임<em>2867<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user"
+                                >권경희 주임<em>2837<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user ag_st_01"
+                                >김은아 주임<em>2866<i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="group">디자인팀</span>
+                              <ul>
+                                <li>
+                                  <span class="user"
+                                    >이혜영 팀장<em>2853<i></i></em
+                                  ></span>
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <span class="group">인프라 지원팀</span>
+                          <ul>
+                            <li>
+                              <span class="user"
+                                >차용선 부장<em><i></i></em
+                              ></span>
+                            </li>
+                            <li>
+                              <span class="user"
+                                >정상영 팀장<em><i></i></em
+                              ></span>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <span class="group">부산지사</span>
+                      <ul>
+                        <li>
+                          <span class="user"
+                            >이병학 지사장<em><i></i></em
+                          ></span>
+                        </li>
+                      </ul>
+                    </li>
+                    <!-- 그룹 라벨 정보가 없는 사용자가 있는 경우 아래 "라벨 미분류 사용자"로 자동 분류하여 시스템 관리자가 이를 보고 그룹 라벨을 지정할 수 있도록 해야 합니다. -->
+                    <li>
+                      <span class="group">미분류</span>
+                      <ul>
+                        <li>
+                          <span class="user"
+                            >John Doe Manager<em><i></i></em
+                          ></span>
+                        </li>
+                        <li>
+                          <span class="user"
+                            >Unknown<em><i></i></em
+                          ></span>
+                        </li>
+                        <li>
+                          <span class="user"
+                            >이명박 수감중<em><i></i></em
+                          ></span>
+                        </li>
+                        <li>
+                          <span class="user"
+                            >박그네 닭<em><i></i></em
+                          ></span>
+                        </li>
+                        <li>
+                          <span class="user"
+                            >오세후니<em><i></i></em
+                          ></span>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Todo.extended_container -->
+            <div id="Todo" class="extended_container pa-0 pa-b-24">
+              <div class="todo_list_header">
+                내 할 일 목록<span class="t-btn-blue add_new_todo"
+                  >새 할 일 추가</span
+                >
+                <div class="sub_content_wrap todo">
+                  <div class="sub_content_container">
+                    <div class="f-obj f-w100">
+                      <label class="top"
+                        ><i class="far fa-calendar-check"></i>제목</label
+                      >
+                      <input
+                        type="text"
+                        maxlength="40"
+                        autocomplete="off"
+                        placeholder="할 일의 제목을 입력해주세요"
+                        value=""
+                      />
+                    </div>
+                    <div class="f-obj f-w45">
+                      <label class="top"
+                        ><i class="fas fa-calendar-day"></i>처리일</label
+                      >
+                      <input type="text" name="" class="task_date" value="" />
+                    </div>
+                    <div class="f-obj f-w55">
+                      <label class="top"
+                        ><i class="far fa-clock"></i>시간</label
+                      >
+                      <select name="" class="">
+                        <option value="" selected>-</option>
+                        <!-- <option value="00:00">오전 12시</option>
+                        <option value="00:30">오전 12시 30분</option>
+                        <option value="01:00">오전 1시</option>
+                        <option value="01:30">오전 1시 30분</option>
+                        <option value="02:00">오전 2시</option>
+                        <option value="02:30">오전 2시 30분</option>
+                        <option value="03:00">오전 3시</option>
+                        <option value="03:30">오전 3시 30분</option>
+                        <option value="04:00">오전 4시</option>
+                        <option value="04:30">오전 4시 30분</option>
+                        <option value="05:00">오전 5시</option>
+                        <option value="05:30">오전 5시 30분</option>
+                        <option value="06:00">오전 6시</option>
+                        <option value="06:30">오전 6시 30분</option>
+                        <option value="07:00">오전 7시</option>
+                        <option value="07:30">오전 7시 30분</option> -->
+                        <option value="08:00">오전 8시</option>
+                        <option value="08:30">오전 8시 30분</option>
+                        <option value="09:00">오전 9시</option>
+                        <option value="09:30">오전 9시 30분</option>
+                        <option value="10:00">오전 10시</option>
+                        <option value="10:30">오전 10시 30분</option>
+                        <option value="11:00">오전 11시</option>
+                        <option value="11:30">오전 11시 30분</option>
+                        <option value="12:00">오후 12시</option>
+                        <option value="12:30">오후 12시 30분</option>
+                        <option value="13:00">오후 1시</option>
+                        <option value="13:30">오후 1시 30분</option>
+                        <option value="14:00">오후 2시</option>
+                        <option value="14:30">오후 2시 30분</option>
+                        <option value="15:00">오후 3시</option>
+                        <option value="15:30">오후 3시 30분</option>
+                        <option value="16:00">오후 4시</option>
+                        <option value="16:30">오후 4시 30분</option>
+                        <option value="17:00">오후 5시</option>
+                        <option value="17:30">오후 5시 30분</option>
+                        <option value="18:00">오후 6시</option>
+                        <option value="18:30">오후 6시 30분</option>
+                        <option value="19:00">오후 7시</option>
+                        <option value="19:30">오후 7시 30분</option>
+                        <option value="20:00">오후 8시</option>
+                        <option value="20:30">오후 8시 30분</option>
+                        <option value="21:00">오후 9시</option>
+                        <option value="21:30">오후 9시 30분</option>
+                        <option value="22:00">오후 10시</option>
+                        <option value="22:30">오후 10시 30분</option>
+                        <option value="23:00">오후 11시</option>
+                        <option value="23:30">오후 11시 30분</option>
+                      </select>
+                    </div>
+                    <div class="f-obj footer">
+                      <button class="this_close_btn" accesskey="">
+                        <i class="far fa-times-circle pa-r-xs"></i>취소
+                      </button>
+                      <button class="blue" accesskey="">
+                        <i class="fas fa-save pa-r-xs"></i>저장
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <dl class="todo_list scrollable-y">
+                <dt>예정된 기한을 넘긴 항목</dt>
+                <dd class="past_event">
+                  <div class="flex-column">
+                    <div class="flex-row-align-between flex-align-item-start">
+                      <div class="complete_btn title checkbox_wrap">
+                        <input type="checkbox" id="sample-100">
+                        <label for="sample-100" class="checkbox_label"></label>
+                        <p>2020 하반기 재고조사</p>
+                      </div>
+                      <p class="timestamp"><span>2020-11-07</span>오후 02:00</p>
+                    </div>
+                    <div>
+                      <p class="unlink_ticket">연결된 티켓 없음</p>
+                      <p class="btn_todo_edit">
+                        <i class="fas fa-pen"></i>
+                      </p>
+                    </div>
+                  </div>           
+                </dd>
+                <dt>오늘</dt>
+                <dd class="flex-column">
+                  <div class="flex-row-align-between flex-align-item-start">
+                    <div class="complete_btn title checkbox_wrap">
+                      <input type="checkbox" id="sample-10">
+                      <label for="sample-10" class="checkbox_label"></label>
+                      <p>한국코퍼레이션 콜센터Lite 견적서 작성 및 발송</p>
+                    </div>
+                    <p class="timestamp"><span>YYYY-MM-DD</span>오후 02:00</p>
+                  </div>
+                  <div>
+                    <p class="linked_ticket">
+                      콜센터Lite 5석 견적 요청, 보다 긴 길이의 제목인 경우
+                    </p>
+                    <p class="btn_todo_edit">
+                      <i class="fas fa-pen"></i>
+                    </p>
+                  </div>
+                </dd>
+                <dd class="flex-column">
+                  <div class="flex-row-align-between flex-align-item-start">
+                    <div class="complete_btn title checkbox_wrap">
+                      <input type="checkbox" id="sample-9">
+                      <label for="sample-9" class="checkbox_label"></label>
+                      <p>대한민국주식회사 콜센터Lite 견적서 작성 및 발송</p>
+                    </div>
+                    <p class="timestamp"><span>YYYY-MM-DD</span>오후 02:30</p>
+                  </div>
+                  <div>
+                    <p class="linked_ticket">콜센터Lite 10석 견적 요청</p>
+                    <p class="btn_todo_edit">
+                      <i class="fas fa-pen"></i>
+                    </p>
+                  </div>
+                </dd>
+                <dd class="flex-column">
+                  <div class="flex-row-align-between flex-align-item-start">
+                    <div class="complete_btn title checkbox_wrap">
+                      <input type="checkbox" id="sample-91">
+                      <label for="sample-91" class="checkbox_label"></label>
+                      <p>고객정보 중복 케이스 조회 : 중복건 병합</p>
+                    </div>
+                    <p class="timestamp"><span>YYYY-MM-DD</span>오후 06:00</p>
+                  </div>
+                  <div>
+                    <p class="unlink_ticket">연결된 티켓 없음</p>
+                    <p class="btn_todo_edit">
+                      <i class="fas fa-pen"></i>
+                    </p>
+                  </div>
+                </dd>
+                <dt>내일</dt>
+                <dd class="flex-column">
+                  <div class="flex-row-align-between flex-align-item-start">
+                    <div class="complete_btn title checkbox_wrap">
+                      <input type="checkbox" id="sample-11">
+                      <label for="sample-11" class="checkbox_label"></label>
+                      <p>사회적기업협회 장애보고서 회신</p>
+                    </div>
+                    <p class="timestamp"><span>YYYY-MM-DD</span>오후 12:00</p>
+                  </div>
+                  <div>
+                    <p class="linked_ticket">
+                      상담원 세션 끊김 현상에 관한 점검 조치 및 장애보고서
+                      요청의 건
+                    </p>
+                    <p class="btn_todo_edit">
+                      <i class="fas fa-pen"></i>
+                    </p>
+                  </div>
+                </dd>
+                <dt>2020년 12월 23일(수)</dt>
+                <dd class="flex-column">
+                  <div class="flex-row-align-between flex-align-item-start">
+                    <div class="complete_btn title checkbox_wrap">
+                      <input type="checkbox" id="sample-912">
+                      <label for="sample-912" class="checkbox_label"></label>
+                      <p>한국기업 헤드셋 배송</p>
+                    </div>
+                    <p class="timestamp"><span>YYYY-MM-DD</span>오후 01:00</p>
+                  </div>
+                  <div>
+                    <p class="linked_ticket">상담사헤드셋 구매의 건</p>
+                    <p class="btn_todo_edit">
+                      <i class="fas fa-pen"></i>
+                    </p>
+                  </div>
+                </dd>
+                <dt>완료된 항목<span class="t-btn-red f-right"><i class="fas fa-trash pa-r-xs"></i>완료된 항목 모두 삭제</span></dt>
+                <dd class="complete_event flex-column">
+                  <div class="flex-row-align-between flex-align-item-start">
+                    <div class="complete_btn title checkbox_wrap">
+                      <input type="checkbox" id="sample-16" checked>
+                      <label for="sample-16" class="checkbox_label"></label>
+                      <p>2021년 1월 상담사 근무 계획서 작성</p>
+                    </div>
+                    <p class="timestamp"><span>2020-12-18</span>오후 02:00</p>
+                  </div>
+                  <div>
+                    <p class="unlink_ticket">연결된 티켓 없음</p>
+                    <p class="btn_todo_del">
+                      <i class="fas fa-trash"></i>
+                    </p>
+                  </div>
+                </dd>
+                <dd class="complete_event flex-column">
+                  <div class="flex-row-align-between flex-align-item-start">
+                    <div class="complete_btn title checkbox_wrap">
+                      <input type="checkbox" id="sample-3" checked>
+                      <label for="sample-3" class="checkbox_label"></label>
+                      <p>전월 티켓 처리 보고서 제출</p>
+                    </div>
+                    <p class="timestamp"><span>2020-12-11</span>오후 01:00</p>
+                  </div>
+                  <div>
+                    <p class="unlink_ticket">연결된 티켓 없음</p>
+                    <p class="btn_todo_del">
+                      <i class="fas fa-trash"></i>
+                    </p>
+                  </div>
+                </dd>
+                <dd class="complete_event flex-column">
+                  <div class="flex-row-align-between flex-align-item-start">
+                    <div class="complete_btn title checkbox_wrap">
+                      <input type="checkbox" id="sample-31" checked>
+                      <label for="sample-31" class="checkbox_label"></label>
+                      <p>작업의 제목</p>
+                    </div>
+                    <p class="timestamp"><span>2020-11-30</span>오후 02:00</p>
+                  </div>
+                  <div>
+                    <p class="linked_ticket">연결된 티켓의 제목</p>
+                    <p class="btn_todo_del">
+                      <i class="fas fa-trash"></i>
+                    </p>
+                  </div>
+                </dd>
+                <dd class="complete_event flex-column">
+                  <div class="flex-row-align-between flex-align-item-start">
+                    <div class="complete_btn title checkbox_wrap">
+                      <input type="checkbox" id="sample-32" checked>
+                      <label for="sample-32" class="checkbox_label"></label>
+                      <p>작업의 제목</p>
+                    </div>
+                    <p class="timestamp"><span>2020-11-30</span>오후 02:00</p>
+                  </div>
+                  <div>
+                    <p class="linked_ticket">연결된 티켓의 제목</p>
+                    <p class="btn_todo_del">
+                      <i class="fas fa-trash"></i>
+                    </p>
+                  </div>
+                </dd>
+                <dd class="complete_event flex-column">
+                  <div class="flex-row-align-between flex-align-item-start">
+                    <div class="complete_btn title checkbox_wrap">
+                      <input type="checkbox" id="sample-33" checked>
+                      <label for="sample-33" class="checkbox_label"></label>
+                      <p>작업의 제목</p>
+                    </div>
+                    <p class="timestamp"><span>2020-11-30</span>오후 02:00</p>
+                  </div>
+                  <div>
+                    <p class="linked_ticket">연결된 티켓의 제목</p>
+                    <p class="btn_todo_del">
+                      <i class="fas fa-trash"></i>
+                    </p>
+                  </div>
+                </dd>
+              </dl>
+
+              <!-- Todo_Edit.edit_mode_todo -->
+              <div id="Todo_Edit" class="edit_mode_todo">
+                <div class="f-obj f-w100">
+                  <label class="top"
+                    ><i class="far fa-calendar-check"></i>제목</label
+                  >
+                  <input
+                    type="text"
+                    maxlength="40"
+                    autocomplete="off"
+                    placeholder="할 일의 제목을 입력해주세요"
+                    value="한국코퍼레이션 콜센터Lite 견적서 작성 및 발송"
+                  />
+                </div>
+                <div class="f-obj f-w45">
+                  <label class="top"
+                    ><i class="fas fa-calendar-day"></i>처리일</label
+                  >
+                  <input type="text" name="" class="task_date" value="" />
+                </div>
+                <div class="f-obj f-w55">
+                  <label class="top"
+                    ><i class="far fa-clock"></i>시간</label
+                  >
+                  <select name="" class="">
+                    <option value="">-</option>
+                    <!-- <option value="00:00">오전 12시</option>
+                    <option value="00:30">오전 12시 30분</option>
+                    <option value="01:00">오전 1시</option>
+                    <option value="01:30">오전 1시 30분</option>
+                    <option value="02:00">오전 2시</option>
+                    <option value="02:30">오전 2시 30분</option>
+                    <option value="03:00">오전 3시</option>
+                    <option value="03:30">오전 3시 30분</option>
+                    <option value="04:00">오전 4시</option>
+                    <option value="04:30">오전 4시 30분</option>
+                    <option value="05:00">오전 5시</option>
+                    <option value="05:30">오전 5시 30분</option>
+                    <option value="06:00">오전 6시</option>
+                    <option value="06:30">오전 6시 30분</option>
+                    <option value="07:00">오전 7시</option>
+                    <option value="07:30">오전 7시 30분</option> -->
+                    <option value="08:00">오전 8시</option>
+                    <option value="08:30">오전 8시 30분</option>
+                    <option value="09:00">오전 9시</option>
+                    <option value="09:30">오전 9시 30분</option>
+                    <option value="10:00">오전 10시</option>
+                    <option value="10:30">오전 10시 30분</option>
+                    <option value="11:00">오전 11시</option>
+                    <option value="11:30">오전 11시 30분</option>
+                    <option value="12:00">오후 12시</option>
+                    <option value="12:30">오후 12시 30분</option>
+                    <option value="13:00">오후 1시</option>
+                    <option value="13:30">오후 1시 30분</option>
+                    <option value="14:00" selected>오후 2시</option>
+                    <option value="14:30">오후 2시 30분</option>
+                    <option value="15:00">오후 3시</option>
+                    <option value="15:30">오후 3시 30분</option>
+                    <option value="16:00">오후 4시</option>
+                    <option value="16:30">오후 4시 30분</option>
+                    <option value="17:00">오후 5시</option>
+                    <option value="17:30">오후 5시 30분</option>
+                    <option value="18:00">오후 6시</option>
+                    <option value="18:30">오후 6시 30분</option>
+                    <option value="19:00">오후 7시</option>
+                    <option value="19:30">오후 7시 30분</option>
+                    <option value="20:00">오후 8시</option>
+                    <option value="20:30">오후 8시 30분</option>
+                    <option value="21:00">오후 9시</option>
+                    <option value="21:30">오후 9시 30분</option>
+                    <option value="22:00">오후 10시</option>
+                    <option value="22:30">오후 10시 30분</option>
+                    <option value="23:00">오후 11시</option>
+                    <option value="23:30">오후 11시 30분</option>
+                  </select>
+                </div>
+                <div class="f-obj footer">
+                  <button class="this_close_btn" accesskey="">
+                    <i class="far fa-times-circle pa-r-xs"></i>취소
+                  </button>
+                  <button class="blue" accesskey="">
+                    <i class="fas fa-save pa-r-xs"></i>저장
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- extended_wrap end -->
+
+          <!-- Left aside : 채팅 아카이브 -->
+          <aside id="Chat_List" class="l_md">
+            <header>
+              <div class="title">채팅</div>
+              <div class="sub_title sel_cat_t_btn t-btn-blue">
+                <i class="far fa-list-alt pa-r-xs"></i>&nbsp;채팅 필터 선택
+                <div class="sub_content_wrap">
+                  <div class="sub_content_container">
+                    <ul>
+                      <li class="">
+                        <i class="fas fa-hourglass-half t-center"></i>상담
+                        대기<span>2</span>
+                      </li>
+                      <li class="">
+                        <i class="fas fa-users t-center"></i>팀챗<span>2</span>
+                      </li>
+                      <li class="">
+                        <i class="fas fa-archive t-center"></i>아카이브<span
+                          >9,826</span
+                        >
+                      </li>
+                    </ul>
+                    <p>나의 채팅 상담</p>
+                    <ul>
+                      <li class="">
+                        <i class="fas fa-comment-dots t-center"></i>상담중<em
+                          >(In progress)</em
+                        ><span>1</span>
+                      </li>
+                      <li class="">
+                        <i class="fas fa-check t-center"></i>완료<em
+                          >(Resolved)</em
+                        ><span>4</span>
+                      </li>
+                      <li class="">
+                        <i class="fas fa-comment-slash t-center"></i>보류종결<em
+                          >(Close)</em
+                        ><span>2</span>
+                      </li>
+                      <li class="active">
+                        <i class="fas fa-comments t-center"></i>전체<span
+                          >7</span
+                        >
+                      </li>
+                    </ul>
+                    <!-- div.sub_content_container end -->
+                  </div>
+                  <!-- div.sub_content_wrap end -->
+                </div>
+                <!-- div.sub_title end -->
+              </div>
+            </header>
+
+            <!-- 아카이브 리스트 섹션 -->
+            <section class="archive_list">
+              <div class="header">
+                <div class="filter_wrap clearfix off">
+                  <!-- 검색 -->
+                  <div class="f-obj f-w100 pa-r-0">
+                    <div class="form_merge">
+                      <input
+                        type="text"
+                        class=""
+                        placeholder=""
+                        maxlength="40"
+                        value=""
+                      />
+                      <button class="blue">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <!-- 필터 -->
+                  <div class="f-obj f-w100 pa-0">
+                    <div class="f-obj pa-r-0">
+                      <button class="blue ma-0 off">
+                        <i class="fas fa-plus pa-r-xs"></i>필터
+                      </button>
+                      <span class="filter date">오늘</span>
+                      <span class="filter agent">상담사</span>
+                      <span class="filter status">상태</span>
+                    </div>
+                  </div>
+                  <!-- .filter_wrap end -->
+                </div>
+
+                <!-- 리스트 소트 텍스트 버튼 -->
+                <div class="sort">
+                  <p>1,972</p>
+                  <p class="sort_text_btn">
+                    <span class=""
+                      ><i class="fas fa-caret-down pa-r-xs"></i>최신 쓰레드
+                      정렬</span
+                    >
+                    <span class="off"
+                      ><i class="fas fa-caret-up pa-r-xs"></i>오래된 쓰레드
+                      정렬</span
+                    >
+                  </p>
+                </div>
+                <!-- .header end -->
+              </div>
+
+              <!-- 채팅 리스트 -->
+              <div class="chat_thread scrollable-y">
+                <dl>
+                  <dt>상담 대기</dt>
+                  <dd class="data_row">
+                    <div>
+                      <div>
+                        <p class="ticket-status open"></p>
+                        <p class="from_channel">
+                          onpia.co.kr<span>카카오</span>
+                        </p>
+                      </div>
+                      <p class="timestamp">20-12-03, 11:47</p>
+                    </div>
+                    <div>
+                      <p class="cust_name">김미혜</p>
+                      <p class="agent_name off"></p>
+                    </div>
+                    <div>
+                      <p>기술지원</p>
+                      <p>재택근무전환</p>
+                      <p></p>
+                    </div>
+                    <div>
+                      <p class="chat_msg">
+                        마지막 입력된 대화(봇과 사람이 보낸 메세지를 포함해 가장
+                        마지막 말풍선의 텍스트 표시
+                      </p>
+                      <p class="chat_msg_event_badge">1</p>
+                    </div>
+                  </dd>
+                  <dd class="data_row">
+                    <div>
+                      <div>
+                        <p class="ticket-status open"></p>
+                        <p class="from_channel">
+                          connecto.com<span>NiceChat</span>
+                        </p>
+                      </div>
+                      <p class="timestamp">20-12-03, 11:47</p>
+                    </div>
+                    <div>
+                      <p class="cust_name">Unknown</p>
+                      <p class="agent_name off"></p>
+                    </div>
+                    <div>
+                      <p>상담유형 1</p>
+                      <p>상담유형 2</p>
+                      <p>상담유형 3</p>
+                    </div>
+                    <div>
+                      <p class="chat_msg">
+                        마지막 입력된 대화(봇과 사람이 보낸 메세지를 포함해 가장
+                        마지막 말풍선의 텍스트 표시
+                      </p>
+                      <p class="chat_msg_event_badge">3</p>
+                    </div>
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>상담 처리중 (상담중)</dt>
+                  <dd class="data_row active">
+                    <div>
+                      <div>
+                        <p class="ticket-status inchat"></p>
+                        <p class="from_channel">
+                          onpia.co.kr<span>NiceChat</span>
+                        </p>
+                      </div>
+                      <p class="timestamp">20-12-03, 11:47</p>
+                    </div>
+                    <div>
+                      <p class="cust_name">박새롬</p>
+                      <p class="agent_name">정진욱</p>
+                    </div>
+                    <div>
+                      <p>컨택센터 시스템 도입 문의</p>
+                      <p>콜센터Lite</p>
+                    </div>
+                    <div>
+                      <p class="chat_msg">비용이 얼마나 들까요?</p>
+                      <p class="chat_msg_event_badge">2</p>
+                    </div>
+                  </dd>
+                  <dd class="data_row">
+                    <div>
+                      <div>
+                        <p class="ticket-status inchat"></p>
+                        <p class="from_channel">
+                          onpia.co.kr<span>NiceChat</span>
+                        </p>
+                      </div>
+                      <p class="timestamp">20-12-03, 11:47</p>
+                    </div>
+                    <div>
+                      <p class="cust_name">John Doe</p>
+                      <p class="agent_name">정진욱</p>
+                    </div>
+                    <div>
+                      <p>상담유형 1</p>
+                      <p>상담유형 2</p>
+                      <p>상담유형 3</p>
+                    </div>
+                    <div>
+                      <p class="chat_msg">
+                        잠시만요, 확인 후 알려드리겠습니다.
+                      </p>
+                      <p class="chat_msg_event_badge">1</p>
+                    </div>
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>팀챗</dt>
+                  <dd class="data_row">
+                    <div>
+                      <div>
+                        <p class="ticket-status resolved"></p>
+                        <p class="from_channel">
+                          onpia.co.kr<span>NiceChat</span>
+                        </p>
+                      </div>
+                      <p class="timestamp">20-12-03, 11:47</p>
+                    </div>
+                    <div>
+                      <p class="cust_name">John Doe</p>
+                      <p class="agent_name">정진욱</p>
+                    </div>
+                    <div>
+                      <p>상담유형 1</p>
+                      <p>상담유형 2</p>
+                      <p>상담유형 3</p>
+                    </div>
+                    <div>
+                      <p class="chat_msg">
+                        상담이 종료되었습니다. 간단한 상담 평가를 남겨주시면
+                        감사하겠습니다.
+                      </p>
+                      <p class="chat_msg_event_badge off">0</p>
+                    </div>
+                  </dd>
+                  <dd class="data_row">
+                    <div>
+                      <div>
+                        <p class="ticket-status close"></p>
+                        <p class="from_channel">
+                          connecto.com<span>NiceChat</span>
+                        </p>
+                      </div>
+                      <p class="timestamp">20-12-03, 11:47</p>
+                    </div>
+                    <div>
+                      <p class="cust_name">Jane Doe</p>
+                      <p class="agent_name">정진욱</p>
+                    </div>
+                    <div>
+                      <p>상담유형 1</p>
+                      <p>상담유형 2</p>
+                      <p>상담유형 3</p>
+                    </div>
+                    <div>
+                      <p class="chat_msg">
+                        상담이 종료되었습니다. 간단한 상담 평가를 남겨주시면
+                        감사하겠습니다.
+                      </p>
+                      <p class="chat_msg_event_badge off">0</p>
+                    </div>
+                  </dd>
+                </dl>
+                <dl>
+                  <dt>완료 및 (보류)닫힘</dt>
+                  <dd class="data_row">
+                    <div>
+                      <div>
+                        <p class="ticket-status resolved"></p>
+                        <p class="from_channel">
+                          onpia.co.kr<span>NiceChat</span>
+                        </p>
+                      </div>
+                      <p class="timestamp">20-12-03, 11:47</p>
+                    </div>
+                    <div>
+                      <p class="cust_name">John Doe</p>
+                      <p class="agent_name">정진욱</p>
+                    </div>
+                    <div>
+                      <p>상담유형 1</p>
+                      <p>상담유형 2</p>
+                      <p>상담유형 3</p>
+                    </div>
+                    <div>
+                      <p class="chat_msg">
+                        상담이 종료되었습니다. 간단한 상담 평가를 남겨주시면
+                        감사하겠습니다.
+                      </p>
+                      <p class="chat_msg_event_badge off">0</p>
+                    </div>
+                  </dd>
+                  <dd class="data_row">
+                    <div>
+                      <div>
+                        <p class="ticket-status close"></p>
+                        <p class="from_channel">
+                          connecto.com<span>NiceChat</span>
+                        </p>
+                      </div>
+                      <p class="timestamp">20-12-03, 11:47</p>
+                    </div>
+                    <div>
+                      <p class="cust_name">Jane Doe</p>
+                      <p class="agent_name">정진욱</p>
+                    </div>
+                    <div>
+                      <p>상담유형 1</p>
+                      <p>상담유형 2</p>
+                      <p>상담유형 3</p>
+                    </div>
+                    <div>
+                      <p class="chat_msg">
+                        상담이 종료되었습니다. 간단한 상담 평가를 남겨주시면
+                        감사하겠습니다.
+                      </p>
+                      <p class="chat_msg_event_badge off">0</p>
+                    </div>
+                  </dd>
+                </dl>
+                <!-- .chat_thread -->
+              </div>
+              <!-- section.archive_list end -->
+            </section>
+            <!-- aside#Chat_List end -->
+          </aside>
+
+          <script>
+            $(function () {
+              /* 티켓 전환 */
+              $('#Ticket_Regit_Open').click(function () {
+                $('#Chat_List').toggleClass('off');
+                $('#Chat_Ticket_Regit').toggleClass('off');
+                $('#Chat_Ticket_Request').focus();
+              });
+              $('#Chat_Ticket_Regit_Close').click(function () {
+                $('#Chat_Ticket_Regit').addClass('off');
+                $('#Chat_List').removeClass('off');
+              });
+            });
+          </script>
+          <!-- Aside : Ticket -->
+          <aside id="Chat_Ticket_Regit" class="l_md off">
+            <header class="pa-r-0">
+              <div class="title">
+                <i class="fas fa-ticket-alt pa-r-xs"></i>새 티켓 제출
+              </div>
+              <div id="Chat_Ticket_Regit_Close" class="btn_close">
+                <i class="fas fa-times"></i>
+              </div>
+            </header>
+
+            <section class="chat_ticket_regit scrollable-y">
+              <div class="f-block">
+                <!-- 프로젝트 -->
+                <div class="f-obj f-w65">
+                  <label class="top"><i class="fas fa-box"></i>프로젝트</label>
+                  <div class="filter_btn_group">
+                    <script>
+                      $(function () {
+                        $('.sel_option').click(function () {
+                          $(this).parents('.filter_btn_group').children('.sub_content_wrap').toggleClass('on'),
+                          $(this).toggleClass('on'),
+                          $('.search_input').focus();
+                        });
+                        $('.filter_btn_group > .sub_content_wrap li').click(function () {
+                          $(this).parents('.filter_btn_group').children('.sub_content_wrap, .sel_option').removeClass('on');
+                        });
+                      });
+                    </script>
+                    <div class="sel_option">
+                      <p class="sel_container">
+                        <p class="selected"><span>한국기업유한회사</span></p>
+                      </p>
+                    </div>
+                    <div class="sub_content_wrap">
+                      <div class="sub_content_container">
+                        <div class="search_input_wrap">
+                          <input type="text" class="search_input" maxlength="30" autocomplete="off" placeholder="검색 (Search)" value="">
+                          <button class="delete"><i class="fas fa-times" aria-hidden="true"></i></button>
+                        </div>
+                        <div class="scrollable-y">
+                          <p>프로젝트 검색 결과</p>
+                          <ul>
+                            <li class="unlink">일치하는 항목이 없습니다</li>
+                          </ul>
+                        </div>
+                        <div class="scrollable-y">
+                          <p>최근 업데이트된 프로젝트</p>
+                          <ul>
+                            <li class="">나라커뮤니케이션<em>나라컴</em></li>
+                            <li class="">다래문화원</li>
+                            <li class="">샘플 프로젝트 1</li>
+                            <li class="">샘플 프로젝트 2</li>
+                            <li class="">샘플 프로젝트 3</li>
+                          </ul>
+                          <p>모든 프로젝트</p>
+                          <ul>
+                            <li class="">강원랜드</li>
+                            <li class="">나라커뮤니케이션</li>
+                            <li class="">다래문화원</li>
+                            <li class="">법무부-교정국 블라 블라 블라 블라 블라 블라 블라 블라 블라 블라</li>
+                            <li class="">조선학회</li>
+                            <li class="">한국기업유한회사</li>
+                            <li class="">한국의학연구소<em>KMI</em><em>한의연</em></li>
+                            <li class="">한국코퍼레이션</li>
+                            <li class="">현대로보틱스</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div><!-- sub_content_wrap end -->
+                  </div>
+                </div>
+
+                <!-- 고객 ID -->
+                <div class="f-obj f-w35">
+                  <label class="top"><i class="fas fa-barcode"></i>고객 ID</label>
+                  <input type="text" readonly="true" value="123456789" />
+                </div>
+
+                <!-- 티켓 유형 수준 1 -->
+                <div class="f-obj f-w100">
+                  <label class="top"><i class="fas fa-quote-left"></i>상담유형<em class="f-right">- 1수준</em>
+                  </label>
+                  <select name="" class="">
+                    <option value="0" selected>컨택센터 시스템 도입 문의</option>
+                    <option value="1">기술지원</option>
+                    <option value="2">기타</option>
+                  </select>
+                </div>
+                <!-- 티켓 유형 수준 2 -->
+                <div class="f-obj f-w50">
+                  <label class="top"><em class="f-right"> - 2수준</em></label>
+                  <select name="" class="">
+                    <option value="0" selected>콜센터Lite</option>
+                    <option value="1">구축형(On-premise)</option>
+                    <option value="2">클라우드(Cloud)</option>
+                    <option value="3">기타</option>
+                  </select>
+                </div>
+                <!-- 티켓 유형 수준 3 -->
+                <div class="f-obj f-w50">
+                  <label class="top"><em class="f-right"> - 3수준</em></label>
+                  <select name="" class="">
+                    <option value="0" selected>-</option>
+                  </select>
+                </div>
+
+                <!-- 요청 내용 -->
+                <div class="f-obj f-w100">
+                  <label class="top"
+                    ><i class="fas fa-clipboard"></i>요청 내용<span
+                      class="sub f-right"
+                      >(2000)</span
+                    ></label
+                  >
+                  <textarea
+                    id="Chat_Ticket_Request"
+                    maxlength="2000"
+                    wrap="hard"
+                    class=""
+                  ></textarea>
+                </div>
+                <!-- 답변 내용 -->
+                <div class="f-obj f-w100">
+                  <label class="top"
+                    ><i class="fas fa-pen-square"></i>처리(또는 답변) 내용<span
+                      class="sub f-right"
+                      >(4000)</span
+                    ></label
+                  >
+                  <textarea maxlength="4000" wrap="hard" class="md"></textarea>
+                </div>
+
+                <!-- 중요도 구분 -->
+                <div class="f-obj f-w30">
+                  <label class="top"><i class="fas fa-flag"></i>중요도</label>
+                  <select name="" class="">
+                    <option value="0">낮음</option>
+                    <option value="1" selected>보통</option>
+                    <option value="2">긴급</option>
+                  </select>
+                </div>
+
+                <script>
+                  $(function () {
+                    /* Date Picker */
+                    var currentDate = new Date();
+
+                    // 최초 로딩시 오늘 날짜로...
+                    var setToday =
+                      currentDate.getFullYear() +
+                      '-' +
+                      ('0' + (currentDate.getMonth() + 1)).slice(-2) +
+                      '-' +
+                      ('0' + currentDate.getDate()).slice(-2);
+                    $('#Date_Start, #Date_End').val(setToday);
+
+                    $(function () {
+                      $('#Date_Start').datepicker({
+                        minDate: 0,
+                        changeMonth: true,
+                        dateFormat: 'yy-mm-dd',
+                        changeYear: true,
+                        numberOfMonths: 2,
+                        showMonthAfterYear: true,
+                        onClose: function (selectedDate, instance) {
+                          if (selectedDate != '') {
+                            var date = $.datepicker.parseDate(
+                              instance.settings.dateFormat,
+                              selectedDate,
+                              instance.settings
+                            );
+                            date.setMonth(date.getMonth() + 1);
+                            if (date > currentDate) {
+                              $('#Date_End').datepicker(
+                                'option',
+                                'minDate',
+                                selectedDate
+                              );
+                            } else {
+                              $('#Date_End').datepicker(
+                                'option',
+                                'minDate',
+                                selectedDate
+                              );
+                            }
+                            $('#Date_End').focus();
+                          }
+                        },
+                      });
+                      $('#Date_End').datepicker({
+                        changeMonth: true,
+                        dateFormat: 'yy-mm-dd',
+                        changeYear: true,
+                        numberOfMonths: 2,
+                        showMonthAfterYear: true,
+                        onClose: function (selectedDate) {
+                          $('#Date_Start').datepicker(
+                            'option',
+                            'maxDate',
+                            selectedDate
+                          );
+                        },
+                      });
+                      $('.auto_input_today').click(function () {
+                        $('#Date_Start, #Date_End').datepicker(
+                          'option',
+                          'maxDate',
+                          setToday
+                        );
+                        $('#Date_Start, #Date_End').val(setToday);
+                      });
+                      function getDate(element) {
+                        var date;
+                        try {
+                          date = $.datepicker.parseDate(
+                            dateFormat,
+                            element.value
+                          );
+                        } catch (error) {
+                          date = null;
+                        }
+                        return date;
+                      }
+                    });
+                  });
+                </script>
+                <div class="f-obj f-w70 pa-b-0">
+                  <!-- 착수(시작) 일 -->
+                  <div class="f-obj f-w45 pa-r-0">
+                    <label class="top"
+                      ><i class="fas fa-calendar-day"></i>착수(시작) 일</label
+                    >
+                    <input
+                      type="text"
+                      name=""
+                      id="Date_Start"
+                      value=""
+                      class="t-center"
+                    />
+                  </div>
+                  <div class="f-obj f-w10 pa-0">
+                    <label class="top_nbsp"></label>
+                    <p class="t-center line-h-30">~</p>
+                  </div>
+                  <!-- 완료(예정) 일 -->
+                  <div class="f-obj f-w45 pa-r-0">
+                    <label class="top"
+                      ><i class="fas fa-calendar-day"></i>완료(마감) 일</label
+                    >
+                    <input
+                      type="text"
+                      name=""
+                      id="Date_End"
+                      value=""
+                      class="t-center"
+                    />
+                  </div>
+                </div>
+
+                <script>
+                  $(function () {
+                    $('input.select_user').click(function () {
+                      $(this)
+                        .parents('div.select_user')
+                        .children('.sub_content_wrap')
+                        .toggleClass('on');
+                    });
+                    $('.link_agent').click(function () {
+                      $(this).parents('.sub_content_wrap').removeClass('on');
+                    });
+                  });
+                </script>
+                <!-- 처리 담당자 -->
+                <div class="f-obj f-w100">
+                  <label class="top"
+                    ><i class="fas fa-id-badge"></i>담당자<span
+                      class="t-btn-blue pa-l-md"
+                      >나를 담당자로 지정</span
+                    ></label
+                  >
+                  <div class="ticket_assignee_container">
+                    <div class="ticket_connected_user">
+                      <p class="name">정진욱</p>
+                      <p class="mail">@jw.jung</p>
+                      <p class="btn_delete"></p>
+                    </div>
+                    <div class="select_user">
+                      <input
+                        type="text"
+                        class="select_user"
+                        placeholder="담당자 추가"
+                        maxlength="40"
+                        value=""
+                      />
+                      <div class="sub_content_wrap">
+                        <div class="sub_content_container">
+                          <ul class="scrollable-y">
+                            <li class="link_agent">
+                              정진욱<span>@jw.jung</span>
+                            </li>
+                            <li class="link_agent">
+                              글자를 입력하면 자동으로 검색 실행해 결과을
+                              출력해야합니다!<span>@user.id</span>
+                            </li>
+                            <li class="link_agent">
+                              홍길동<span>@user.id</span>
+                            </li>
+                            <li class="link_agent">
+                              박차고나온노미새미나<span>@user.id</span>
+                            </li>
+                            <li class="link_agent">
+                              자동검색결과<span>@user.id</span>
+                            </li>
+                            <li class="link_agent">
+                              자동검색결과<span>@user.id</span>
+                            </li>
+                            <li class="link_agent">
+                              자동검색결과<span>@user.id</span>
+                            </li>
+                            <li class="link_agent">
+                              자동검색결과<span>@user.id</span>
+                            </li>
+                            <li class="link_agent">
+                              자동검색결과<span>@user.id</span>
+                            </li>
+                            <li class="link_agent">
+                              자동검색결과<span>@user.id</span>
+                            </li>
+                            <li class="link_agent">
+                              자동검색결과<span>@user.id</span>
+                            </li>
+                            <li class="link_agent">
+                              자동검색결과<span>@user.id</span>
+                            </li>
+                            <li class="link_agent">
+                              자동검색결과<span>@user.id</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 지켜 보는 사람 -->
+                <div class="f-obj f-w100">
+                  <label class="top"
+                    ><i class="fas fa-eye"></i>지켜보는 사람</label
+                  >
+                  <div class="ticket_watcher_container">
+                    <div class="ticket_connected_user">
+                      <p class="name">김창모</p>
+                      <p class="mail">@cmkim</p>
+                      <p class="btn_delete"></p>
+                    </div>
+                    <div class="ticket_connected_user">
+                      <p class="name">김연</p>
+                      <p class="mail">@rladus4720</p>
+                      <p class="btn_delete"></p>
+                    </div>
+                    <div class="ticket_connected_user">
+                      <p class="name">그리스도예수</p>
+                      <p class="mail">@jesus</p>
+                      <p class="btn_delete"></p>
+                    </div>
+                    <div class="ticket_connected_user">
+                      <p class="name">부처님</p>
+                      <p class="mail">@buddha</p>
+                      <p class="btn_delete"></p>
+                    </div>
+                    <div class="ticket_connected_user">
+                      <p class="name">마눌화</p>
+                      <p class="mail">@life.observer</p>
+                      <p class="btn_delete"></p>
+                    </div>
+                    <div class="select_user">
+                      <input
+                        type="text"
+                        class="select_user"
+                        placeholder="지켜보는 사람 추가"
+                        maxlength="40"
+                        value=""
+                      />
+                      <div class="sub_content_wrap">
+                        <div class="sub_content_container">
+                          <ul class="scrollable-y">
+                            <li class="link_agent">
+                              정진욱<span>@jw.jung</span>
+                            </li>
+                            <li class="link_agent">
+                              글자를 입력하면 자동으로 검색 실행해 결과을
+                              출력해야합니다!<span>@user.id</span>
+                            </li>
+                            <li class="link_agent">
+                              홍길동<span>@user.id</span>
+                            </li>
+                            <li class="link_agent">
+                              박차고나온노미새미나<span>@user.id</span>
+                            </li>
+                            <li class="link_agent">
+                              자동검색결과<span>@user.id</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- timestamp -->
+              <div class="timestamp off">
+                <div>
+                  <p>수정일</p>
+                  <p>2020-12-14, 11:07:09</p>
+                  <p>정진욱</p>
+                </div>
+                <div>
+                  <p>생성일</p>
+                  <p>2020-12-14, 11:07:09</p>
+                  <p>정진욱</p>
+                </div>
+              </div>
+            </section>
+
+            <script>
+              $(function () {
+                $('#Open_Ticket_Save_Cat').click(function () {
+                  $(this)
+                    .parents('div.form_merge')
+                    .children('.sub_content_wrap')
+                    .toggleClass('on');
+                });
+                $('.ticket_save').click(function () {
+                  $(this).parents('.sub_content_wrap').removeClass('on');
+                });
+                $('.btn_todo').click(function () {
+                  $(this)
+                    .parents('div.f-obj')
+                    .children('.sub_content_wrap')
+                    .toggleClass('on');
+                });
+                $('.this_close_btn').click(function () {
+                  $(this).parents('div.sub_content_wrap').removeClass('on');
+                });
+                /* Date Picker */
+                var currentDate = new Date();
+
+                // 최초 로딩시 오늘 날짜로...
+                var setToday =
+                  currentDate.getFullYear() +
+                  '-' +
+                  ('0' + (currentDate.getMonth() + 1)).slice(-2) +
+                  '-' +
+                  ('0' + currentDate.getDate()).slice(-2);
+                $('.task_date').val(setToday);
+
+                $('.task_date').datepicker({
+                  minDate: 0,
+                  changeMonth: true,
+                  dateFormat: 'yy-mm-dd',
+                  changeYear: true,
+                  numberOfMonths: 2,
+                  showMonthAfterYear: true,
+                });
+              });
+            </script>
+            <!-- 티켓 저장 버튼 -->
+            <div class="chat_ticket_regit_save">
+              <div class="f-obj f-w25">
+                <button class="btn_todo" accesskey="">예약</button>
+                <div class="sub_content_wrap todo">
+                  <div class="sub_content_container">
+                    <div class="f-obj f-w100">
+                      <label class="top"
+                        ><i class="far fa-calendar-check"></i>제목</label
+                      >
+                      <input
+                        type="text"
+                        maxlength="40"
+                        autocomplete="off"
+                        placeholder="할 일의 제목을 입력해주세요"
+                        value=""
+                      />
+                    </div>
+                    <div class="f-obj f-w45">
+                      <label class="top"
+                        ><i class="fas fa-calendar-day"></i>처리일</label
+                      >
+                      <input type="text" name="" class="task_date" value="" />
+                    </div>
+                    <div class="f-obj f-w55">
+                      <label class="top"
+                        ><i class="far fa-clock"></i>시간</label
+                      >
+                      <select name="" class="">
+                        <option value="" selected>-</option>
+                        <!-- <option value="00:00">오전 12시</option>
+                        <option value="00:30">오전 12시 30분</option>
+                        <option value="01:00">오전 1시</option>
+                        <option value="01:30">오전 1시 30분</option>
+                        <option value="02:00">오전 2시</option>
+                        <option value="02:30">오전 2시 30분</option>
+                        <option value="03:00">오전 3시</option>
+                        <option value="03:30">오전 3시 30분</option>
+                        <option value="04:00">오전 4시</option>
+                        <option value="04:30">오전 4시 30분</option>
+                        <option value="05:00">오전 5시</option>
+                        <option value="05:30">오전 5시 30분</option>
+                        <option value="06:00">오전 6시</option>
+                        <option value="06:30">오전 6시 30분</option>
+                        <option value="07:00">오전 7시</option>
+                        <option value="07:30">오전 7시 30분</option> -->
+                        <option value="08:00">오전 8시</option>
+                        <option value="08:30">오전 8시 30분</option>
+                        <option value="09:00">오전 9시</option>
+                        <option value="09:30">오전 9시 30분</option>
+                        <option value="10:00">오전 10시</option>
+                        <option value="10:30">오전 10시 30분</option>
+                        <option value="11:00">오전 11시</option>
+                        <option value="11:30">오전 11시 30분</option>
+                        <option value="12:00">오후 12시</option>
+                        <option value="12:30">오후 12시 30분</option>
+                        <option value="13:00">오후 1시</option>
+                        <option value="13:30">오후 1시 30분</option>
+                        <option value="14:00">오후 2시</option>
+                        <option value="14:30">오후 2시 30분</option>
+                        <option value="15:00">오후 3시</option>
+                        <option value="15:30">오후 3시 30분</option>
+                        <option value="16:00">오후 4시</option>
+                        <option value="16:30">오후 4시 30분</option>
+                        <option value="17:00">오후 5시</option>
+                        <option value="17:30">오후 5시 30분</option>
+                        <option value="18:00">오후 6시</option>
+                        <option value="18:30">오후 6시 30분</option>
+                        <option value="19:00">오후 7시</option>
+                        <option value="19:30">오후 7시 30분</option>
+                        <option value="20:00">오후 8시</option>
+                        <option value="20:30">오후 8시 30분</option>
+                        <option value="21:00">오후 9시</option>
+                        <option value="21:30">오후 9시 30분</option>
+                        <option value="22:00">오후 10시</option>
+                        <option value="22:30">오후 10시 30분</option>
+                        <option value="23:00">오후 11시</option>
+                        <option value="23:30">오후 11시 30분</option>
+                      </select>
+                    </div>
+                    <div class="f-obj footer">
+                      <button class="this_close_btn" accesskey="">
+                        <i class="far fa-times-circle pa-r-xs"></i>취소
+                      </button>
+                      <button class="blue" accesskey="">
+                        <i class="fas fa-save pa-r-xs"></i>저장
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form_merge">
+                <button class="" accesskey="">
+                  <i class="fas fa-save pa-r-xs"></i>요청으로 저장
+                </button>
+                <button id="Open_Ticket_Save_Cat" class="" accesskey="">
+                  <i class="fas fa-angle-up"></i>
+                </button>
+                <div class="sub_content_wrap">
+                  <div class="sub_content_container">
+                    <button class="ticket_save off" accesskey="">요청(열림)</button>
+                    <button class="ticket_save h-blue" accesskey="">처리(진행)중</button>
+                    <button class="ticket_save h-green" accesskey="">완료(해결)</button>
+                    <button class="ticket_save h-dark" accesskey="">닫힘(보류)</button>
+                    <button class="ticket_save" accesskey="">재요청(다시열림)</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Article_wrap -->
+          <article class="chat">
+            <header>
+              <div class="cust_name">
+                <i class="far fa-comments pa-r-xs"></i>박세롬
+              </div>
+              <div class="assignee_agt">정진욱</div>
+            </header>
+            <section class="thread_wrap scrollable-y border-r">
+              <div class="day_divider">
+                <hr />
+                <div>2020년 12월 4일 (금요일)</div>
+              </div>
+              <div class="chat_scenario">
+                <div>컨택센터 시스템 도입 문의</div>
+                <div>콜센터Lite</div>
+                <div>카테고리 3</div>
+              </div>
+              <div class="pre_chat_survey">
+                <div>
+                  <p><em>이름</em>박새롬</p>
+                  <p><em>이메일</em>saerom.park@domain.com</p>
+                  <p><em>휴대폰번호</em>010-4477-5400</p>
+                </div>
+              </div>
+              <div class="msg_bot">
+                <p>
+                  <i class="fas fa-robot"></i><span>Chat-Bot</span
+                  ><span class="timestamp">오후 01:49</span>
+                </p>
+                <p>
+                  채팅 가능한 상담사를 찾고 있습니다. 잠시만 기다려 주십시오.
+                </p>
+              </div>
+              <div class="msg_agt">
+                <p>
+                  정진욱<span>@jw.jung</span
+                  ><span class="timestamp">오후 01:49</span>
+                </p>
+                <p>안녕하세요 박새롬 고객님, 무엇을 도와드릴까요?</p>
+              </div>
+              <div class="msg">
+                <p>
+                  박새롬<span></span><span class="timestamp">오후 01:49</span>
+                </p>
+                <p>콜센터 시스템 도입을 검토하고 있습니다.</p>
+              </div>
+              <div class="msg_go">
+                <p>
+                  박새롬<span></span><span class="timestamp">오후 01:49</span>
+                </p>
+                <p>홈페이지에 콜센터Lite 상품에 관해 문의드릴려고 하는데요.</p>
+              </div>
+              <div class="msg">
+                <p>
+                  박새롬<span></span><span class="timestamp">오후 01:50</span>
+                </p>
+                <p>도입 금액이 어느정도나 드는지 견적을 받아보려고 합니다.</p>
+              </div>
+              <div class="msg_agt">
+                <p>
+                  정진욱<span>@jw.jung</span
+                  ><span class="timestamp">오후 01:50</span>
+                </p>
+                <p>네 알겠습니다.</p>
+              </div>
+              <div class="msg_agt_go">
+                <p>
+                  정진욱<span>@jw.jung</span
+                  ><span class="timestamp">오후 01:50</span>
+                </p>
+                <p>초기도입시 상담사 규모를 몇분으로 시작하시나요?</p>
+              </div>
+              <div class="msg_agt">
+                <p>
+                  정진욱<span>@jw.jung</span
+                  ><span class="timestamp">오후 01:51</span>
+                </p>
+                <p>상담사 '석' 규모에 따라 견적에 변동이 있습니다.</p>
+              </div>
+              <div class="msg">
+                <p>
+                  박새롬<span></span><span class="timestamp">오후 01:52</span>
+                </p>
+                <p>3명에서 5명 정도로 예상합니다.</p>
+              </div>
+              <div class="msg_agt">
+                <p>
+                  정진욱<span>@jw.jung</span
+                  ><span class="timestamp">오후 01:53</span>
+                </p>
+                <p>
+                  그럼 3명 기준에 최대 15명까지 확장 가능한 시스템을 기준으로
+                  견적을 산정하겠습니다. 3석 규모 구축 후 새로 상담사가 채용되면
+                  그때 1User 식 증설하시면 됩니다. 괜찮으실까요?
+                </p>
+              </div>
+              <div class="msg">
+                <p>
+                  박새롬<span></span><span class="timestamp">오후 01:54</span>
+                </p>
+                <p>예, 알겠습니다.</p>
+              </div>
+              <div class="msg_agt">
+                <p>
+                  정진욱<span>@jw.jung</span
+                  ><span class="timestamp">오후 01:55</span>
+                </p>
+                <p>
+                  회신 받으실 이메일 주소가 "saerom.park@domain.com"이
+                  맞으신가요?
+                </p>
+              </div>
+              <div class="msg">
+                <p>
+                  박새롬<span></span><span class="timestamp">오후 01:55</span>
+                </p>
+                <p>넵</p>
+              </div>
+              <div class="msg_agt">
+                <p>
+                  정진욱<span>@jw.jung</span
+                  ><span class="timestamp">오후 01:56</span>
+                </p>
+                <p>
+                  문의주신 견적 메일 발송 후 "010-4477-5400"(으)로 안내 문자를
+                  발송해 드리겠습니다.
+                </p>
+              </div>
+              <div class="msg_agt_go">
+                <p>
+                  정진욱<span>@jw.jung</span
+                  ><span class="timestamp">오후 01:56</span>
+                </p>
+                <p>더 궁금하신 사항이 있으신가요?</p>
+              </div>
+              <div class="msg">
+                <p>
+                  박새롬<span></span><span class="timestamp">오후 01:57</span>
+                </p>
+                <p>없습니다.</p>
+              </div>
+              <div class="msg_go">
+                <p>
+                  박새롬<span></span><span class="timestamp">오후 01:57</span>
+                </p>
+                <p>감사합니다.</p>
+              </div>
+              <div class="msg_agt">
+                <p>
+                  정진욱<span>@jw.jung</span
+                  ><span class="timestamp">오후 01:58</span>
+                </p>
+                <p>문의주셔서 감사합니다.</p>
+              </div>
+              <div class="day_divider">
+                <hr />
+                <div>
+                  정진욱님이 상담 종료 요청을 보냈습니다<span class="timestamp"
+                    >오후 02:00</span
+                  >
+                </div>
+              </div>
+              <div class="msg_bot">
+                <p>
+                  <i class="fas fa-robot"></i><span>Chat-Bot</span
+                  ><span class="timestamp">오후 02:00</span>
+                </p>
+                <p>
+                  괜찮으시다면 상담을 종료하겠습니다.<br />문제가 해결되지 않은
+                  경우 "추가 상담 진행" 버튼을 눌러 대화를 계속할 수
+                  있습니다.<br />1시간내에 응답이 없으시면 본 상담은 자동으로
+                  종료됩니다.
+                </p>
+              </div>
+              <div class="msg">
+                <p>
+                  박새롬<span></span><span class="timestamp">오후 02:04</span>
+                </p>
+                <p class="return_data">추가 상담이 필요합니다</p>
+              </div>
+              <div class="msg">
+                <p>
+                  박새롬<span></span><span class="timestamp">오후 02:04</span>
+                </p>
+                <p>죄송해요</p>
+              </div>
+              <div class="msg_go">
+                <p>
+                  박새롬<span></span><span class="timestamp">오후 02:04</span>
+                </p>
+                <p>견적을 5명 규모로 회신주세요.</p>
+              </div>
+              <div class="msg_agt">
+                <p>
+                  정진욱<span>@jw.jung</span
+                  ><span class="timestamp">오후 02:05</span>
+                </p>
+                <p>알겠습니다.</p>
+              </div>
+              <div class="msg_agt_go">
+                <p>
+                  정진욱<span>@jw.jung</span
+                  ><span class="timestamp">오후 02:05</span>
+                </p>
+                <p>상담사 5석 규모의 견적을 메일로 발송드리겠습니다.</p>
+              </div>
+              <div class="msg_agt_go">
+                <p>
+                  정진욱<span>@jw.jung</span
+                  ><span class="timestamp">오후 02:05</span>
+                </p>
+                <p>
+                  추가 적인 문의 사항이 있으시면 언제든 연락 부탁드립니다.<br />감사합니다.
+                </p>
+              </div>
+              <div class="day_divider">
+                <hr />
+                <div>
+                  정진욱님이 상담 종료 요청을 보냈습니다<span class="timestamp"
+                    >오후 02:00</span
+                  >
+                </div>
+              </div>
+              <div class="msg_bot">
+                <p>
+                  <i class="fas fa-robot"></i><span>Chat-Bot</span
+                  ><span class="timestamp">오후 02:06</span>
+                </p>
+                <p>
+                  괜찮으시다면 상담을 종료하겠습니다.<br />문제가 해결되지 않은
+                  경우 "추가 상담 진행" 버튼을 눌러 대화를 계속할 수
+                  있습니다.<br />1시간내에 응답이 없으시면 본 상담은 자동으로
+                  종료됩니다.
+                </p>
+              </div>
+              <div class="msg">
+                <p>
+                  박새롬<span></span><span class="timestamp">오후 02:07</span>
+                </p>
+                <p class="return_data">상담을 종료합니다</p>
+              </div>
+              <div class="msg_bot">
+                <p>
+                  <i class="fas fa-robot"></i><span>Chat-Bot</span
+                  ><span class="timestamp">오후 02:07</span>
+                </p>
+                <p>
+                  상담이 종료되었습니다.<br />만족스러운 상담이였는지 간단한
+                  평가 부탁드립니다.
+                </p>
+              </div>
+              <div class="post_chat_survey">
+                <div>
+                  <p><em>평가</em>매우만족</p>
+                  <p>
+                    <em>내용</em>전화로 문의하는 것보다 침작하고 간결하게
+                    진행되는 것 같아 훨씬 편리했습니다.<br />하지만 채팅 가능한
+                    상담원 연결까진 다소 시간이 걸렸던 점은 조금 아쉽습니다.
+                  </p>
+                </div>
+              </div>
+              <div id="Typing_Event_Listener" class="on">
+                <p>박새롬</p>
+                <p></p>
+              </div>
+            </section>
+            <section class="section_footer border-r">
+              <!-- 종료된 채팅 세션의 경우 아래 "session_daeded" 클래스에 "on" 클래스를 추가해야 합니다 -->
+              <div class="session_daeded">
+                "이 채팅 세션은 완전히 종료 되었습니다"
+              </div>
+              <div class="session_alive">
+                <div class="f-w100">
+                  <div class="form_merge">
+                    <div class="chat_shortcut_response_wrap off">
+                      <div class="sub_content_container">
+                        <div class="scrollable-y">
+                          <div class="shortcut_item" data-index="0">
+                            <p class="shortcut_name">결제정보</p>
+                            <p class="shortcut_count">1</p>
+                            <p class="select_arrow"></p>
+                          </div>
+                          <div class="shortcut_item focused" data-index="1">
+                            <p class="shortcut_name">시작인사</p>
+                            <p class="shortcut_count">3</p>
+                            <p class="select_arrow"></p>
+                          </div>
+                          <div class="shortcut_item" data-index="2">
+                            <p class="shortcut_name">종료인사</p>
+                            <p class="shortcut_count">3</p>
+                            <p class="select_arrow"></p>
+                          </div>
+                          <div class="shortcut_item" data-index="3">
+                            <p class="shortcut_name">티켓전환</p>
+                            <p class="shortcut_count">2</p>
+                            <p class="select_arrow"></p>
+                          </div>
+                          <div class="shortcut_item" data-index="4">
+                            <p class="shortcut_name">hi</p>
+                            <p class="shortcut_count">3</p>
+                            <p class="select_arrow"></p>
+                          </div>
+                          <div class="shortcut_item" data-index="5">
+                            <p class="shortcut_name">bye</p>
+                            <p class="shortcut_count">3</p>
+                            <p class="select_arrow"></p>
+                          </div>
+                          <div class="shortcut_item" data-index="6">
+                            <p class="shortcut_name">기타3</p>
+                            <p class="shortcut_count">1</p>
+                            <p class="select_arrow"></p>
+                          </div>
+                          <div class="shortcut_item" data-index="7">
+                            <p class="shortcut_name">기타4</p>
+                            <p class="shortcut_count">1</p>
+                            <p class="select_arrow"></p>
+                          </div>
+                          <div class="shortcut_item" data-index="8">
+                            <p class="shortcut_name">기타5</p>
+                            <p class="shortcut_count">1</p>
+                            <p class="select_arrow"></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="chat_shortcut_response_sentence_wrap off">
+                      <div class="sub_content_container">
+                        <div class="scrollable-y">
+                          <div class="shortcut_item" data-index="0">
+                            <p class="select_arrow"></p>
+                            <p class="shortcut_name">
+                              안녕하세요, 기다리게해서 죄송합니다. 어떤 부분을
+                              도와드릴까요?
+                            </p>
+                          </div>
+                          <div class="shortcut_item focused" data-index="1">
+                            <p class="select_arrow"></p>
+                            <p class="shortcut_name">
+                              안녕하세요, 무엇을 도와드릴까요?
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <textarea
+                      id="Chat_Input"
+                      placeholder="메세지를 입력하세요"
+                    ></textarea>
+                    <!-- 입력이 감지되면 전송 버튼 활성화(disable 옵션 제거)!! -->
+                    <button class="blue" disabled>
+                      <i class="far fa-paper-plane pa-r-xs"></i>전송
+                    </button>
+                  </div>
+                </div>
+                <div class="chat_assistance_wrap">
+                  <div class="chat_assistance_container">
+                    <div class="chat_assistance_btn">
+                      <svg
+                        fill="#424d57"
+                        width="16px"
+                        height="16px"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M8.07108 1.25759C8.48116 1.316 8.76624 1.69578 8.70783 2.10586L8.17857 5.82152H12.9307L13.4901 1.89433C13.5485 1.48426 13.9283 1.19918 14.3384 1.25759C14.7485 1.316 15.0335 1.69578 14.9751 2.10586L14.4459 5.82152H17C17.4142 5.82152 17.75 6.15731 17.75 6.57152C17.75 6.98574 17.4142 7.32152 17 7.32152H14.2322L13.5505 12.1072H16.6741C17.0883 12.1072 17.4241 12.443 17.4241 12.8572C17.4241 13.2715 17.0883 13.6072 16.6741 13.6072H13.3369L12.6961 18.1059C12.6377 18.5159 12.2579 18.801 11.8478 18.7426C11.4378 18.6842 11.1527 18.3044 11.2111 17.8943L11.8217 13.6072H7.06959L6.42881 18.1059C6.3704 18.5159 5.99062 18.801 5.58054 18.7426C5.17047 18.6842 4.88539 18.3044 4.9438 17.8943L5.55445 13.6072H3C2.58579 13.6072 2.25 13.2715 2.25 12.8572C2.25 12.443 2.58579 12.1072 3 12.1072H5.7681L6.44977 7.32152H3.89565C3.48143 7.32152 3.14565 6.98574 3.14565 6.57152C3.14565 6.15731 3.48143 5.82152 3.89565 5.82152H6.66343L7.22282 1.89433C7.28123 1.48426 7.66101 1.19918 8.07108 1.25759ZM7.96491 7.32152L7.28324 12.1072H12.0354L12.7171 7.32152H7.96491Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="chat_assistance_btn file_attach_btn">
+                      <svg
+                        fill="#424d57"
+                        width="16px"
+                        height="16px"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M10 17.25C7.10051 17.25 4.75 14.8995 4.75 12L4.75 6.57143C4.75 6.15722 4.41421 5.82143 4 5.82143C3.58579 5.82143 3.25 6.15721 3.25 6.57143L3.25 12C3.25 15.7279 6.27208 18.75 10 18.75C13.7279 18.75 16.75 15.7279 16.75 12V6.33965C16.75 3.52871 14.4713 1.25 11.6604 1.25C8.84942 1.25 6.5707 3.52871 6.5707 6.33965L6.5707 12.0318C6.5707 13.8486 8.04353 15.3214 9.86035 15.3214C11.6772 15.3214 13.15 13.8486 13.15 12.0318L13.15 6.57143C13.15 6.15722 12.8142 5.82143 12.4 5.82143C11.9858 5.82143 11.65 6.15722 11.65 6.57143V12.0318C11.65 13.0202 10.8487 13.8214 9.86035 13.8214C8.87196 13.8214 8.0707 13.0202 8.0707 12.0318L8.0707 6.33965C8.0707 4.35714 9.67784 2.75 11.6604 2.75C13.6429 2.75 15.25 4.35714 15.25 6.33965V12C15.25 14.8995 12.8995 17.25 10 17.25Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="chat_assistance_btn">
+                      <svg
+                        fill="#424d57"
+                        width="16px"
+                        height="16px"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5C5.85786 2.5 2.5 5.85786 2.5 10C2.5 14.1421 5.85786 17.5 10 17.5ZM10 19C14.9706 19 19 14.9706 19 10C19 5.02944 14.9706 1 10 1C5.02944 1 1 5.02944 1 10C1 14.9706 5.02944 19 10 19Z"
+                        ></path>
+                        <circle cx="7.25" cy="8.25" r="1.25"></circle>
+                        <path
+                          d="M14 8.25C14 8.94036 13.4404 9.5 12.75 9.5C12.0596 9.5 11.5 8.94036 11.5 8.25C11.5 7.55964 12.0596 7 12.75 7C13.4404 7 14 7.55964 14 8.25Z"
+                        ></path>
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M6.76303 11.2887C7.15599 11.1577 7.58073 11.3701 7.71172 11.763C8.06769 12.8309 9.16683 13.2502 10.0002 13.2502C10.8336 13.2502 11.9327 12.8309 12.2887 11.763C12.4197 11.3701 12.8444 11.1577 13.2374 11.2887C13.6303 11.4197 13.8427 11.8444 13.7117 12.2374C13.0677 14.1695 11.1668 14.7502 10.0002 14.7502C8.83357 14.7502 6.93272 14.1695 6.28869 12.2374C6.15771 11.8444 6.37008 11.4197 6.76303 11.2887Z"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <script>
+                    $(function () {
+                      $('#Chat_Transfer_Agent').click(function () {
+                        $(this)
+                          .parents('div')
+                          .children('.sub_content_wrap')
+                          .toggleClass('on');
+                        $('.first_focus').focus();
+                      });
+                      $('#Chat_Transfer_Execute').click(function () {
+                        $(this).parents('.sub_content_wrap').removeClass('on');
+                      });
+                    });
+                  </script>
+                  <div class="select_user">
+                    <button id="Chat_Transfer_Agent" class="">
+                      <i class="fas fa-exchange-alt pa-r-xs"></i>상담 이관
+                    </button>
+                    <button id="Chat_Close" class="dark" accesskey="">
+                      <i class="fas fa-check pa-r-xs"></i>상담 종료 요청
+                    </button>
+                    <button
+                      id="Ticket_Regit_Open"
+                      class="green f-right"
+                      accesskey=""
+                    >
+                      <i class="fas fa-ticket-alt pa-r-xs"></i>티켓으로 전환
+                    </button>
+                    <div class="sub_content_wrap">
+                      <div class="sub_content_container">
+                        <!-- 상담원 검색 -->
+                        <div class="f-w100">
+                          <input
+                            type="text"
+                            class="first_focus"
+                            placeholder="상담사 이름"
+                            maxlength="40"
+                            value=""
+                          />
+                        </div>
+                        <ul class="scrollable-y">
+                          <li class="link_agent">
+                            정진욱<span>@jw.jung</span>
+                          </li>
+                          <li class="link_agent">
+                            글자를 입력하면 자동으로 검색 실행해 결과을
+                            출력해야합니다!<span>@user.id</span>
+                          </li>
+                          <li class="link_agent">
+                            홍길동<span>@user.id</span>
+                          </li>
+                          <li class="link_agent">
+                            박차고나온노미새미나<span>@user.id</span>
+                          </li>
+                          <li class="link_agent">
+                            자동검색결과<span>@user.id</span>
+                          </li>
+                          <li class="link_agent">
+                            자동검색결과<span>@user.id</span>
+                          </li>
+                          <li class="link_agent">
+                            자동검색결과<span>@user.id</span>
+                          </li>
+                          <li class="link_agent">
+                            자동검색결과<span>@user.id</span>
+                          </li>
+                          <li class="link_agent">
+                            자동검색결과<span>@user.id</span>
+                          </li>
+                          <li class="link_agent">
+                            자동검색결과<span>@user.id</span>
+                          </li>
+                          <li class="link_agent">
+                            자동검색결과<span>@user.id</span>
+                          </li>
+                          <li class="link_agent">
+                            자동검색결과<span>@user.id</span>
+                          </li>
+                          <li class="link_agent">
+                            자동검색결과<span>@user.id</span>
+                          </li>
+                        </ul>
+                        <div class="bottom">
+                          <button id="Chat_Transfer_Execute" class="f-right">
+                            <i class="fas fa-check pa-r-xs"></i>이관 실행
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </article>
+
+          <!-- Right aside : Customer Information-->
+          <aside class="r_md border-none">
+            <header class="flex-row-align-right pa-r-24">
+            </header>
+
+            <div class="link_data scrollable-y">
+              <section class="info_widget pa-t-md">
+                <header>
+                  <div class="title">
+                    <i class="far fa-address-book pa-r-xs"></i>고객정보
+                  </div>
+                  <div class="sub_title">(Customer information)</div>
+                </header>
+                <div class="f-block">
+                  <!-- 고객 이름 -->
+                  <div class="f-obj f-w50">
+                    <label class="top"
+                      ><i class="fas fa-user-alt"></i>고객 이름</label
+                    >
+                    <input
+                      type="text"
+                      maxlength="40"
+                      autocomplete="off"
+                      value="박새롬"
+                    />
+                  </div>
+
+                  <!-- 직함(또는 별칭) -->
+                  <div class="f-obj f-w50">
+                    <label class="top"
+                      ><i class="fas fa-genderless"></i>직함(또는 별칭)</label
+                    >
+                    <input
+                      type="text"
+                      maxlength="20"
+                      autocomplete="off"
+                      required
+                      value="차장"
+                    />
+                  </div>
+
+                  <!-- 고객 ID -->
+                  <div class="f-obj f-w50">
+                    <label class="top"
+                      ><i class="fas fa-barcode"></i>고객 ID</label
+                    >
+                    <input type="text" readonly="true" value="123456789" />
+                  </div>
+
+                  <!-- Customer Key -->
+                  <div class="f-obj f-w50">
+                    <label class="top"
+                      ><i class="fas fa-signature"></i>Customer_Key</label
+                    >
+                    <input type="text" readonly="true" value="V1LHld9mx-uC" />
+                  </div>
+
+                  <!-- 이메일 -->
+                  <div class="f-obj f-w100">
+                    <label class="top"
+                      ><i class="fas fa-envelope"></i>이메일</label
+                    >
+                    <input
+                      type="text"
+                      maxlength="80"
+                      autocomplete="off"
+                      value="saerom.park@domain.com"
+                    />
+                  </div>
+
+                  <!-- 단체(또는 회사명) -->
+                  <div class="f-obj f-w60">
+                    <label class="top"
+                      ><i class="fas fa-building"></i>단체(또는 회사명)</label
+                    >
+                    <input
+                      type="text"
+                      maxlength="40"
+                      autocomplete="off"
+                      value="한국기업유한회사"
+                    />
+                  </div>
+
+                  <!-- (브랜드)서비스 채널 -->
+                  <div class="f-obj f-w40">
+                    <label class="top"
+                      ><i class="fas fa-user-tag"></i>(브랜드)서비스 채널</label
+                    >
+                    <select
+                      name=""
+                      class=""
+                      title="이 고객정보를 소유하고 있는 서비스(브랜드) 채널 라벨"
+                    >
+                      <option value="0" selected>통합</option>
+                      <option value="1">콜센터Lite</option>
+                      <option value="2">CONNECTO</option>
+                    </select>
+                  </div>
+
+                  <!-- 고객 등급 -->
+                  <div class="f-obj f-w100 ma-b-0">
+                    <label class="top"
+                      ><i class="fas fa-award"></i>고객 등급<span
+                        class="sub right"
+                      ></span
+                    ></label>
+                    <div class="radio_wrap f-obj pa-0 ma-b-0">
+                      <input
+                        type="radio"
+                        name="Cust_Grade"
+                        id="Cust_Grade_General"
+                        checked="true"
+                        class=""
+                      />
+                      <label
+                        for="Cust_Grade_General"
+                        class="radio_label"
+                        title="General customer"
+                        >일반고객</label
+                      >
+                    </div>
+                    <div class="radio_wrap f-obj pa-0 ma-b-0">
+                      <input
+                        type="radio"
+                        name="Cust_Grade"
+                        id="Cust_Grade_VIP"
+                        class=""
+                      />
+                      <label
+                        for="Cust_Grade_VIP"
+                        class="radio_label"
+                        title="Very Important Person"
+                        >VIP</label
+                      >
+                    </div>
+                    <div class="radio_wrap f-obj pa-0 ma-b-0">
+                      <input
+                        type="radio"
+                        name="Cust_Grade"
+                        id="Cust_Grade_Black"
+                        class=""
+                      />
+                      <label
+                        for="Cust_Grade_Black"
+                        class="radio_label"
+                        title="Black consumer"
+                        >Black</label
+                      >
+                    </div>
+                  </div>
+
+                  <!-- 연락처-전화번호 -->
+                  <div class="f-obj f-w50">
+                    <label class="top"
+                      ><i class="fas fa-mobile-alt"></i>스마트폰</label
+                    >
+                    <input
+                      type="text"
+                      maxlength="15"
+                      autocomplete="off"
+                      value="010-4477-5400"
+                    />
+                  </div>
+                  <div class="f-obj f-w50">
+                    <label class="top"
+                      ><i class="far fa-building"></i>사무실</label
+                    >
+                    <input
+                      type="text"
+                      maxlength="15"
+                      autocomplete="off"
+                      value="02-3424-5666"
+                    />
+                  </div>
+                  <div class="f-obj f-w50 off">
+                    <label class="top"><i class="fas fa-fax"></i>팩스</label>
+                    <input
+                      type="text"
+                      maxlength="15"
+                      autocomplete="off"
+                      value="02-3244-0667"
+                    />
+                  </div>
+
+                  <!-- 전화번호 추가 -->
+                  <div class="f-obj f-w100 pa-0">
+                    <div class="clearfix">
+                      <span id="Cust_Tel_Add" class="t-btn-blue f-right"
+                        ><i class="fas fa-plus pa-r-xs"></i>전화번호 추가</span
+                      >
+                      <span
+                        id="Cust_Tel_Add_Cancle"
+                        class="t-btn-blue f-right off"
+                        ><i class="fas fa-times pa-r-xs"></i>전화번호 추가
+                        취소</span
+                      >
+                    </div>
+                    <div id="Cust_Tel_Add_Input_Wrap" class="clearfix">
+                      <div class="f-obj f-w45 pa-r-xs">
+                        <input
+                          type="text"
+                          placeholder="전화번호 입력"
+                          maxlength="15"
+                          autocomplete="off"
+                          value=""
+                        />
+                      </div>
+                      <div class="f-obj f-w40">
+                        <select id="Cust_Tel_Add_Label" name="" class="">
+                          <option value="1">휴대전화</option>
+                          <option value="2">집</option>
+                          <option value="3">사무실</option>
+                          <option value="4">대표번호</option>
+                          <option value="5">회사</option>
+                          <option value="6">팩스</option>
+                          <option value="7" selected>기타</option>
+                        </select>
+                      </div>
+                      <div class="f-obj f-w15">
+                        <button class="f-right ma-l-0" accesskey="">
+                          <i class="far fa-save"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- f-block end -->
+
+                <!-- 추가 정보(More information) -->
+                <div class="more_info">
+                  <div class="title">
+                    추가정보&nbsp;
+                    <span id="Btn_Cust_More_Info_Open" class="t-btn-blue f-right"
+                      ><i class="fas fa-caret-down pa-r-xs"></i>펼쳐보기</span
+                    >
+                    <span
+                      id="Btn_Cust_More_Info_Close"
+                      class="t-btn-blue f-right off"
+                      ><i class="fas fa-caret-up pa-r-xs"></i>접기</span
+                    >
+                  </div>
+
+                  <div id="Cust_Info_More_Info" class="f-block">
+                    <!-- 성별 및 생일 -->
+                    <div class="f-obj f-w30">
+                      <label class="top"
+                        ><i class="fas fa-venus-mars"></i>성별</label
+                      >
+                      <select id="Cust_Birth_Cal_Type" name="" class="">
+                        <option value="0">성별</option>
+                        <option value="1">여성</option>
+                        <option value="2">남성</option>
+                      </select>
+                    </div>
+                    <div class="f-obj f-w30 pa-r-xs">
+                      <label class="top"
+                        ><i class="fas fa-birthday-cake"></i>생일</label
+                      >
+                      <select id="Cust_Birth_Cal_Type" name="" class="">
+                        <option value="0">양/음</option>
+                        <option value="1">양력</option>
+                        <option value="2">음력</option>
+                      </select>
+                    </div>
+                    <div class="f-obj f-w40">
+                      <label class="top_nbsp"></label>
+                      <input
+                        type="text"
+                        placeholder="YYYY-MM-DD"
+                        maxlength="10"
+                        autocomplete="off"
+                        class="t-center"
+                        value=""
+                      />
+                    </div>
+
+                    <!-- 주소 1 (사무실 또는 회사) -->
+                    <div class="f-obj f-w100 pa-b-0">
+                      <label class="top"
+                        ><i class="far fa-building"></i>회사(사무실) 주소</label
+                      >
+                      <div class="f-obj f-w35">
+                        <input
+                          type="text"
+                          placeholder="우편번호"
+                          maxlength="5"
+                          autocomplete="off"
+                          class="t-center"
+                          value=""
+                        />
+                      </div>
+                      <div class="f-obj f-w15">
+                        <button class="f-right ma-l-0" accesskey="">
+                          <i class="fas fa-search-location"></i>
+                        </button>
+                      </div>
+                      <div class="f-obj f-w100 pa-r-0">
+                        <input
+                          type="text"
+                          placeholder="주소 1, 시도/군/구"
+                          maxlength="140"
+                          autocomplete="off"
+                          class=""
+                          value=""
+                        />
+                      </div>
+                      <div class="f-obj f-w100 pa-r-0">
+                        <input
+                          type="text"
+                          placeholder="주소 2, 상세 주소"
+                          maxlength="140"
+                          autocomplete="off"
+                          class=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+
+                    <!-- 주소 2 (집) -->
+                    <div class="f-obj f-w100 pa-b-0">
+                      <label class="top"
+                        ><i class="fas fa-home"></i>집 주소</label
+                      >
+                      <div class="f-obj f-w35">
+                        <input
+                          type="text"
+                          placeholder="우편번호"
+                          maxlength="5"
+                          autocomplete="off"
+                          class="t-center"
+                          value=""
+                        />
+                      </div>
+                      <div class="f-obj f-w15">
+                        <button class="f-right ma-l-0" accesskey="">
+                          <i class="fas fa-search-location"></i>
+                        </button>
+                      </div>
+                      <div class="f-obj f-w100 pa-r-0">
+                        <input
+                          type="text"
+                          placeholder="주소 1, 시도/군/구"
+                          maxlength="140"
+                          autocomplete="off"
+                          class=""
+                          value=""
+                        />
+                      </div>
+                      <div class="f-obj f-w100 pa-r-0">
+                        <input
+                          type="text"
+                          placeholder="주소 2, 상세 주소"
+                          maxlength="140"
+                          autocomplete="off"
+                          class=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+
+                    <!-- 메모 -->
+                    <div class="f-obj f-w100">
+                      <label class="top"
+                        ><i class="fas fa-pen-square"></i>메모<span
+                          class="sub f-right"
+                          >(1137)</span
+                        ></label
+                      >
+                      <textarea
+                        id="Cust_Memo"
+                        maxlength="1200"
+                        wrap="hard"
+                        class=""
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- timestamp -->
+                <div class="timestamp">
+                  <div>
+                    <p>수정일</p>
+                    <p>2020-11-30, 11:07:09</p>
+                    <p>정진욱</p>
+                  </div>
+                  <div>
+                    <p>생성일</p>
+                    <p>2020-11-07, 11:07:09</p>
+                    <p>박지영</p>
+                  </div>
+                </div>
+
+                <!-- 정보 수정(변경) 감지 저장 버튼 -->
+                <div id="Detect_Cust_Info_Modified" class="on">
+                  <span class="f-left"
+                    ><i class="fas fa-exclamation-triangle pa-r-xs"></i>정보
+                    수정(변경)이 감지 되었습니다.</span
+                  >
+                  <button class="blue f-right ma-l-0" accesskey="">
+                    <i class="fas fa-save pa-r-xs"></i>저장
+                  </button>
+                </div>
+              </section>
+
+              <section class="info_widget data_list_wrap">
+                <header class="ma-b-0">
+                  <div class="title">
+                    <i class="fas fa-history pa-r-xs"></i>인터렉션
+                  </div>
+                  <div class="sub_title">
+                    (Interaction)<span class="balloon">고객과의 대화 이력</span>
+                  </div>
+                </header>
+                <dl class="data_list interaction">
+                  <dt>최근 5건<span class="f-right">(전체 62건)</span></dt>
+                  <dd class="data_row">
+                    <div class="chat">
+                      <div>
+                        <p class="ticket-status inchat"></p>
+                      </div>
+                      <p class="timestamp">20-12-15, 11:47</p>
+                    </div>
+                    <div>
+                      <p class="from_channel">onpia.co.kr<span>카카오</span></p>
+                      <p class="agent_name">박진영</p>
+                    </div>
+                    <div>
+                      <p>기술지원</p>
+                      <p>재택근무전환</p>
+                      <p>방화벽설정문의</p>
+                    </div>
+                  </dd>
+                  <dd class="data_row">
+                    <div class="chat">
+                      <div>
+                        <p class="ticket-status close"></p>
+                      </div>
+                      <p class="timestamp">20-12-10, 17:16</p>
+                    </div>
+                    <div>
+                      <p class="from_channel">onpia.co.kr<span>NiceChat</span></p>
+                      <p class="agent_name">정진욱</p>
+                    </div>
+                    <div>
+                      <p>기술지원</p>
+                      <p>재택근무전환</p>
+                      <p>방화벽설정문의</p>
+                    </div>
+                  </dd>
+                  <dd class="data_row">
+                    <div class="talk">
+                      <div>
+                        <p class="ticket-status resolved"></p>
+                      </div>
+                      <p class="timestamp">20-11-02, 09:02</p>
+                    </div>
+                    <div>
+                      <p class="from_channel">1588-9310</p>
+                      <p class="agent_name">정진욱</p>
+                    </div>
+                    <div>
+                      <p>기술지원</p>
+                      <p>재택근무전환</p>
+                      <p>방화벽설정문의</p>
+                    </div>
+                  </dd>
+                  <dd class="data_row">
+                    <div class="web">
+                      <div>
+                        <p class="ticket-status resolved"></p>
+                      </div>
+                      <p class="timestamp">20-11-01, 17:49</p>
+                    </div>
+                    <div>
+                      <p class="from_channel">connecto.com</p>
+                      <p class="agent_name">정진욱</p>
+                    </div>
+                    <div>
+                      <p>기술지원</p>
+                      <p>재택근무전환</p>
+                      <p>방화벽설정문의</p>
+                    </div>
+                  </dd>
+                  <dd class="data_row">
+                    <div class="mail">
+                      <div>
+                        <p class="ticket-status resolved"></p>
+                      </div>
+                      <p class="timestamp">20-10-05, 14:16</p>
+                    </div>
+                    <div>
+                      <p class="from_channel">support@onpia.co.kr</p>
+                      <p class="agent_name">정진욱</p>
+                    </div>
+                    <div>
+                      <p>기술지원</p>
+                      <p>재택근무전환</p>
+                      <p>방화벽설정문의</p>
+                    </div>
+                  </dd>
+                  <dt class="more_load">더 많은 인터렉션 이력 불러오기</dt>
+                </dl>
+              </section>
+
+              <section class="info_widget data_list_wrap">
+                <header class="ma-b-0">
+                  <div class="title">
+                    <i class="fas fa-ticket-alt pa-r-xs"></i>티켓
+                  </div>
+                  <div class="sub_title">(Ticket)</div>
+                </header>
+                <dl class="data_list ticket">
+                  <dt>미해결 티켓<span class="f-right">(1건)</span></dt>
+                  <dd class="data_row">
+                    <div>
+                      <div>
+                        <p class="ticket-status inprogress"></p>
+                      </div>
+                      <p class="timestamp">20-12-15, 11:47</p>
+                    </div>
+                    <div>
+                      <p class="from_channel">onpia.co.kr<span>카카오</span></p>
+                      <p class="agent_name">박진영</p>
+                    </div>
+                    <div>
+                      <p>기술지원</p>
+                      <p>재택근무전환</p>
+                      <p>방화벽설정문의</p>
+                    </div>
+                    <div>
+                      <p class="ticket_title">
+                        이 티켓의 제목 필드는 티켓 요청 내용의 첫행(줄바꿈 이전)을
+                        자동으로 입력
+                      </p>
+                    </div>
+                  </dd>
+                  <dt>
+                    최근 5건의 완료(종결)된 티켓<span class="f-right"
+                      >(전체 48건)</span
+                    >
+                  </dt>
+                  <dd class="data_row">
+                    <div>
+                      <div>
+                        <p class="ticket-status close"></p>
+                      </div>
+                      <p class="timestamp">20-12-15, 11:47</p>
+                    </div>
+                    <div>
+                      <p class="from_channel">onpia.co.kr<span>카카오</span></p>
+                      <p class="agent_name">박진영</p>
+                    </div>
+                    <div>
+                      <p>기술지원</p>
+                      <p>재택근무전환</p>
+                      <p>방화벽설정문의</p>
+                    </div>
+                    <div>
+                      <p class="ticket_title">티켓의 제목</p>
+                    </div>
+                  </dd>
+                  <dd class="data_row">
+                    <div>
+                      <div>
+                        <p class="ticket-status close"></p>
+                      </div>
+                      <p class="timestamp">20-12-10, 17:16</p>
+                    </div>
+                    <div>
+                      <p class="from_channel">onpia.co.kr<span>NiceChat</span></p>
+                      <p class="agent_name">정진욱</p>
+                    </div>
+                    <div>
+                      <p>기술지원</p>
+                      <p>재택근무전환</p>
+                      <p>방화벽설정문의</p>
+                    </div>
+                    <div>
+                      <p class="ticket_title">티켓의 제목 예제</p>
+                    </div>
+                  </dd>
+                  <dd class="data_row">
+                    <div>
+                      <div>
+                        <p class="ticket-status resolved"></p>
+                      </div>
+                      <p class="timestamp">20-11-02, 09:02</p>
+                    </div>
+                    <div>
+                      <p class="from_channel">1588-9310</p>
+                      <p class="agent_name">정진욱</p>
+                    </div>
+                    <div>
+                      <p>기술지원</p>
+                      <p>재택근무전환</p>
+                      <p>방화벽설정문의</p>
+                    </div>
+                    <div>
+                      <p class="ticket_title">티켓의 제목 예제, 아~ 힘들다</p>
+                    </div>
+                  </dd>
+                  <dd class="data_row">
+                    <div>
+                      <div>
+                        <p class="ticket-status resolved"></p>
+                      </div>
+                      <p class="timestamp">20-11-01, 17:49</p>
+                    </div>
+                    <div>
+                      <p class="from_channel">connecto.com</p>
+                      <p class="agent_name">정진욱</p>
+                    </div>
+                    <div>
+                      <p>기술지원</p>
+                      <p>재택근무전환</p>
+                      <p>방화벽설정문의</p>
+                    </div>
+                    <div>
+                      <p class="ticket_title">
+                        티켓의 제목 예제, 예전 같지 않구나
+                      </p>
+                    </div>
+                  </dd>
+                  <dd class="data_row">
+                    <div>
+                      <div>
+                        <p class="ticket-status resolved"></p>
+                      </div>
+                      <p class="timestamp">20-10-05, 14:16</p>
+                    </div>
+                    <div>
+                      <p class="from_channel">support@onpia.co.kr</p>
+                      <p class="agent_name">정진욱</p>
+                    </div>
+                    <div>
+                      <p>기술지원</p>
+                      <p>재택근무전환</p>
+                      <p>방화벽설정문의</p>
+                    </div>
+                    <div>
+                      <p class="ticket_title">늑다리, 은퇴해야 하나?</p>
+                    </div>
+                  </dd>
+                  <dt class="more_load">더 많은 티켓 이력 불러오기</dt>
+                </dl>
+              </section>
+
+              <section class="info_widget data_list_wrap">
+                <header class="ma-b-0">
+                  <div class="title">
+                    <i class="far fa-folder-open pa-r-xs"></i>첨부파일
+                  </div>
+                  <div class="sub_title">
+                    (Attach files)<span class="balloon"
+                      >고객과 주고받은 파일</span
+                    >
+                  </div>
+                </header>
+                <dl class="data_list attach_file">
+                  <dt>받은 파일<span class="f-right">(전체 1건)</span></dt>
+                  <dd class="data_row attach_file_contatiner">
+                    <div class="name">
+                      <p class="timestamp">
+                        20-12-15, 11:47<span>다운로드</span>
+                      </p>
+                      <p class="attach_file_name">logo.png</p>
+                    </div>
+                    <div class="thumbnail">
+                      <img src="" alt="" class="thumbnail_40x40" />
+                    </div>
+                  </dd>
+                  <dt>보낸 파일<span class="f-right">(전체 2건)</span></dt>
+                  <dd class="data_row attach_file_contatiner">
+                    <div class="name">
+                      <p class="timestamp">
+                        20-12-15, 11:47<span>다운로드</span>
+                      </p>
+                      <p class="attach_file_name">
+                        견적서_(ON)_201218-1_콜센터Lite 3석 - 월정액 및 구축형
+                        통합 견적 - 정진욱 발행 원본.xlsx
+                      </p>
+                    </div>
+                    <div class="thumbnail">
+                      <img src="" alt="" class="thumbnail_40x40" />
+                    </div>
+                  </dd>
+                  <dd class="data_row attach_file_contatiner">
+                    <div class="name">
+                      <p class="timestamp">
+                        20-12-15, 11:47<span>다운로드</span>
+                      </p>
+                      <p class="attach_file_name">
+                        견적서_(ON)_201218-1_콜센터Lite 5석.xlsx
+                      </p>
+                    </div>
+                    <div class="thumbnail">
+                      <img src="" alt="" class="thumbnail_40x40" />
+                    </div>
+                  </dd>
+                  <dt class="more_load">더 많은 첨부파일 이력 불러오기</dt>
+                </dl>
+              </section>
+            </div>
+          </aside>
+          <!-- avenue end -->
+        </div>
+        <!-- .main end -->
+      </div>
+
+      <!-- Footer -->
+      <footer class="my_monitoring">
+        <div class="footer_wrap">
+          <p>개인전광판</p>
+        </div>
+      </footer>
+      <!-- wrap end -->
+    </div>
+  </body>
+</html>
