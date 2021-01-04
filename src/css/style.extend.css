@@ -212,9 +212,10 @@ section.setup_wrap {
   padding: 0 25px;
 }
 section.setup_wrap > header {
-  height: 50px;
+  height: 60px;
   margin-bottom: 14px;
-  padding: 15px 0;
+  padding: 20px 0 10px 0;
+  line-height: 30px;
   font-size: var(--font-lg);
   font-weight: 500;
   border-bottom: 1px solid var(--border);
@@ -236,6 +237,9 @@ section.setup_wrap > header {
   width: 530px;
 }
 
+/**********************************************************************************************************
+	SET-110 : 가입자 정보 및 채널
+**********************************************************************************************************/
 .channel_record {
   position: relative;
   margin-bottom: 12px;
@@ -305,4 +309,181 @@ section.setup_wrap > header {
 }
 .channel_record_wrap:last-of-type .view {
   border-bottom: none;
+}
+
+/**********************************************************************************************************
+	SET-120 : 그룹 관리
+**********************************************************************************************************/
+.detect_edit {
+  font-size: var(--font-xs);
+  color: var(--red);
+  font-weight: normal;
+  line-height: 30px;
+}
+dd .group_container {
+  position: relative;
+  height: 44px;
+  padding: 0 14px;
+  margin-bottom: 12px;
+  display: flex !important;
+  flex-flow: row nowrap;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+  background-color: rgb(231, 236, 238);
+  border: 2px solid rgb(231, 236, 238);
+  border-radius: 4px;
+  transition: all 0.3s ease-out;
+}
+dd .group_container:hover {
+  background-color: rgb(218, 224, 226);
+  border: 2px solid rgb(218, 224, 226);
+}
+dd .group_container input[type='text'] {
+  position: absolute;
+  top: 5px;
+  right: 260px;
+  width: 300px;
+  background-color: rgb(231, 236, 238);
+  border-color: rgb(231, 236, 238);
+}
+dd .group_container input[type='text']:focus {
+  background-color: white;
+  border-color: white;
+}
+dd .group_container input[readonly='true'] {
+  background-color: transparent;
+  border-color: transparent;
+  cursor: default;
+}
+dd .group_container:hover input[readonly='true'] {
+  background-color: transparent;
+  border-color: transparent;
+}
+dd .group_container input[readonly='true']:focus {
+  background-color: transparent;
+  border-color: transparent;
+}
+dd .group_container div.btn_group {
+  position: absolute;
+  top: 5px;
+  right: 140px;
+  opacity: 0;
+  transition: all 0.2s ease-out;
+}
+dd .group_container:hover div.btn_group {
+  opacity: 1;
+}
+dd .group_container button {
+  position: relative;
+  width: 30px;
+}
+dd .group_container span.user_count {
+  position: absolute;
+  top: 10px;
+  right: 50px;
+  font-size: var(--font-sm);
+  color: var(--label);
+}
+dd .group_container span.user_count::after {
+  content: ' Users';
+}
+dd .group_container div.sort {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 40px;
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  color: #c3c9d2;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+dd .group_container div.sort:hover {
+  background-color: rgb(194, 203, 206);
+  color: var(--label);
+  transition: all 0.3s ease-out;
+  cursor: move;
+}
+dd .group_container::before {
+  min-width: 40px;
+  color: var(--label);
+  font-size: var(--font-sm);
+}
+dd.d_1 .group_container::before {
+  content: '1수준';
+}
+dd.d_2 {
+  padding-left: 50px;
+}
+dd.d_2 .group_container::before {
+  content: '2수준';
+}
+dd.d_3 {
+  padding-left: 100px;
+}
+dd.d_3 .group_container::before {
+  content: '3수준';
+}
+dd.d_4 {
+  padding-left: 150px;
+}
+dd.d_4 .group_container::before {
+  content: '4수준';
+}
+dd.d_5 {
+  padding-left: 200px;
+}
+dd.d_5 .group_container::before {
+  content: '5수준';
+}
+dd .group_container.add::before {
+  content: '새 라벨';
+}
+dd .group_container button > span {
+  display: none;
+  position: absolute;
+  top: -30px;
+  left: -1px;
+  height: 22px;
+  padding: 2px 8px;
+  line-height: 16px;
+  font-size: var(--font-sm);
+  background-color: black;
+  border-radius: 4px;
+}
+dd .group_container button > span::before {
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 12px;
+  width: 6px;
+  height: 6px;
+  content: '';
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  background: black;
+}
+dd .group_container button:hover > span {
+  display: block;
+}
+
+dd.angle .group_container {
+  height: 44px;
+  margin-bottom: 12px;
+  border: 2px dashed var(--border);
+  border-radius: 4px;
+  background-color: transparent;
+}
+dd.angle .group_container::after {
+  width: 100%;
+  content: '이 위치로 변경';
+  color: var(--label);
+  text-align: center;
+  font-size: var(--font-sm);
+}
+dd .group_container.add > div.btn_group {
+  opacity: 1;
 }
