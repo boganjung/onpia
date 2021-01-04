@@ -482,7 +482,6 @@ dd.angle .group_container::after {
   content: '이 위치로 변경';
   color: var(--label);
   text-align: center;
-  font-size: var(--font-sm);
 }
 dd .group_container.add > div.btn_group {
   opacity: 1;
