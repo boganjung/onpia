@@ -141,6 +141,21 @@ section.table_grid_wrap {
   height: 100%;
   padding: 0 16px 10px 0;
 }
+.table_container div.head > div > span.summary {
+  color: var(--label);
+  font-size: var(--font-sm);
+}
+.table_container div.head > div > span > span {
+  color: #222;
+  font-weight: 500;
+}
+.table_container div.head > div > span > span::after {
+  padding-right: 8px;
+  content: ',';
+}
+.table_container div.head > div > span > span:last-of-type::after {
+  content: '';
+}
 
 aside .more_info {
   margin-top: 6px;
@@ -415,25 +430,25 @@ dd.d_1 .group_container::before {
   content: '1수준';
 }
 dd.d_2 {
-  padding-left: 50px;
+  padding-left: 70px;
 }
 dd.d_2 .group_container::before {
   content: '2수준';
 }
 dd.d_3 {
-  padding-left: 100px;
+  padding-left: 140px;
 }
 dd.d_3 .group_container::before {
   content: '3수준';
 }
 dd.d_4 {
-  padding-left: 150px;
+  padding-left: 210px;
 }
 dd.d_4 .group_container::before {
   content: '4수준';
 }
 dd.d_5 {
-  padding-left: 200px;
+  padding-left: 280px;
 }
 dd.d_5 .group_container::before {
   content: '5수준';
@@ -485,4 +500,26 @@ dd.angle .group_container::after {
 }
 dd .group_container.add > div.btn_group {
   opacity: 1;
+}
+
+/**********************************************************************************************************
+	SET-130 : 사용자 관리
+**********************************************************************************************************/
+.user_info_search {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  line-height: 20px !important;
+}
+.user_info_search .search_input_wrap {
+  width: 300px;
+}
+.filter_option {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 400px;
 }

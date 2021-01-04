@@ -649,6 +649,9 @@ tbody tr td {
 tbody tr td:first-of-type {
   padding-left: 6px;
 }
+tbody tr td > i {
+  margin-top: 4px;
+}
 tbody tr:hover td {
   background-color: rgba(203, 212, 222, 0.5);
   transition: all 0.3s ease-out;
@@ -662,6 +665,7 @@ tbody tr.link:hover td.ellipsis {
   word-break: break-all;
   text-overflow: inherit;
   overflow: visible;
+  hyphens: auto;
 }
 tbody tr.link:hover td.ellipsis.word_wrap {
   word-wrap: break-word !important;
@@ -1158,7 +1162,7 @@ aside.l_wide .condition_wrap {
   max-width: 200px;
   height: 30px;
   margin-right: 14px;
-  padding: 4px 20px 4px 8px;
+  padding: 3px 20px 3px 8px;
   border: 1px solid #f3f7f9;
   background-color: #f3f7f9;
   border-radius: 4px;
@@ -1171,11 +1175,11 @@ aside.l_wide .condition_wrap {
 .filter_btn_group .sel_option.on {
   background-color: var(--gray-dark);
   background-image: url(../assets-svg/angle-down-solid-white.svg);
-  border-color: var(--gray-dark);
+  border: 1px solid var(--gray-dark);
   color: white;
 }
 .filter_btn_group .sel_option.on:hover {
-  border-color: var(--gray-dark);
+  border: 1px solid var(--gray-dark);
 }
 .filter_btn_group .sel_option:hover {
   border: 1px solid rgb(203, 212, 222);
