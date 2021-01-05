@@ -523,3 +523,20 @@ dd .group_container.add > div.btn_group {
   justify-content: flex-end;
   min-width: 400px;
 }
+p[data='on'],
+p[data='off'],
+p[data='lock'] {
+  background-repeat: no-repeat;
+  background-size: 18px;
+  background-position: center 4px;
+  text-indent: -1000px;
+}
+p[data='on'] {
+  background-image: url(../assets-svg/toggle-on-solid.svg);
+}
+p[data='off'] {
+  background-image: url(../assets-svg/toggle-off-solid-gray.svg);
+}
+p[data='lock'] {
+  background-image: url(../assets-svg/user-lock-solid.svg);
+}
