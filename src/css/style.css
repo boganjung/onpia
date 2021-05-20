@@ -612,11 +612,11 @@ thead tr th {
 }
 
 /* 테이블 헤더의 소트 스타일 */
-.tablesorter thead tr th./* headerSortUp */tablesorter-headerDesc {
+.tablesorter thead tr th.tablesorter-headerDesc {
   background-image: url(../assets-svg/long-arrow-alt-up-solid-primary.svg);
   padding-left: 10px;
 }
-.tablesorter thead tr th./* headerSortDown */tablesorter-headerAsc {
+.tablesorter thead tr th.tablesorter-headerAsc {
   background-image: url(../assets-svg/long-arrow-alt-down-solid-primary.svg);
   padding-left: 10px;
 }
